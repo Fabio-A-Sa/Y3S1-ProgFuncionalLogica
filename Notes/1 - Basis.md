@@ -26,6 +26,8 @@ myFunction = print (sum (map (^2) [1..10]))
 
 Um operador pode ser usado como uma função e uma função pode ser usada como um operador:
 
+<center>
+
 |     f g x     |    f(g(x))    |
 |:-------------:|:-------------:|
 | f (g x) (h x) | f(g(x), h(x)) |
@@ -34,6 +36,8 @@ Um operador pode ser usado como uma função e uma função pode ser usada como 
 | (*)           | x * y         |
 | x 'mod' y     | mod x y       |
 | f x 'div' n   | div (f x) n   |
+
+</center>
 
 ## 1.2 - Funções padrão
 
