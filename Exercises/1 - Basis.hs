@@ -24,5 +24,13 @@ qsort = \list ->
 media :: Fractional a => [a] -> a
 media list = sum list / fromIntegral(length list)
 
+-- Raízes segundo a fórmula resolvente
+raizes :: Float -> Float -> Float -> [Float]
+raizes a b c
+            | delta>0 = [(-b+sqrt delta)/(2*a), (-b-sqrt delta)/(2*a)]
+            | delta==0 = [-b/(2*a)]
+            | otherwise = []
+        where delta = b^2 - 4*a*c
+
 -- main = function to run
-main = print (media [5, 2, 3, 4, -1, 0, 6, 200, -3, -3, 23, 5, -2, 0])
+main = print (raizes 1 2 0)

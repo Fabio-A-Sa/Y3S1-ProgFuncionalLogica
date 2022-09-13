@@ -99,6 +99,8 @@ not :: Bool -> Bool
 isDigit :: Char -> Bool
 soma :: (Int, Int) -> Int ou então soma :: Int -> Int -> Int
 contar :: Int -> [Int], com contar n = [1..n]
+minuscula :: Char -> Bool
+minuscula c = c>=’a’ && c<=’z’
 ```
 
 ## 1.4 - Currying
@@ -157,4 +159,42 @@ max :: Ord a => a -> a -> a
 media :: Fractional a => [a] -> a
 -- Em vez de escrever o tipo que queremos, colocamos o tipo retornado pela função a dar cast
 media xs = sum xs / fromIntegral(length xs)
+```
+
+## 1.6 - Expressões condicionais
+
+A alternativa 'else' é obrigatória e as condições podem ser imbricadas. Outra alternativa de notação é usar guardas, que são verificações que são testadas em ordem e retorna a primeira de condição verdadeira:
+
+```Haskell
+sinal x = if x > 0 then 1 else (if x == 0 then 0 else -1)
+sinal     x | x > 0      = 1
+            | x == 0     = 0
+            | otherwise  = -1
+```
+
+## 1.7 - Definição de Padrões
+
+```Haskell
+-- Uma definição completa do Prelude
+(&&) :: Bool -> Bool -> Bool
+True && True   = True
+True && False  = False
+False && True  = False
+False && False = False
+
+-- Uma definição alternativa do AND, onde _ pode ser qualquer valor
+(&&) :: Bool -> Bool -> Bool
+False && _  = False
+True && x   = x
+
+-- Não se pode repetir variáveis nos padrões
+_ && _ = False
+x && x = x
+
+-- Mas podemos usar guardas para impor a condição de igualdade
+x && y | x == y  = x
+_ && _           = False
+
+-- Padrões sobre tuplos e listas
+
 ```
