@@ -26,15 +26,15 @@ myFunction = print (sum (map (^2) [1..10]))
 
 Um operador pode ser usado como uma função e uma função pode ser usada como um operador:
 
-```Haskell
-f g x equivale a f(g(x))
-f (g x) (h x) equivale a f(g(x), h(x))
-f x (y+1) equivale a f(x, y+1)
-(+) x y equivale a x + y
-(*) x 2 equivale a x * 2
-x 'mod' y equivale a mod x y
-f x 'div' n equivale a div (f x) n
-```
+|     f g x     |    f(g(x))    |
+|:-------------:|:-------------:|
+| f (g x) (h x) | f(g(x), h(x)) |
+| f x (y+1)     | f(x, y+1)     |
+| (+) x y       | x + y         |
+| (*)           | x * y         |
+| x 'mod' y     | mod x y       |
+| f x 'div' n   | div (f x) n   |
 
 ## 1.2 - Funções padrão
+
 
