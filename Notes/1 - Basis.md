@@ -59,7 +59,7 @@ sum [1, 2, 3] > 6                           -- soma todos os elementos da lista
 product [1, 2, 3, 4]                        -- multiplica todos os elementos da lista
 ```
 
-## 1.3 - Definição de funções
+## 1.3 - Definição de funções e tipos
 
 O compilador infere os tipos omitidos mas é sempre boa norma por motivos sintáticos declará-los antes de cada função. Os erros de tipo são assinalados em runtime e antes da execução. <br>
 Tipos em Haskell:
@@ -103,7 +103,7 @@ contar :: Int -> [Int], com contar n = [1..n]
 
 ## 1.4 - Currying
 
-É preferível usar Currying do que tuplos como argumentos. Neste caso o processamento dos tipos é efetuado da direita para a esquerda e a compilação da esquerda para a direita. 
+É preferível usar Currying do que tuplos como argumentos. De acordo com as convenções sintáticas que prescindem de parêntises o processamento dos tipos é efetuado da direita para a esquerda e a compilação/aplicação da esquerda para a direita. 
 
 ```Haskell
 soma' :: (Int, Int) -> Int -- tuple based
@@ -114,5 +114,42 @@ soma  x y = x + y
 {-
     soma  :: Int -> (Int -> Int)
     (soma  x) y = x + y, retorna uma função f como resultado de (soma x) e depois computa (f y)
+    function x y z = (((f x) y) z)
 -}
 ```
+
+## 1.5 - Funções polimórficas
+
+Uma função diz-se polimórfica se admite um ou mais tipos como variáveis. 
+
+```Haskell
+length :: [a] -> Int
+length [1, 2, 3, 5] > 4                         -- 'a' é do tipo Int
+length "FeupLEIC" > 8                           -- 'a' é do tipo Char
+length [("a", 1), ("b", 2), ("c", 3)] > 3       -- 'a' é do tipo (Char, Int)
+```
+
+No entanto há certas funções que não têm sentido ao serem aplicadas com determinados tipos, por exemplo a soma do conteúdo de uma lista de booleanos. Então não pode haver uma generalização da declaração para todos os tipos existentes, que resulta em erro (overloading). Uma solução é dar ao valor arbitrário 'a' um tipo genérico:
+
+- Num (Int, Integer, Float, Double);
+- Integral (Int, Integer);
+- Fractional (Float, Double);
+- Eq (tipos que admitem comparação);
+- Ord (elementos que admitem uma ordenação);
+
+Note-se que Integral e Fractional são subclasses de Num e Ord é uma subclasse de Eq. Para não ocorrer erros desnecessários, aconselha-se a declarar as funções com tipos menos genéricos possível, mas mantendo o polimorfismo quando necessário. Alguns exemplos:
+
+```Haskell
+-- Definições que constam no Prelude
+sum :: Num a => [a] -> a
+mod :: Integral a => a -> a -> a
+(/) :: Fractional a => a -> a -> a
+(==) :: Eq a => a -> a -> Bool
+(<) :: Ord a => a -> a -> Bool
+max :: Ord a => a -> a -> a
+
+-- Exemplos concretos:
+1/3 :: Float
+(1 + 1.5 + 2) :: Float
+```
+
