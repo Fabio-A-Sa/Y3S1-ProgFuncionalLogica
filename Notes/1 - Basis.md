@@ -59,5 +59,40 @@ sum [1, 2, 3] > 6                           -- soma todos os elementos da lista
 product [1, 2, 3, 4]                        -- multiplica todos os elementos da lista
 ```
 
-## 1.3 - Definir funções
+## 1.3 - Definição de funções
 
+O compilador infere os tipos omitidos mas é sempre boa norma por motivos sintáticos declará-los antes de cada função. Os erros de tipo são assinalados em runtime e antes da execução. <br>
+Tipos em Haskell:
+
+- Bool (True, False);
+- Char;
+- String;
+- Int (inteiros de precisão fixa, 64 bits);
+- Integers (inteiros de precisão arbitrária, é até existir memória);
+- Float (vírgula flutuante de precisão simples, 32 bits);
+- Double (vírgula flutuante de precisão dupla, 64 bits);
+
+**Notas relevantes**:
+
+-[x] Listas de tamanhos diferentes podem ter o mesmo tipo, mas tuplos de tamanhos diferentes têm sempre tipos diferentes;
+-[x] A lista vazia [T] admite qualquer tipo, enquanto o tuplo vazio () apenas tem o tipo unitário ();
+-[x] Não existem tuplos com apenas um elemento;
+
+Alguns exemplos de definições:
+
+```Haskell
+-- Lists
+[False, True, False] :: [Bool]
+['f', 'E', 'u', 'P'] :: [Char] ou String 
+
+-- Tuples
+(3.14, 'P') :: [Double, Char]
+(False,’b’,True) :: (Bool,Char,Bool)
+
+-- Casos mistos
+[[’a’], [’b’,’c’]] :: [[Char]]
+(1,(’a’,2)) :: (Int,(Char,Int))
+(1, [’a’,’b’]) :: (Int,[Char])
+
+-- Funções
+```
