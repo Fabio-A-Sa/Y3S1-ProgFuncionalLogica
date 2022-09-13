@@ -103,3 +103,16 @@ contar :: Int -> [Int], com contar n = [1..n]
 
 ## 1.4 - Currying
 
+É preferível usar Currying do que tuplos como argumentos. Neste caso o processamento dos tipos é efetuado da direita para a esquerda e a compilação da esquerda para a direita. 
+
+```Haskell
+soma' :: (Int, Int) -> Int -- tuple based
+soma' (x, y) = x + y
+
+soma  :: Int -> Int -> Int -- currying
+soma  x y = x + y
+{-
+    soma  :: Int -> (Int -> Int)
+    (soma  x) y = x + y, retorna uma função f como resultado de (soma x) e depois computa (f y)
+-}
+```
