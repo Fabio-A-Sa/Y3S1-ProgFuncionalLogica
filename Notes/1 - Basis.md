@@ -74,9 +74,9 @@ Tipos em Haskell:
 
 **Notas relevantes**:
 
--[x] Listas de tamanhos diferentes podem ter o mesmo tipo, mas tuplos de tamanhos diferentes têm sempre tipos diferentes;
--[x] A lista vazia [T] admite qualquer tipo, enquanto o tuplo vazio () apenas tem o tipo unitário ();
--[x] Não existem tuplos com apenas um elemento;
+- [x] Listas de tamanhos diferentes podem ter o mesmo tipo, mas tuplos de tamanhos diferentes têm sempre tipos diferentes;
+- [x] A lista vazia [T] admite qualquer tipo, enquanto o tuplo vazio () apenas tem o tipo unitário ();
+- [x] Não existem tuplos com apenas um elemento;
 
 Alguns exemplos de definições:
 
