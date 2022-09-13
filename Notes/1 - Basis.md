@@ -95,4 +95,11 @@ Alguns exemplos de definições:
 (1, [’a’,’b’]) :: (Int,[Char])
 
 -- Funções
+not :: Bool -> Bool
+isDigit :: Char -> Bool
+soma :: (Int, Int) -> Int ou então soma :: Int -> Int -> Int
+contar :: Int -> [Int], com contar n = [1..n]
 ```
+
+## 1.4 - Currying
+
