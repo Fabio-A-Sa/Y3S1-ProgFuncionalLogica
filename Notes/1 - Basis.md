@@ -41,4 +41,23 @@ Um operador pode ser usado como uma função e uma função pode ser usada como 
 
 ## 1.2 - Funções padrão
 
+No módulo *Prelude* já há bastantes funções predefinidas, como os operadores e funções aritméticas e as funções genéricas entre listas. Pode e deve ser usado em qualquer programa haskell.
+
+```Haskell
+div 6 3 > 2                                 -- quociente da divisão inteira
+mod 6 3 > 0                                 -- resto da divisão inteira
+sqrt 9 > 3                                  -- raiz quadrada
+head [1, 2, 3, 4] > 1                       -- obter o primeiro elemento
+tail [1, 2, 3, 4] > [2, 3, 4]               -- remover o primeiro elemento
+length [1, 2, 3] > 3                        -- tamanho da lista
+take 3 [1, 2, 3, 4, 5] > [1, 2, 3]          -- obter os X primeiros elementos
+drop 2 [1, 2, 3, 4] > [3, 4]                -- remover os X primeiros elementos
+[1, 2, 3] ++ [4, 3] > [1, 2, 3, 4, 3]       -- concatenar listas ou strings
+reverse [3, 4, 6] > [6, 5, 4]               -- inverter a ordem da lista
+[1, 2, 3, 4, 5] !! 3 > 4                    -- escolhe o elemento de index 3 da lista
+sum [1, 2, 3] > 6                           -- soma todos os elementos da lista
+product [1, 2, 3, 4]                        -- multiplica todos os elementos da lista
+```
+
+## 1.3 - Definir funções
 
