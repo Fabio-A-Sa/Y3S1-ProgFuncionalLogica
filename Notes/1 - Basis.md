@@ -151,5 +151,10 @@ max :: Ord a => a -> a -> a
 -- Exemplos concretos:
 1/3 :: Float
 (1 + 1.5 + 2) :: Float
-```
 
+-- Casting de variáveis
+--  Não podia ser Num pois nem sempre o resultado da média é um valor inteiro
+media :: Fractional a => [a] -> a
+-- Em vez de escrever o tipo que queremos, colocamos o tipo retornado pela função a dar cast
+media xs = sum xs / fromIntegral(length xs)
+```
