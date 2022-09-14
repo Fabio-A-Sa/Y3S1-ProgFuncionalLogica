@@ -57,6 +57,8 @@ reverse [3, 4, 6] > [6, 5, 4]               -- inverter a ordem da lista
 [1, 2, 3, 4, 5] !! 3 > 4                    -- escolhe o elemento de index 3 da lista
 sum [1, 2, 3] > 6                           -- soma todos os elementos da lista
 product [1, 2, 3, 4]                        -- multiplica todos os elementos da lista
+fst (1, 2) > 1                              -- imprime o primeiro elemento do par
+snd (1, 2) > 2                              -- imprime o segundo elemento do par
 ```
 
 ## 1.3 - Definição de funções e tipos
@@ -172,6 +174,15 @@ sinal     x | x > 0      = 1
             | otherwise  = -1
 ```
 
+Há também possibilidade de usar case.. of:
+
+```Haskell
+null :: [a] -> Bool
+null xs = case xs of
+            [] -> True
+            (_:_) -> False
+```
+
 ## 1.7 - Definição de Padrões
 
 ```Haskell
@@ -194,7 +205,5 @@ x && x = x
 -- Mas podemos usar guardas para impor a condição de igualdade
 x && y | x == y  = x
 _ && _           = False
-
--- Padrões sobre tuplos e listas
-#TODO
 ```
+
