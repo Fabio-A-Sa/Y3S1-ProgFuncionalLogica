@@ -196,5 +196,5 @@ x && y | x == y  = x
 _ && _           = False
 
 -- Padrões sobre tuplos e listas
-
+#TODO
 ```
