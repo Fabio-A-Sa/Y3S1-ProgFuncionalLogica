@@ -207,3 +207,14 @@ x && y | x == y  = x
 _ && _           = False
 ```
 
+## 1.8 - Expressões lambda
+
+Permitem definir funções cujo resultado são outras funções e entender melhor o funcionamento do *currying*:
+
+```Haskell
+(\x -> 2*x+1) 3 > 7
+soma = \x -> (\y -> x+y)
+quadrados = map function [1..10]
+            where function x = x^2
+quadrados' = map (^2) [1..10]
+```
