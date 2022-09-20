@@ -1,5 +1,7 @@
 # 2  - Lists
 
+## 2.1 - Introdução
+
 As listas em Haskell são implementadas com uma linked-list [x:xs]. [1, 2, 3, 4] = 1:2:3:4:[], segundo a notação em extensão. Sequências aritméticas:
 
 ```Haskell
@@ -9,7 +11,7 @@ As listas em Haskell são implementadas com uma linked-list [x:xs]. [1, 2, 3, 4]
 take 10 [1, 3..] > [1, 3, 5, 7, 9, 11, 13, 15, 17,, 19]
 ```
 
-## 2.1 - Definições recursivas
+## 2.2 - Definições recursivas
 
 Os casos de paragem devem ser declarados antes da expressão recursiva. Em haskell, usar recursão é a única forma de implementar ciclos. Alguns exemplos:
 
@@ -46,7 +48,7 @@ init [_] = []
 init [x:xs] = x : init xs
 ```
 
-## 2.2 - Notações em compreensão
+## 2.3 - Notações em compreensão
 
 Todas as funções usando compreensão podem ser adaptadas com recursão, mas nem todas as recursões têm uma tradução em compreensões de listas. As definições recursivas são mais gerais.
 
@@ -74,7 +76,7 @@ zip :: [a] -> [b] -> [(a, b)]
 zip :: #TODO
 ```
 
-## 2.3 - Strings
+## 2.4 - Strings
 
 Para processar strings (lista de caracteres), usar o módulo *Data.Char*
 
