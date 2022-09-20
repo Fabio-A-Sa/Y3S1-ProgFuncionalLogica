@@ -48,6 +48,8 @@ init [x:xs] = x : init xs
 
 ## 2.2 - Notações em compreensão
 
+Todas as funções usando compreensão podem ser adaptadas com recursão, mas nem todas as recursões têm uma tradução em compreensões de listas. As definições recursivas são mais gerais.
+
 ```Haskell
 squares :: Int -> [Int]
 squares x = map (^2) [1..n]
@@ -59,4 +61,31 @@ pairs x y = [(a, b) | a <- [1..x], b <- [1..y]]
 
 concat :: [[a]] -> [a]
 concat lists = [valor | list <- lists, valor <- list]
+
+pares :: Int -> [Int]
+pares n = [x | x <- [1..n] , x `mod` 2 == 0]
+
+primes :: Int -> [Int]
+primes n = [x | x <- [1..n], n `mod` x == 0]
+isPrime :: Int -> Bool
+isPrime n = primes n == [1, n]
+
+zip :: [a] -> [b] -> [(a, b)]
+zip :: #TODO
+```
+
+## 2.3 - Strings
+
+Para processar strings (lista de caracteres), usar o módulo *Data.Char*
+
+```Haskell
+import Data.Char
+toUpper
+toLower
+isLower
+isUpper
+countLetters
+(...) #TODO
+stringToUpper str = [toUpper x | x <- str]
+stringToLower str = [toLower x | x <- str]
 ```
