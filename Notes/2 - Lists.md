@@ -13,7 +13,7 @@ take 10 [1, 3..] > [1, 3, 5, 7, 9, 11, 13, 15, 17,, 19]
 
 ## 2.2 - Definições recursivas
 
-Os casos de paragem devem ser declarados antes da expressão recursiva. Em haskell, usar recursão é a única forma de implementar ciclos, uma vez que não se pode modificar o valor de variáveis em memória. Alguns exemplos:
+Os casos de paragem devem ser declarados antes da expressão recursiva. Em haskell, usar recursão é a única forma de implementar ciclos, uma vez que não se pode modificar o valor de variáveis em memória. Há também admissão de recursão mútua. Alguns exemplos:
 
 ```Haskell
 factorial :: Int -> Int
@@ -40,6 +40,11 @@ zip :: [a] -> [b] -> [(a, b)]
 zip [] _ = []
 zip _ [] = []
 zip (x:xs) (y:ys) = (x,y) : zip xs ys
+
+drop :: Int -> [a] -> [a]
+drop 0 xs = xs
+drop n [] = []
+drop n (x:xs) | n > 0 = drop (n-1) xs
 ```
 
 Implementações recursivas de algumas funções do Prelude:
