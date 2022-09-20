@@ -54,7 +54,7 @@ init [x:xs] = x : init xs
 
 ## 2.3 - Notações em compreensão
 
-Todas as funções usando compreensão podem ser adaptadas com recursão, mas nem todas as recursões têm uma tradução em compreensões de listas. As definições recursivas são mais gerais mas mais complexas de entender.
+Todas as funções usando compreensão podem ser adaptadas com recursão, mas nem todas as recursões têm uma tradução em compreensões de listas. As definições recursivas são mais gerais mas mais complexas de entender. Alguns exemplos:
 
 ```Haskell
 squares :: Int -> [Int]
@@ -87,8 +87,7 @@ toUpper
 toLower
 isLower
 isUpper
-countLetters
-(...) #TODO
+isLetter
 stringToUpper str = [toUpper x | x <- str]
 stringToLower str = [toLower x | x <- str]
 ```
