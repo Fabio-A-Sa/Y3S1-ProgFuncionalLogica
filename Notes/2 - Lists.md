@@ -13,7 +13,7 @@ take 10 [1, 3..] > [1, 3, 5, 7, 9, 11, 13, 15, 17,, 19]
 
 ## 2.2 - Definições recursivas
 
-Os casos de paragem devem ser declarados antes da expressão recursiva. Em haskell, usar recursão é a única forma de implementar ciclos. Alguns exemplos:
+Os casos de paragem devem ser declarados antes da expressão recursiva. Em haskell, usar recursão é a única forma de implementar ciclos, uma vez que não se pode modificar o valor de variáveis em memória. Alguns exemplos:
 
 ```Haskell
 factorial :: Int -> Int
@@ -33,12 +33,16 @@ reverse [] = []
 reverse [x:xs] = reverse xs ++ x
 
 (++) :: [a] -> [a] -> [a]
-[] ++
-#TODO + zip + ...
+[] ++ ys = ys
+(x:xs) ++ ys = x : (xs ++ ys)
 
+zip :: [a] -> [b] -> [(a, b)]
+zip [] _ = []
+zip _ [] = []
+zip (x:xs) (y:ys) = (x,y) : zip xs ys
 ```
 
-Implementações recursivas do Prelude:
+Implementações recursivas de algumas funções do Prelude:
 
 ```Haskell
 
@@ -50,7 +54,7 @@ init [x:xs] = x : init xs
 
 ## 2.3 - Notações em compreensão
 
-Todas as funções usando compreensão podem ser adaptadas com recursão, mas nem todas as recursões têm uma tradução em compreensões de listas. As definições recursivas são mais gerais.
+Todas as funções usando compreensão podem ser adaptadas com recursão, mas nem todas as recursões têm uma tradução em compreensões de listas. As definições recursivas são mais gerais mas mais complexas de entender.
 
 ```Haskell
 squares :: Int -> [Int]
