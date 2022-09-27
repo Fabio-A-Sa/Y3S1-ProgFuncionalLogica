@@ -16,3 +16,12 @@ myreplicate1 n x
 myreplicate2 :: Integral a => a -> b -> [b]
 myreplicate2 n x = [x | _ <- [1..n]]
 
+(@@) :: Integral b => [a] -> b -> a 
+[] @@ n = error "Error: empty list or index too large"
+(x:_) @@ 0 = x
+(x:xs) @@ n
+    | n > 0 = xs @@ (n-1)
+    | otherwise = error "Error: n must be greater than 0"
+
+(@@@) :: Integral b => [a] -> b -> a 
+list @@@ n = head [x | (x,i) <- zip list [0..], i == n]
