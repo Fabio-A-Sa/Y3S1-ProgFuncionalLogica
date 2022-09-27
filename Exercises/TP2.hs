@@ -25,3 +25,30 @@ myreplicate2 n x = [x | _ <- [1..n]]
 
 (@@@) :: Integral b => [a] -> b -> a 
 list @@@ n = head [x | (x,i) <- zip list [0..], i == n]
+
+-- Time complexity = O(n^2)
+
+myreverse1 :: [a] -> [a]
+myreverse1 [] = []
+myreverse1 (x:xs) = myreverse1 xs ++ [x]
+
+reverse2Aux :: [a] -> [a] -> [a]
+reverse2Aux [] acc = acc
+reverse2Aux (x:xs) acc = reverse2Aux xs (x:acc)
+
+myreverse2 :: [a] -> [a]
+myreverse2 [] = []
+myreverse2 list = reverse2Aux list []
+
+-- reverse2Aux [1, 2, 3] []
+-- reverse2Aux [2, 3] [1]
+-- reverse2Aux [3] [2, 1]
+-- reverse2Aux [] [3, 2, 1]
+-- [3, 2, 1]
+
+-- 2.6
+
+sumsquares :: Integral a => a -> a
+sumsquares n
+    | n > 0 = sum [x^2 | x <- [1..n]]
+    | otherwise = error "N must be a positive number"
