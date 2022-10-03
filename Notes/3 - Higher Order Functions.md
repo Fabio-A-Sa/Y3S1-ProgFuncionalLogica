@@ -36,5 +36,7 @@ take 10 (iterate (2*) 1) > [1,2,4,8,16,32,64,128,256,512]
 ### Exemplos
 
 ```haskell
-
+preencher n text = take n (text ++ repeat ' ')
+fibs = 0 : 1 : [a+b | (a,b)<-zip fibs (tail fibs)]
+crivo (p:xs) = p : crivo [x | x<-xs, x‘mod‘p/=0]
 ```
