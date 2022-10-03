@@ -28,5 +28,13 @@ integers n = [n..]
 
 -- funções
 repeat x 10 > [x,x,x,x,x,x,x,x,x,x,x]
+cycle [x] > [x,x,x,x,x,...]
+iterate (^2) 4 > [4, 16, 16^2...]
+take 10 (iterate (2*) 1) > [1,2,4,8,16,32,64,128,256,512]
+```
+
+### Exemplos
+
+```haskell
 
 ```
