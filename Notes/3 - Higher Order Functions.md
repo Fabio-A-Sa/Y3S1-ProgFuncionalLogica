@@ -17,3 +17,16 @@ impar x = not . par x -- igual a not (par x)
 
 ## Listas infinitas
 
+Em Haskell há possibilidade de criar listas infinitas sem comprometer a memória (*lazy evaluation*, só computa quando necessita dos valores). Há também funções do Prelúdio-padrão que produzem listas com esta característica:
+
+```haskell
+-- listas
+natural_numbers = [1..]
+pares = [0, 2..]
+uns = 1 : uns
+integers n = [n..]
+
+-- funções
+repeat x 10 > [x,x,x,x,x,x,x,x,x,x,x]
+
+```
