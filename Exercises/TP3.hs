@@ -30,10 +30,25 @@ dec2int7 = foldl ((+) . (*10)) 0 -- eta-reduction
 
 -- 3.7.c
 
-reverseRight :: [a] -> [a]
+reverseRight :: [a] -> [a] -- Semelhante ao reverseNaive da aula TP2
 reverseRight list = foldr (\x acc -> acc ++ [x]) [] list
 
 -- 3.7.d
 
-reverseLeft :: [a] -> [a]
-reverseLeft list = foldl (\acc x -> [x] ++ acc) [] list
+reverseLeft1 :: [a] -> [a] -- Semelhante ao reverseAccumulatorAux da aula TP2
+reverseLeft1 list = foldl (\acc x -> [x] ++ acc) [] list
+
+reverseLeft2 :: [a] -> [a] -- Append mais simplificado
+reverseLeft2 list = foldl (\acc x -> x:acc) [] list
+
+reverseLeft3 :: [a] -> [a] -- eta-reduction
+reverseLeft3 list = foldl (\acc x -> x:acc) [] list
+
+reverseLeft4 :: [a] -> [a] -- eta-reduction
+reverseLeft4 list = foldl (\acc x -> (:) x acc) [] list
+
+reverseLeft5 :: [a] -> [a] -- eta-reduction
+reverseLeft5 list = foldl (\acc x -> flip (:) acc x) [] list
+
+reverseLeft6 :: [a] -> [a] -- eta-reduction
+reverseLeft6 = foldl (flip (:)) []
