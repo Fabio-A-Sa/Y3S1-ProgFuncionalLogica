@@ -85,5 +85,3 @@ listar (Node x BTree_esq BTree_dir) = list BTree_esq ++ [x] ++ BTree_dir
 
 #TODO
 ```
-
-
