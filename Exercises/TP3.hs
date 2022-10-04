@@ -67,5 +67,7 @@ myZipWith function (x:xs) (y:ys) = (function x y) : myZipWith function xs ys
 myisort :: Ord a => [a] -> [a]
 myisort list = foldr (\x acc -> insert x acc) [] list
 
--- 3.5
+-- 3.5.a
 
+myMaximum :: Ord a => [a] -> a
+myMaximum list = foldl1 (\acc x -> if x > acc then x else acc) list
