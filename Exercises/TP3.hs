@@ -30,3 +30,10 @@ dec2int7 = foldl ((+) . (*10)) 0 -- eta-reduction
 
 -- 3.7.c
 
+reverseRight :: [a] -> [a]
+reverseRight list = foldr (\x acc -> acc ++ [x]) [] list
+
+-- 3.7.d
+
+reverseLeft :: [a] -> [a]
+reverseLeft list = foldl (\acc x -> [x] ++ acc) [] list
