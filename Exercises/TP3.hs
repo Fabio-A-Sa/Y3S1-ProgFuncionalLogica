@@ -1,5 +1,7 @@
 -- 2022/10/04
 
+import Data.List (insert)
+
 -- 3.1
 
 mapFilter :: (a -> b) -> (a -> Bool) -> [a] -> [b]
@@ -52,3 +54,18 @@ reverseLeft5 list = foldl (\acc x -> flip (:) acc x) [] list
 
 reverseLeft6 :: [a] -> [a] -- eta-reduction
 reverseLeft6 = foldl (flip (:)) []
+
+-- 3.3
+
+myZipWith :: (a -> b -> c) -> [a] -> [b] -> [c] 
+myZipWith function xs [] = []
+myZipWith function [] ys = []
+myZipWith function (x:xs) (y:ys) = (function x y) : myZipWith function xs ys
+
+-- 3.4
+
+myisort :: Ord a => [a] -> [a]
+myisort list = foldr (\x acc -> insert x acc) [] list
+
+-- 3.5
+
