@@ -86,4 +86,30 @@ procurar x (No y esq dir)
         | x==y = True           -- encontrou
         | x<y = procurar x esq  -- procura à esquerda
         | x>y = procura x dir   -- procura à Direita
+
+inserir :: Ord a => a -> Arv a -> Arv a
+inserir x Vazia = No x Vazia Vazia
+inserir x (No y esq dir)
+        | x==y = No y esq dir             -- já ocorre; não insere
+        | x<y = No y (inserir x esq) dir  -- insere à esquerda
+        | x>y = No y esq (inserir x dir)  -- insere à direita
+
+construir :: [a] -> Arv a
+construir [] = Vazia
+construir xs = No x (construir xs’) (construir xs”)
+  where   n = length xs‘div‘2           -- ponto médio
+          xs’ = take n xs               -- partir a lista
+          x:xs” = drop n xs
+
+remover :: Ord a => a -> Arv a -> Arv a
+remover x Vazia = Vazia                   -- não ocorre
+remover x (No y Vazia dir)                -- um descendente
+        | x==y = dir
+remover x (No y esq Vazia)                -- um descendente
+        | x==y = esq
+remover x (No y esq dir)                  -- dois descendentes
+        | x<y = No y (remover x esq) dir
+        | x>y = No y esq (remover x dir)
+        | x==y = let z = maisEsq dir
+                 in No z esq (remover z dir)
 ```
