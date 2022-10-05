@@ -73,15 +73,17 @@ calcula (Mult x1 x2) = Value x1 * Value x2
 ### Árvores binárias (de pesquisa)
 
 ```haskell
-data Tree = Node Tree Tree
-          | Folha Int
+data Tree  = Node Int BTree BTree   -- nó
+           | Folha                  -- folha
 
-data BTree x = Node x BTree BTree -- nó
-           | Vazia              -- folha
-
-listar :: BTree a -> [a]
+listar :: Tree a -> [a]
 listar Vazia = []
-listar (Node x BTree_esq BTree_dir) = list BTree_esq ++ [x] ++ BTree_dir
+listar (Node x Tree_esq Tree_dir) = list Tree_esq ++ [x] ++ Tree_dir
 
-#TODO
+procurar :: Ord a => a -> Arv a -> Bool
+procurar x Vazia = False        -- não ocorre
+procurar x (No y esq dir)
+        | x==y = True           -- encontrou
+        | x<y = procurar x esq  -- procura à esquerda
+        | x>y = procura x dir   -- procura à Direita
 ```
