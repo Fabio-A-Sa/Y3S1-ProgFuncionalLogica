@@ -1,5 +1,7 @@
 -- 2022/10/18
 
+import Data.List (delete)
+
 invertInput :: IO ()
 invertInput = do 
     str <- getLine
@@ -37,7 +39,32 @@ permIO = do
     else do 
         putStrLn "Input must be > 0"
 
-myPermutations :: [a] -> [[a]]
+myPermutations :: (Eq a) => [a] -> [[a]]
 myPermutations [] = [[]]
-myPermutations list = 
+myPermutations list = [(i:j) | i <- list, j <- (myPermutations $ delete i list)]
 
+myScanlRec :: (a -> a -> a) -> a -> [a] -> [a]
+myScanlRec function acc list = [acc] ++ myScanlAux function acc list
+
+myScanlAux :: (a -> a -> a) -> a -> [a] -> [a]
+myScanlAux _ _ [] = []
+myScanlAux function acc (x:xs) = (new) : myScanlAux function new xs
+    where new = function acc x
+
+myScanlFold :: (a -> a -> a) -> a -> [a] -> [a]
+myScanlFold function n list = foldl (\acc x -> acc ++ [function (head $ reverse acc) x]) [n] list
+
+{--
+
+"abc"
+
+a ++ perm "bc"
+b ++ perm "ac"
+c ++ perm "ab"
+
+"bc" 
+
+b ++ perm "c"
+c ++ perm "b "
+
+--}
