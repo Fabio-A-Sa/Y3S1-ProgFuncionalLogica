@@ -22,3 +22,8 @@ metades list = (a, b)
         where middle = length list `div` 2
               a = take middle list 
               b = drop middle list
+
+-- 1.4.a
+
+mylast :: [a] -> a 
+mylast list = head $ reverse list 
