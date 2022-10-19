@@ -8,3 +8,9 @@ testaTriangulo a b c
     | a + b > c = True
     | b + c > a = True
     | otherwise = False
+
+-- 1.2
+
+areaTriangulo :: Float -> Float -> Float -> Float
+areaTriangulo a b c = sqrt (s*(s-a)*(s-b)*(s-c))
+    where s = (a+b+c) / 2
