@@ -92,3 +92,18 @@ imc peso altura
     | n >= 25 && n < 30 = "Excesso de peso"
     | n >= 30 = "Obesidade"
     where n = peso / (altura * altura)
+
+-- 1.11.a
+
+max3 :: Ord a => a -> a -> a -> a
+max3 x y z = if x>=y && x >=z then x
+             else if y >= x && y >= z then y
+             else  z
+
+min3 :: Ord a => a -> a -> a -> a
+min3 x y z = if x<=y && x <= z then x 
+             else if y <= x && y <= z then y
+             else z
+
+-- 1.11.b 
+
