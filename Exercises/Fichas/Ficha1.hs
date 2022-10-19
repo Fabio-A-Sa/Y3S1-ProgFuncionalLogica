@@ -131,4 +131,16 @@ xor a b
 
 -- 1.13
 
+safetail :: [a] -> [a]
+safetail [] = []
+safetail list = tail list
 
+safetail' :: [a] -> [a]
+safetail' list = if length list == 0 then [] else tail list
+
+safetail'' :: [a] -> [a]
+safetail'' list 
+    | length list == 0 = []
+    | otherwise = tail list
+
+-- 1.14
