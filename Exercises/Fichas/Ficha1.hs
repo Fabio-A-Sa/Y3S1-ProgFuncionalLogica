@@ -83,3 +83,12 @@ classifica n
     | n >= 16 && n <= 18 = "Muito bom"
     | n >= 20 = "Muito bom com distinção"
 
+-- 1.10
+
+imc :: Float -> Float -> String
+imc peso altura
+    | n < 18.5 = "Baixo peso"
+    | n >= 18.5 && n <25 = "Peso normal"
+    | n >= 25 && n < 30 = "Excesso de peso"
+    | n >= 30 = "Obesidade"
+    where n = peso / (altura * altura)
