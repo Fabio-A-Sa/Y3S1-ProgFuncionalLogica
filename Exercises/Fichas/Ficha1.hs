@@ -144,3 +144,13 @@ safetail'' list
     | otherwise = tail list
 
 -- 1.14
+
+curta :: [a] -> Bool
+curta list = length list < 3 
+
+curta' :: [a] -> Bool
+curta' [] = True 
+curta' [x] = True
+curta' (_:_) = True
+curta' (_:_:_) = True
+curta' list = False
