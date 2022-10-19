@@ -62,13 +62,14 @@ raizes a b c = (((-b) + delta) / (2*a),((-b) - delta) / (2*a))
 
 -- 1.8
 
---
---
---
---
---
---
---
---
+-- segundo :: [a] -> a
+-- trocar :: (a, b) -> (b, a)
+-- par :: a -> b -> (a, b)
+-- dobro :: Num a => a -> a
+-- metade :: Fractional -> Fractional
+-- minuscula :: Char -> Bool
+-- intervalo -> Ord a => a -> a -> a -> Bool
+-- palindromo :: Eq a => [a] -> Bool
+-- twice :: (a -> a) -> a -> a
 
 -- 1.9
