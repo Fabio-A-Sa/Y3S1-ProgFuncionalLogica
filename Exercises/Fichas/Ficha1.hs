@@ -107,3 +107,12 @@ min3 x y z = if x<=y && x <= z then x
 
 -- 1.11.b 
 
+max3' :: Ord a => a -> a -> a -> a
+max3' x y z = if x>=y && x >=z then x
+             else if y >= x && y >= z then y
+             else  z
+             
+min3' :: Ord a => a -> a -> a -> a
+min3' x y z = if x<=y && x <= z then x 
+             else if y <= x && y <= z then y
+             else z
