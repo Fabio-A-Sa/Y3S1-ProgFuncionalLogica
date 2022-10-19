@@ -1,5 +1,7 @@
 -- 2022/10/19
 
+import Data.List
+
 -- 1.1
 
 testaTriangulo :: Float -> Float -> Float -> Bool
@@ -154,3 +156,11 @@ curta' [x] = True
 curta' (_:_) = True
 curta' (_:_:_) = True
 curta' list = False
+
+-- 1.15
+
+mediana :: Ord a => a -> a -> a -> a 
+mediana a b c = (sort [a, b, c]) !! 1
+
+mediana' :: Ord a => a -> a -> a -> a
+mediana' a b c = sum [a, b, c] - sum [min [a, b, c], max [a, b, c]]
