@@ -73,3 +73,13 @@ raizes a b c = (((-b) + delta) / (2*a),((-b) - delta) / (2*a))
 -- twice :: (a -> a) -> a -> a
 
 -- 1.9
+
+classifica :: Int -> String
+classifica n 
+    | n < 0 || n > 20 = "Erro"
+    | n <= 9 = "Reprovado"
+    | n >= 10 && n <=12 = "Suficiente"
+    | n >= 13 && n <=15 = "Bom"
+    | n >= 16 && n <= 18 = "Muito bom"
+    | n >= 20 = "Muito bom com distinção"
+
