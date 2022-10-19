@@ -52,3 +52,23 @@ raizes a b c = (((-b) + delta) / (2*a),((-b) - delta) / (2*a))
     where delta = sqrt (b*b - 4*a*c)
 
 -- 1.7
+
+-- [Char]
+-- (Char, Char, Char)
+-- [(Bool, Char)]
+-- ([Bool], [Char])
+-- [([a] -> [a])]
+-- [(a -> a)]
+
+-- 1.8
+
+--
+--
+--
+--
+--
+--
+--
+--
+
+-- 1.9
