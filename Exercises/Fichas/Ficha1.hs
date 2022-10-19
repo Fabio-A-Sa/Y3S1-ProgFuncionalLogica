@@ -122,3 +122,13 @@ min3' x y z = min2' x (min2' y z)
 
 -- 1.12
 
+xor :: Bool -> Bool -> Bool
+xor a b 
+    | a == False && b == True = True
+    | a == True && b == False = True
+    | a == False && b == False = False
+    | a == True && b == True = False
+
+-- 1.13
+
+
