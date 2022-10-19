@@ -32,3 +32,15 @@ mylast list = head $ reverse list
 
 myinit :: [a] -> [a]
 myinit list = reverse $ tail $ reverse list 
+
+-- 1.5.a
+
+binom :: Integer -> Integer -> Integer
+binom n k = div (product [1..n]) ((product [1..k]) * (product [1..(n-k)]))
+
+-- 1.5.b
+
+binom' :: Integer -> Integer -> Integer
+binom' n k 
+    | k < (n-k) = product [(n-k+1)..n] `div` (product [1..k])
+    | otherwise = product [(k+1)..n]  `div` (product [1..(n-k)])
