@@ -108,11 +108,17 @@ min3 x y z = if x<=y && x <= z then x
 -- 1.11.b 
 
 max3' :: Ord a => a -> a -> a -> a
-max3' x y z = if x>=y && x >=z then x
-             else if y >= x && y >= z then y
-             else  z
+max3' x y z = max2' x (max2' y z)
+                where max2' c d 
+                        | c >= d = c 
+                        | otherwise = d 
+
              
 min3' :: Ord a => a -> a -> a -> a
-min3' x y z = if x<=y && x <= z then x 
-             else if y <= x && y <= z then y
-             else z
+min3' x y z = min2' x (min2' y z)
+                where min2' c d 
+                        | c >= d = d 
+                        | otherwise = c 
+
+-- 1.12
+
