@@ -27,3 +27,8 @@ metades list = (a, b)
 
 mylast :: [a] -> a 
 mylast list = head $ reverse list 
+
+-- 1.4.b
+
+myinit :: [a] -> [a]
+myinit list = reverse $ tail $ reverse list 
