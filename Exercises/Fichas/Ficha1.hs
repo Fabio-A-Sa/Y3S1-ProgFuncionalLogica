@@ -157,10 +157,13 @@ curta' (_:_) = True
 curta' (_:_:_) = True
 curta' list = False
 
--- 1.15
+-- 1.15.a
 
 mediana :: Ord a => a -> a -> a -> a 
 mediana a b c = (sort [a, b, c]) !! 1
 
-mediana' :: Ord a => a -> a -> a -> a
-mediana' a b c = sum [a, b, c] - sum [min [a, b, c], max [a, b, c]]
+-- 1.15.b
+
+mediana' :: (Num a, Ord a) => a -> a -> a -> a
+mediana' a b c = (a+b+c) - min a (min b c) - max a (max b c)
+
