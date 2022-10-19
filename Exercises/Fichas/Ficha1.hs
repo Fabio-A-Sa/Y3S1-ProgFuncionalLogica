@@ -45,3 +45,10 @@ binom' n k
     | k < (n-k) = product [(n-k+1)..n] `div` (product [1..k])
     | otherwise = product [(k+1)..n]  `div` (product [1..(n-k)])
 
+-- 1.6
+
+raizes :: Float -> Float -> Float -> (Float, Float)
+raizes a b c = (((-b) + delta) / (2*a),((-b) - delta) / (2*a))
+    where delta = sqrt (b*b - 4*a*c)
+
+-- 1.7
