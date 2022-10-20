@@ -24,3 +24,9 @@ myreplicate i l = [l] ++ myreplicate (i-1) l
 myelem :: Eq a => a -> [a] -> Bool
 myelem _ [] = False 
 myelem c (x:xs) = c == x || myelem c xs
+
+-- 2.2
+
+myintersperse :: a -> [a] -> [a]
+myintersperse c [x] = [x]
+myintersperse c (x:xs) = x:c:(myintersperse c xs)
