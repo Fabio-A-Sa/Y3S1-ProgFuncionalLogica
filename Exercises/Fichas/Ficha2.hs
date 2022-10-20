@@ -30,3 +30,10 @@ myelem c (x:xs) = c == x || myelem c xs
 myintersperse :: a -> [a] -> [a]
 myintersperse c [x] = [x]
 myintersperse c (x:xs) = x:c:(myintersperse c xs)
+
+-- 2.3 
+
+mdc :: Integer -> Integer -> Integer 
+mdc a b 
+    | b == 0 = a
+    | otherwise = mdc b (a`mod`b)
