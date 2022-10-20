@@ -48,3 +48,30 @@ e3 -- e3 >>
 
 ## Using Monads
 
+Using DO operator
+
+```haskell
+do { x'<-return x ; f x' } = do { f x }
+do { x <- m; return x } = do { m }
+```
+
+### Propriedades das expressões
+
+- Left-identity return a >>= f = f a
+- Right-identity m >>= return = m
+- Associativity (m >>= f) >>= g = m >>= (\x -> f x >>= g)
+
+### Monads Types
+
+- Maybe (Nothing, Just);
+- Either (Left a, Right b), com Left a ser uma tag de erro e Right o valor correcto da operação;
+- State (Result, State);
+
+```haskell
+instance Monad (State s) 
+    where
+        return a = State (\s -> (a, s))
+        m >>= k = State (\s ->
+        let (x, s') = run m s
+        in run (k x) s')
+```
