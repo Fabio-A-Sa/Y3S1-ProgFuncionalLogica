@@ -27,5 +27,15 @@ isEmpty :: Stack a -> Bool
 Para implementar um tipo abstrato escolhemos uma representação concreta para as operações e dizemos apenas como usar o tipo e as operações válidas. Para isso podemos usar `módulos`:
 
 ```haskell
-
+module Post where -- no topo do ficheiro, para criar o módulo
+import Post (Function1, Function2) -- no topo do ficheiro que usa o módulo
 ```
+
+### Conjuntos
+
+Terá de ter as operações member, insert, delete, union, inserction, empty, isEmpty, fromList, toList.
+
+```haskell
+data Set a = Empt | Node a (Set a) (Set a)
+```
+
