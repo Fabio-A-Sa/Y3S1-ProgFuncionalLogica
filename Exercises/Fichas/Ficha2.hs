@@ -41,6 +41,7 @@ mdc a b
 -- 2.4
 
 myinsert :: Ord a => a -> [a] -> a
+myinsert 
 myinsert value (x:y:xs)
     | value >= x && value <= y = x:value:y:xs
     | otherwise = [x] ++ myinsert value y:xs
