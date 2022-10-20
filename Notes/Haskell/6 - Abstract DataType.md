@@ -38,4 +38,3 @@ Terá de ter as operações member, insert, delete, union, inserction, empty, is
 ```haskell
 data Set a = Empt | Node a (Set a) (Set a)
 ```
-
