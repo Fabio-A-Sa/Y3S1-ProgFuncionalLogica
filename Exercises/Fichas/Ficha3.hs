@@ -85,3 +85,12 @@ palavras [] = [[]]
 palavras (' ':something) = palavras something
 palavras list = [i | i<- [takeWhile (/=' ') list]] ++ palavras (dropWhile (/=' ') list)
 
+-- 3.8.b
+
+despalavras :: [String] -> String
+despalavras [[]] = []
+despalavras [x] = x
+despalavras (x:xs) = x ++ " " ++ despalavras xs
+
+-- 3.9
+
