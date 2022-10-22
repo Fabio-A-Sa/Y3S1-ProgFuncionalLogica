@@ -75,3 +75,5 @@ ssort list = m : ssort (mydelete m list)
     where m = myminimum list
 
 -- 2.6
+
+expression = sum $ map (^2) [1..100]
