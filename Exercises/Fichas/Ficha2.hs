@@ -52,4 +52,17 @@ myord :: Ord a => [a] -> [a]
 myord [] = []
 myord (x:xs) = myinsert x (myord xs)
 
--- 2.5 
+-- 2.5.a
+
+myminimum :: Ord a => [a] -> a
+myminimum [x] = x
+myminimum (x:xs) if value < x then value else x
+    where  value = myMinimum xs
+
+-- 2.5.b
+
+mydelete :: Eq a => a -> [a] -> [a]
+mydelete value [] = []
+mydelete value (x:xs)
+    | value == x = xs
+    | otherwise = x : mydelete value xs
