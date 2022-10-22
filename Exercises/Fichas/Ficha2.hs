@@ -153,3 +153,11 @@ myconcat2 lists = [value | list <- lists, value <- list]
 
 myreplicate2 :: Int -> a -> [a]
 myreplicate2 n value = [value | _ <- [1..n]]
+ 
+-- 2.16.c
+
+mybangbang :: Int -> [a] -> a
+mybangbang _ [] = error "Empty list"
+mybangbang n list = head [value | (value, index) <- zip list [1..(length list)], index == n]
+
+-- 2.17
