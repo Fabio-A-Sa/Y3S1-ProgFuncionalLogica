@@ -56,8 +56,8 @@ myord (x:xs) = myinsert x (myord xs)
 
 myminimum :: Ord a => [a] -> a
 myminimum [x] = x
-myminimum (x:xs) if value < x then value else x
-    where  value = myMinimum xs
+myminimum (x:xs) = if value < x then value else x
+    where  value = myminimum xs
 
 -- 2.5.b
 
@@ -66,3 +66,12 @@ mydelete value [] = []
 mydelete value (x:xs)
     | value == x = xs
     | otherwise = x : mydelete value xs
+
+-- 2.5.c
+
+ssort :: Ord a => [a] -> [a]
+ssort [] = []
+ssort list = m : ssort (mydelete m list)
+    where m = myminimum list
+
+-- 2.6
