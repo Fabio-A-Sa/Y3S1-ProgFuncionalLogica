@@ -23,3 +23,20 @@ recZipWith function (x:xs) (y:ys) = [function x y] ++ recZipWith function xs ys
 
 myisort :: Ord a => [a] -> [a]
 myisort list = foldl (\acc x -> insert x acc) [] list
+
+-- 3.5.a
+
+mymaximuml :: Ord a => [a] -> a 
+mymaximuml list = foldl1 (\acc x -> if acc > x then acc else x) list 
+
+myminimuml :: Ord a => [a] -> a 
+myminimuml list = foldl1 (\acc x -> if acc < x then acc else x) list 
+
+mymaximumr :: Ord a => [a] -> a 
+mymaximumr list = foldr1 (\x acc -> if acc > x then acc else x) list 
+
+myminimumr :: Ord a => [a] -> a 
+myminimumr list = foldr1 (\x acc -> if acc < x then acc else x) list 
+
+-- 3.5.b
+
