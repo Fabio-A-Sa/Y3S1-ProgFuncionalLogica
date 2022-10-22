@@ -67,11 +67,4 @@ mydelete value (x:xs)
     | value == x = xs
     | otherwise = x : mydelete value xs
 
--- 2.5.c
-
-ssort :: Ord a => [a] -> [a]
-ssort [] = []
-ssort list = m : ssort (mydelete m list)
-    where m = myminimum list
-
 -- 2.6
