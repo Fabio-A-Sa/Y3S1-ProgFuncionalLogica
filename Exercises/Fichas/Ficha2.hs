@@ -200,3 +200,12 @@ algarismos number
 
 -- 2.22
 
+toBits :: Int -> [Int]
+toBits number 
+    | number < 2 = [number]
+    | otherwise = toBits (div number 2) ++ [mod number 2]
+
+-- 2.23
+
+fromBits :: [Int] -> Int
+fromBits list = sum [(reverse list !! i) * (2^i) | i <- [0..((length list)-1)]]
