@@ -91,7 +91,9 @@ dotprod list1 list2 = sum $ zipWith (*) list1 list2
 -- 2.9
 
 divprop :: Integer -> [Integer]
-divprop n = [x | x <- [1..n], n `mod` x == 0]
+divprop n = [x | x <- [1..(n-1)], n `mod` x == 0]
 
 -- 2.10
 
+perfeitos :: Integer -> [Integer]
+perfeitos n = [x | x <- [1..n], sum (divprop x) == x]
