@@ -77,3 +77,11 @@ reversel list = foldl (\acc x -> [x] ++ acc) [] list
 
 myelem :: Eq a => a -> [a] -> Bool
 myelem element list = any (\x -> x == element) list
+
+-- 3.8.a
+
+palavras :: String -> [String]
+palavras [] = [[]]
+palavras (' ':something) = palavras something
+palavras list = [i | i<- [takeWhile (/=' ') list]] ++ palavras (dropWhile (/=' ') list)
+
