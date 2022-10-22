@@ -38,10 +38,16 @@ mdc a b
     | b == 0 = a
     | otherwise = mdc b (a`mod`b)
 
--- 2.4
+-- 2.4.a
 
-myinsert :: Ord a => a -> [a] -> a
-myinsert 
-myinsert value (x:y:xs)
-    | value >= x && value <= y = x:value:y:xs
-    | otherwise = [x] ++ myinsert value y:xs
+myinsert :: Ord a => a -> [a] -> [a]
+myinsert value [] = [value]
+myinsert value (x:xs)
+    | value >= x = x : myinsert value xs
+    | otherwise = value:x:xs
+
+-- 2.4.b
+
+myord :: Ord a => [a] -> [a]
+myord [] = []
+myord (x:xs) = myinsert x (myord xs)
