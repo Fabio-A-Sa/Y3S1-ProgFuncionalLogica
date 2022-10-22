@@ -1,5 +1,7 @@
 -- 2022/10/20
 
+import Data.Char (chr, ord)
+
 -- 2.1
 
 myand :: [Bool] -> Bool
@@ -123,3 +125,6 @@ pascalline n = [binom n k | k <- [0..n]]
 
 pascal :: Integer -> [[Integer]]
 pascal n = [pascalline i | i <- [0..n]]
+
+-- 2.15
+
