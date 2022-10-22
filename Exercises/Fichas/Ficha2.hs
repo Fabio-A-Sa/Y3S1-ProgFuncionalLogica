@@ -1,6 +1,6 @@
 -- 2022/10/20
 
-import Data.Char (chr, ord)
+import Data.Char
 
 -- 2.1
 
@@ -161,3 +161,10 @@ mybangbang _ [] = error "Empty list"
 mybangbang n list = head [value | (value, index) <- zip list [1..(length list)], index == n]
 
 -- 2.17
+
+forte :: [Char] -> Bool
+forte string = length string >= 8 && letterM && number && letterM
+    where func filtro string = length [c | c <- string, filtro c] >= 1
+          letterM = func isUpper string 
+          letterm = func isLower string
+          number = func isDigit string
