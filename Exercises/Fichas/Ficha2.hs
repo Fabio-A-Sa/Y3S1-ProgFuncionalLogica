@@ -97,3 +97,8 @@ divprop n = [x | x <- [1..(n-1)], n `mod` x == 0]
 
 perfeitos :: Integer -> [Integer]
 perfeitos n = [x | x <- [1..n], sum (divprop x) == x]
+
+-- 2.11
+
+pitagoricos :: Integer -> [(Integer, Integer, Integer)]
+pitagoricos n = [(x, y, z) | x <- [1..n], y <- [1..n], z <- [1..n], x^2+y^2 == z^2]
