@@ -87,3 +87,11 @@ aprox n = sum [((-1)^x) / fromIntegral (2*x+1) | x <- [0..n]] * 4
 
 dotprod :: [Float] -> [Float] -> Float
 dotprod list1 list2 = sum $ zipWith (*) list1 list2
+
+-- 2.9
+
+divprop :: Integer -> [Integer]
+divprop n = [x | x <- [1..n], n `mod` x == 0]
+
+-- 2.10
+
