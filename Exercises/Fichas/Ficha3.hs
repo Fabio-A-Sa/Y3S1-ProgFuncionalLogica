@@ -75,3 +75,5 @@ reversel list = foldl (\acc x -> [x] ++ acc) [] list
 
 -- 3.7.e
 
+myelem :: Eq a => a -> [a] -> Bool
+myelem element list = any (\x -> x == element) list
