@@ -40,3 +40,10 @@ myminimumr list = foldr1 (\x acc -> if acc < x then acc else x) list
 
 -- 3.5.b
 
+myfoldl1 :: (a -> a -> a) -> [a] -> a 
+myfoldl1 function [] = error "Empty list"
+myfoldl1 function list = foldl (\acc x -> function acc x) (head list) (tail list)
+
+myfoldr1 :: (a -> a -> a) -> [a] -> a 
+myfoldr1 function [] = error "Empty list"
+myfoldr1 function list = foldr (\x acc -> function acc x) (last list) (init list)
