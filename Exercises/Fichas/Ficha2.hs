@@ -82,3 +82,8 @@ expression = sum $ map (^2) [1..100]
 
 aprox :: Int -> Double
 aprox n = sum [((-1)^x) / fromIntegral (2*x+1) | x <- [0..n]] * 4
+
+-- 2.8
+
+dotprod :: [Float] -> [Float] -> Float
+dotprod list1 list2 = sum $ zipWith (*) list1 list2
