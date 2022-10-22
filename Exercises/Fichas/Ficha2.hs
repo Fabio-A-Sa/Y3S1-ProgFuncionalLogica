@@ -193,3 +193,10 @@ transpose lists  = [ [list !! i | list <- lists] | i <- [0..(length (head lists)
 
 -- 2.21
 
+algarismos :: Int -> [Int]
+algarismos number 
+    | number < 10 = [number]
+    | otherwise = algarismos (div number 10) ++ [mod number 10]
+
+-- 2.22
+
