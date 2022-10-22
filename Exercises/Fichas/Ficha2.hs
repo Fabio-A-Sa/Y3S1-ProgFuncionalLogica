@@ -209,3 +209,6 @@ toBits number
 
 fromBits :: [Int] -> Int
 fromBits list = sum [(reverse list !! i) * (2^i) | i <- [0..((length list)-1)]]
+
+-- 2.24
+
