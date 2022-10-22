@@ -51,3 +51,5 @@ myinsert value (x:xs)
 myord :: Ord a => [a] -> [a]
 myord [] = []
 myord (x:xs) = myinsert x (myord xs)
+
+-- 2.5 
