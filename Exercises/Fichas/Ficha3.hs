@@ -94,3 +94,13 @@ despalavras (x:xs) = x ++ " " ++ despalavras xs
 
 -- 3.9
 
+myScanlRec :: (a -> a -> a) -> a -> [a] -> [a]
+myScanlRec function acc list = [acc] ++ myScanlAux function acc list
+
+myScanlAux :: (a -> a -> a) -> a -> [a] -> [a]
+myScanlAux _ _ [] = []
+myScanlAux function acc (x:xs) = (new) : myScanlAux function new xs
+    where new = function acc x
+
+myScanlFold :: (a -> a -> a) -> a -> [a] -> [a]
+myScanlFold function n list = foldl (\acc x -> acc ++ [function (head $ reverse acc) x]) [n] list
