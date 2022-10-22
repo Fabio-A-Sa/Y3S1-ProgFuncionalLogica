@@ -179,3 +179,6 @@ divmin n = if length list > 0 then n else head list
 
 primo':: Int -> Bool
 primo' n = n > 1 && divmin n == n
+
+-- 2.19 
+
