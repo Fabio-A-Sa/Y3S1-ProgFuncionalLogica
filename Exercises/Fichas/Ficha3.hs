@@ -1,5 +1,7 @@
 -- 2022/10/24
 
+import Data.List
+
 -- 3.1
 
 -- expression :: map f $ filter p xs 
@@ -17,3 +19,7 @@ recZipWith function a [] = []
 recZipWith function [] b = []
 recZipWith function (x:xs) (y:ys) = [function x y] ++ recZipWith function xs ys 
 
+-- 3.4
+
+myisort :: Ord a => [a] -> [a]
+myisort list = foldl (\acc x -> insert x acc) [] list
