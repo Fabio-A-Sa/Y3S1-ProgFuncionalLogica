@@ -52,3 +52,26 @@ myfoldr1 function list = foldr (\x acc -> function acc x) (last list) (init list
 
 mdc :: Int -> Int -> Int
 mdc a b = fst $ until (\(a, b) -> b == 0) (\(a, b) -> (b, mod a b)) (a, b)
+
+-- 3.7.a
+
+(+++) :: [a] -> [a] -> [a]
+(+++) list1 list2 = foldr (\x acc -> [x] ++ acc) list1 list2
+
+-- 3.7.b
+
+concate :: [[a]] -> [a]
+concate list = foldr (\x acc -> x ++ acc) [] list
+
+-- 3.7.c
+
+reverser :: [a] -> [a]
+reverser list = foldr (\x acc -> acc ++ [x]) [] list
+
+-- 3.7.d
+
+reversel :: [a] -> [a]
+reversel list = foldl (\acc x -> [x] ++ acc) [] list
+
+-- 3.7.e
+
