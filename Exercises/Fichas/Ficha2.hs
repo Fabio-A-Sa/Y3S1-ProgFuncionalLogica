@@ -168,3 +168,14 @@ forte string = length string >= 8 && letterM && number && letterM
           letterM = func isUpper string 
           letterm = func isLower string
           number = func isDigit string
+
+-- 2.18.a
+
+divmin :: Int -> Int 
+divmin n = if length list > 0 then n else head list
+        where list = [x | x <- [2..floor (sqrt (fromIntegral n))], n `mod` x == 0]
+
+-- 2.18.b 
+
+primo':: Int -> Bool
+primo' n = n > 1 && divmin n == n
