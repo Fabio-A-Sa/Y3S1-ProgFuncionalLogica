@@ -212,3 +212,9 @@ fromBits list = sum [(reverse list !! i) * (2^i) | i <- [0..((length list)-1)]]
 
 -- 2.24
 
+metades :: [a] -> ([a], [a])
+metades list = (a, b)
+        where middle = length list `div` 2
+              a = take middle list 
+              b = drop middle list
+
