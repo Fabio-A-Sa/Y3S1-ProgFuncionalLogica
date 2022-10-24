@@ -144,5 +144,10 @@ desloca k x | maiúscula x = intLetra ((letraInt x + k)`mod`26)
 cifrar :: Int -> String -> String
 cifrar k xs = [desloca k x | x<-xs]
 
--- 2.16 
+-- 2.16.a
 
+myconcat2 :: [[a]] -> [a]
+myconcat2 lists = [value | list <- lists, value <- list]
+
+myreplicate2 :: Int -> a -> [a]
+myreplicate2 n value = [value | _ <- [1..n]]
