@@ -96,3 +96,17 @@ invertInput' = do
     else do
         putStrLn $ reverse str
         invertInput'
+
+-- 4.9
+
+elefantes :: Int -> IO ()
+elefantes n = elefantesAux 2 n 
+
+elefantesAux :: Int -> Int -> IO ()
+elefantesAux i n
+    | i < n = do
+        putStrLn $ "Se " ++ (show i) ++ " elefantes incomodam muita gente,"
+        putStrLn $ (show $ i+1) ++ " elefantes incomodam muito mais"
+        elefantesAux (i+1) n
+    | otherwise = do
+        return ()
