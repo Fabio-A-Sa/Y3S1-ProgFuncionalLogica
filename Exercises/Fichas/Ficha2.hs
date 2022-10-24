@@ -77,3 +77,8 @@ ssort list = m : ssort (mydelete m list)
 -- 2.6
 
 expression = sum $ map (^2) [1..100]
+
+-- 2.7
+
+aprox :: Int -> Double
+aprox n = sum [((-1)^x) / fromIntegral (2*x+1) | x <- [0..n]] * 4
