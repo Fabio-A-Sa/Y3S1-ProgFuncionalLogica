@@ -112,3 +112,8 @@ primo n = length list == 1 && head list == 1
 -- 2.13
 
 mersennes = [2^x - 1 | x <- [1..30], primo (2^x - 1)]
+
+-- 2.14
+
+binom :: Integer -> Integer -> Integer
+binom n k = div (product [1..n]) ((product [1..k]) * (product [1..(n-k)]))
