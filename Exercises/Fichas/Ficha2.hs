@@ -149,5 +149,7 @@ cifrar k xs = [desloca k x | x<-xs]
 myconcat2 :: [[a]] -> [a]
 myconcat2 lists = [value | list <- lists, value <- list]
 
+-- 2.16.b
+
 myreplicate2 :: Int -> a -> [a]
 myreplicate2 n value = [value | _ <- [1..n]]
