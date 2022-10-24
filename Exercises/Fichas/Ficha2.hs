@@ -185,3 +185,9 @@ primo' n = n > 1 && divmin n == n
 mynub :: Eq a => [a] -> [a]
 mynub [] = []
 mynub (x:xs) = x : mynub (filter (/= x) xs)
+
+-- 2.20
+
+transpose :: [[a]] ->[[a]]
+transpose lists  = [ [list !! i | list <- lists] | i <- [0..(z-1)]  ]
+    where z = length (head list)
