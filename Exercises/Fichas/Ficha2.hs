@@ -108,3 +108,7 @@ pitagoricos n = [(x, y, z) | x <- [1..n], y <- [1..n], z <- [1..n], x^2+y^2 == z
 primo :: Integer -> Bool
 primo n = length list == 1 && head list == 1 
     where list = divprop n
+
+-- 2.13
+
+mersennes = [2^x - 1 | x <- [1..30], primo (2^x - 1)]
