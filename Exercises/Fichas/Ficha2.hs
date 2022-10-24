@@ -117,3 +117,9 @@ mersennes = [2^x - 1 | x <- [1..30], primo (2^x - 1)]
 
 binom :: Integer -> Integer -> Integer
 binom n k = div (product [1..n]) ((product [1..k]) * (product [1..(n-k)]))
+
+pascalline :: Integer -> [Integer]
+pascalline n = [binom n k | k <- [0..n]]
+
+pascal :: Integer -> [[Integer]]
+pascal n = [pascalline i | i <- [0..n]]
