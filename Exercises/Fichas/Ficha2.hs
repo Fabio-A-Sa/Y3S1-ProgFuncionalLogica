@@ -182,3 +182,6 @@ primo' n = n > 1 && divmin n == n
 
 -- 2.19 
 
+mynub :: Eq a => [a] -> [a]
+mynub [] = []
+mynub (x:xs) = x : mynub (filter (/= x) xs)
