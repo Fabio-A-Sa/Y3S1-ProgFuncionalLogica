@@ -81,3 +81,18 @@ removerNo (No _ Vazia right) = right
 removerNo (No _  left Vazia) = left
 removerNo (No _  left right) = No n (remover n left) right
     where n = maisDir left
+
+-- 4.7
+
+invertInput :: IO ()
+invertInput = do 
+    str <- getLine
+    putStrLn $ reverse str
+
+invertInput' :: IO ()
+invertInput' = do 
+    str <- getLine
+    if (null str) then return ()
+    else do
+        putStrLn $ reverse str
+        invertInput'
