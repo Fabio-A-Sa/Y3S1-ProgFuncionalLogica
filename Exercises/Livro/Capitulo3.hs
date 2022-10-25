@@ -161,7 +161,10 @@ insert v (x:xs)
 
 -- LI-22
 
-
+sSort :: Ord a => [a] -> [a]
+sSort [] = []
+sSort l = m:(sSort (delete m l))
+    where m = minimum l
 
 -- LI-23
 
