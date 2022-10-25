@@ -1,3 +1,12 @@
+-- 2022/10/25
+
+-- LI-4
+
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse [x] = [x]
+myReverse (x:xs) = (myReverse xs) ++ [x]
+
 -- LI-7
 
 deleteOne :: Eq a => a -> [a] -> [a]
