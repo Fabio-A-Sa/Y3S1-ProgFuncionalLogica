@@ -16,3 +16,28 @@ deleteAll value (x:xs)
 
 myConcat :: [[a]] -> [a]
 myConcat lists = [element | list <- lists, element <- list]
+
+-- LI-9
+
+myReplicate :: Int -> a -> [a]
+myReplicate n value = [value | _ <- [1..n]]
+
+-- LI-10
+
+myCycle :: [a] -> [a]
+myCycle list = [value | _ <- [1..], value <- list] 
+
+-- LI-11
+
+myInt :: a -> [a] -> [a]
+myInt a [] = []
+myInt a [x] = [x]
+myInt a (x:xs) = x : a : myInt a xs
+
+-- LI-12
+
+myTake :: Int -> [a] -> [a]
+myTake 0 _ = []
+myTake n (x:xs) 
+    | length (x:xs) < n = error "Large n"
+    | otherwise = x : myTake (n-1) xs
