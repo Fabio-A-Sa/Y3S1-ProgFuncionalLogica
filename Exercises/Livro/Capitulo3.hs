@@ -102,3 +102,14 @@ differentFromNext [x] = []
 differentFromNext (x:y:resto) 
     | x /= y = x : differentFromNext (y:resto)
     | otherwise = differentFromNext (y:resto)
+
+-- LI-18
+
+myTransposeAux :: Int -> [[a]] -> [a]
+myTransposeAux i lists = [list !! i | list <- lists]
+
+myTranspose :: [[a]] -> [[a]]
+myTranspose lists = [myTransposeAux i lists | i <- [0..(length $ head lists)-1]]
+
+-- LI-19
+
