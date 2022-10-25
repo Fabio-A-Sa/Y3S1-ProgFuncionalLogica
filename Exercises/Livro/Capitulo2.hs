@@ -22,3 +22,8 @@ distance2 (x1, y1) (x2, y2) = sqrt $ sum [(x1-x2)^2, (y1-y2)^2]
 
 distanceInf :: (Ord a, Floating a) => (a, a) -> (a, a) -> a 
 distanceInf (x1, y1) (x2, y2) = max (abs (x1-x2)) (abs (y1-y2))
+
+-- FT-14
+
+scalarProduct :: Num a => [a] -> [a] -> a 
+scalarProduct vector1 vector2 = sum $ zipWith (*) vector1 vector2
