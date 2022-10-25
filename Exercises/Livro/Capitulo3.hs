@@ -130,3 +130,17 @@ myTranspose lists = [myTransposeAux i lists | i <- [0..(length $ head lists)-1]]
 
 -- LI-19
 
+myNub :: Eq a => [a] -> [a]
+myNub [] = []
+myNub list = (head list) : (myNub $ filter (/= value) (tail list))
+    where value = head list 
+
+-- LI-20
+
+mySubsequences :: [a] -> [[a]]
+mySubsequences [] = [[]]
+mySubsequences (x:xs) = addOrNotToHead x (mySubsequences xs)
+
+addOrNotToHead :: a -> [[a]] -> [[a]]
+addOrNotToHead h [] = []
+addOrNotToHead h (l:ls) = l:(h:l):(addOrNotToHead h ls)
