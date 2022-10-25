@@ -7,6 +7,14 @@ myReverse [] = []
 myReverse [x] = [x]
 myReverse (x:xs) = (myReverse xs) ++ [x]
 
+-- LI-6
+
+conseq :: [a] -> [(a, a)]
+conseq [] = []
+conseq [x] = []
+conseq [x, y] = [(x, y)]
+conseq (x:y:resto) = [(x, y)] ++ conseq (y:resto)
+
 -- LI-7
 
 deleteOne :: Eq a => a -> [a] -> [a]
