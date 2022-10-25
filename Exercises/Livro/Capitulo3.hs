@@ -1,5 +1,7 @@
 -- 2022/10/25
 
+import Data.List
+
 -- LI-4
 
 myReverse :: [a] -> [a]
