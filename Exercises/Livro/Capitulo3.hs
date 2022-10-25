@@ -39,5 +39,15 @@ myInt a (x:xs) = x : a : myInt a xs
 myTake :: Int -> [a] -> [a]
 myTake 0 _ = []
 myTake n (x:xs) 
-    | length (x:xs) < n = error "Large n"
+    | length (x:xs) < n = (x:xs)
     | otherwise = x : myTake (n-1) xs
+
+myTake' :: Int -> [a] -> [a]
+myTake' n list 
+    | length list < n = list
+    | otherwise = [value | (value, index) <- zip (list) [1..], index <= n]
+
+myDrop :: Int -> [a] -> [a]
+myDrop n list
+    | length list < n = []
+    | otherwise = [value | (value, index) <- zip (list) [1..], index > n]
