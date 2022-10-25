@@ -27,3 +27,8 @@ distanceInf (x1, y1) (x2, y2) = max (abs (x1-x2)) (abs (y1-y2))
 
 scalarProduct :: Num a => [a] -> [a] -> a 
 scalarProduct vector1 vector2 = sum $ zipWith (*) vector1 vector2
+
+-- FT-25
+
+average :: Fractional a => [a] -> a 
+average vector = sum vector / (fromIntegral (length vector))
