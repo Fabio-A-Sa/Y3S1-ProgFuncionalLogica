@@ -180,5 +180,17 @@ merge l [] = l
 merge (x:xs) (y:ys)
     | x < y = x:( merge xs (y:ys))
     | otherwise = y:( merge (x:xs) ys)
-    
+
 -- LI-24
+
+qSort :: Ord a => [a] -> [a]
+qSort [] = []
+qSort (x:xs) = (qSort lower) ++ [x] ++ (qSort upper)
+    where (lower , upper) = myPartition x xs
+
+myPartition :: Ord a => a -> [a] -> ([a], [a])
+myPartition _ [] = ([] ,[])
+myPartition v (x:xs)
+    | x < v = (x:a,b)
+    | otherwise = (a,x:b)
+    where (a,b) = myPartition v xs
