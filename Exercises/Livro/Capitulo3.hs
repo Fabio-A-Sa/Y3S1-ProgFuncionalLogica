@@ -145,5 +145,22 @@ addOrNotToHead :: a -> [[a]] -> [[a]]
 addOrNotToHead h [] = []
 addOrNotToHead h (l:ls) = l:(h:l):(addOrNotToHead h ls)
 
--- L1-21
+-- LI-21
 
+iSort :: Ord a => [a] -> [a]
+iSort [] = []
+iSort (x:xs) = insert x (iSort xs)
+
+insert :: Ord a => a -> [a] -> [a]
+insert v [] = [v]
+insert v (x:xs)
+    | v <= x = v:x:xs
+    | otherwise = x:(insert v xs)
+
+-- LI-22
+
+
+
+-- LI-23
+
+-- LI-24
