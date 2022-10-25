@@ -104,6 +104,9 @@ contar :: Int -> [Int], com contar n = [1..n]
 minuscula :: Char -> Bool
 minuscula c = c>=’a’ && c<=’z’
 ```
+<p align="center">
+<img src="../../Images/Types.png">
+</p>
 
 ## 1.4 - Currying
 
