@@ -194,3 +194,8 @@ myPartition v (x:xs)
     | x < v = (x:a,b)
     | otherwise = (a,x:b)
     where (a,b) = myPartition v xs
+
+-- LI-28
+
+infL :: Integral a => [a]
+infL = 1:[2* prev + n - 1 | (n, prev) <- zip [2..] infL]
