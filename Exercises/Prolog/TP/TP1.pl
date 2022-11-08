@@ -70,3 +70,8 @@ parent(haley, poppy).
 
 % 1.b 
 
+female(haley).              % yes
+male(gil).                  % no
+parent(frank, phil).        % no
+parent(x, claire).          % dede ; jay ; no
+parent(clair, x).           % joe ; manny ; no
