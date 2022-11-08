@@ -73,3 +73,45 @@ parent(X, lily), parent(Y, X).      % 4 resultados, pares (X, Y), Y = avós
 parent(_X, lily), parent(Y, _X).    % 4 resultados, somente os Y
 parent(alex, X).                    % no 
 parent(jay, X), \+parent(gloria, X) % claire ; mitchel ; no
+
+% 1.c 
+
+father(X, Y):-
+    parent(X, Y), 
+    male(X).
+
+mother(X, Y):-
+    parent(X, Y),
+    female(X).
+
+grandparent(X, Y):-
+    parent(X, Z),
+    parent(Z, Y).
+
+grandfather(X, Y):-
+    grandparent(X, Y),
+    male(X).
+
+grandmother(X, Y):-
+    grandparent(X, Y),
+    female(X).
+
+siblings(X, Y):-
+    father(A, X),
+    father(A, Y),
+    mother(B, X),
+    mother(B, Y),
+    X \= Y.
+
+siblings2(X, Y):-
+    parent(A, X),
+    parent(A, Y),
+    parent(B, X),
+    parent(B, Y),
+    A @< B,         % Para retirar os exemplos repetidos
+    X \= Y.
+
+% 1.4 
+
+%TODO
+
