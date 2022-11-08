@@ -115,3 +115,27 @@ siblings2(X, Y):-
 
 %TODO
 
+% 1.5 
+
+% married(Person1, Person2, Year)
+% divorce(Person1, Person2, Year)
+% is_married(Person1, Person2, CurrentYear)
+
+married(jay, gloria, 2008).
+married(jay, dede, 1968).
+divorce(jay, dede, 2003).
+
+% Rule 1: We assume that Person1 and Person2 never got divorced
+
+is_married(X, Y, CurrentYear):-
+    married(X, Y, Year1),
+    Year >= Year1,
+    \+divorce(X, Y, _).
+
+% Rule 2: We assume that Person1 and Person2 got divorced sometime later
+
+is_married(X, Y, CurrentYear):-
+    married(X, Y, Year1),
+    Year >= Year1,
+    \+divorce(X, Y, Year2),
+    Year < Year2.
