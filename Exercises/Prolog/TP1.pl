@@ -163,3 +163,48 @@ is_married(X, Y, CurrentYear):-
 
 % Exercise 2
 
+% 2.a  
+
+leciona(adalberto, algoritmos).
+leciona(bernardete, basesdedados).
+leciona(capitolino, compiladores).
+leciona(diogenes, estatistica).
+leciona(ermelinda, redes).
+
+frequenta(alberto, algoritmos).
+frequenta(bruna, algoritmos).
+frequenta(cristina, algoritmos).
+frequenta(diogo, algoritmos).
+frequenta(eduarda, algoritmos).
+frequenta(antonio, basesdedados).
+frequenta(bruno, basesdedados).
+frequenta(cristina, basesdedados).
+frequenta(duarte, basesdedados).
+frequenta(eduardo, basesdedados).
+frequenta(alberto, compiladores).
+frequenta(bernardo, compiladores).
+frequenta(clara, compiladores).
+frequenta(diana, compiladores).
+frequenta(eurico, compiladores).
+frequenta(antonio, estatistica).
+frequenta(bruna, estatistica).
+frequenta(claudio, estatistica).
+frequenta(duarte, estatistica).
+frequenta(eva, estatistica).
+frequenta(alvaro, redes).
+frequenta(beatriz, redes).
+frequenta(claudio, redes).
+frequenta(diana, redes).
+frequenta(eduardo, redes).
+
+% 2.b 
+
+% leciona(diogenes, X).
+% leciona(felismina, _X).
+% frequenta(claudio, X).
+% frequenta(dalmindo, _X).
+% leciona(bernardete, X), frequenta(eduarda, X).
+% frequenta(alberto, X), frequenta(alvaro, Y), X = Y.
+
+% 2.c 
+
