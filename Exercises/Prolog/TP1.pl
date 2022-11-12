@@ -128,12 +128,11 @@ uncle(X, Y):-
 
 % 1.d
 
-% 
-%
-%
-%
-%
-%
+% cousins(haley, lily).
+% father(X, luke).
+% uncle(X, lily).
+% grandmother(X, _Y).
+% siblings(X, Y) ; halfsiblings(X, Y).
 
 % 1.5 
 
