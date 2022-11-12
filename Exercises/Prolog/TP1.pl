@@ -1,5 +1,7 @@
 % 2022/11/08
 
+% Exercise 1
+
 % 1.a 
 
 male(frank).
@@ -158,3 +160,6 @@ is_married(X, Y, CurrentYear):-
     CurrentYear >= Year1,
     \+divorce(X, Y, Year2),
     CurrentYear < Year2.
+
+% Exercise 2
+
