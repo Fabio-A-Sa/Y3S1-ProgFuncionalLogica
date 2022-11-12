@@ -111,9 +111,29 @@ siblings2(X, Y):-
     A @< B,         % Para retirar os exemplos repetidos
     X \= Y.
 
-% 1.4 
+halfsiblings(X, Y):-
+    parent(Z, X),
+    parent(W, Y),
+    \+siblings(X,Y),
+    Z == W.
 
-%TODO
+cousins(X, Y):-
+    parent(Z, X),
+    parent(W, Y),
+    siblings(Z, W).
+
+uncle(X, Y):-
+    parent(Z, Y),
+    siblings(X, Z).
+
+% 1.d
+
+% 
+%
+%
+%
+%
+%
 
 % 1.5 
 
