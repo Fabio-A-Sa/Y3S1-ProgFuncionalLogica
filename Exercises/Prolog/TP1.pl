@@ -62,17 +62,17 @@ parent(haley, poppy).
 
 % 1.b 
 
-female(haley).                      % yes
-male(gil).                          % no
-parent(frank, phil).                % no
-parent(x, claire).                  % dede ; jay ; no
-parent(clair, X).                   % joe ; manny ; no
-parent(jay, X), parent(X, Y).       % 5 resultados, pares (X, Y), Y = neto
-parent(jay,_X), parent(_X, Y)       % 5 resultados, somente os Y
-parent(X, lily), parent(Y, X).      % 4 resultados, pares (X, Y), Y = avós
-parent(_X, lily), parent(Y, _X).    % 4 resultados, somente os Y
-parent(alex, X).                    % no 
-parent(jay, X), \+parent(gloria, X) % claire ; mitchel ; no
+% female(haley).                      % yes
+% male(gil).                          % no
+% parent(frank, phil).                % no
+% parent(x, claire).                  % dede ; jay ; no
+% parent(clair, X).                   % joe ; manny ; no
+% parent(jay, X), parent(X, Y).       % 5 resultados, pares (X, Y), Y = neto
+% parent(jay,_X), parent(_X, Y)       % 5 resultados, somente os Y
+% parent(X, lily), parent(Y, X).      % 4 resultados, pares (X, Y), Y = avós
+% parent(_X, lily), parent(Y, _X).    % 4 resultados, somente os Y
+% parent(alex, X).                    % no 
+% parent(jay, X), \+parent(gloria, X) % claire ; mitchel ; no
 
 % 1.c 
 
@@ -129,13 +129,13 @@ divorce(jay, dede, 2003).
 
 is_married(X, Y, CurrentYear):-
     married(X, Y, Year1),
-    Year >= Year1,
+    CurrentYear >= Year1,
     \+divorce(X, Y, _).
 
 % Rule 2: We assume that Person1 and Person2 got divorced sometime later
 
 is_married(X, Y, CurrentYear):-
     married(X, Y, Year1),
-    Year >= Year1,
+    CurrentYear >= Year1,
     \+divorce(X, Y, Year2),
-    Year < Year2.
+    CurrentYear < Year2.
