@@ -285,3 +285,13 @@ ganhou(X, Y):- % a equipa X venceu uma corrida no percurso Y
 % venceu(X, _Y), venceu(X, _Z), _Y @< _Z.
 % aviao(_Y, X), venceu(_Y, porto).
 
+% Exercise 4
+
+legenda(1, 'Integer Overflow').
+legenda(2, 'Divisao por Zero').
+legenda(3, 'ID Desconhecido').
+
+% legenda(1, Answer).
+
+% Exercise 5
+
