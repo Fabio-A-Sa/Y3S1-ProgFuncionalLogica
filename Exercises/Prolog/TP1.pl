@@ -231,3 +231,48 @@ colega(X, Y):-
 % aluno(Z, bernardete), aluno(Z, diogenes).
 % colega(X, Y), X @< Y.
 % frequenta(X, _Y), frequenta(X, _Z), _Y @< _Z.
+
+% Exercise 3
+
+% 3.a
+
+piloto(lamb).
+piloto(besenyei).
+piloto(chambliss).
+piloto(maclean).
+piloto(mangold).
+piloto(jones).
+piloto(bonhomme).
+
+equipa(lamb, breitling).
+equipa(besenyei, redbull).
+equipa(chambliss, redbull).
+equipa(maclean, mediterraneanracingteam).
+equipa(mangold, cobra).
+equipa(jones, matador).
+equipa(bonhomme, matador).
+
+aviao(lamb, mx2).
+aviao(besenyei, edge540).
+aviao(chambliss, edge540).
+aviao(maclean, edge540).
+aviao(mangold, edge540).
+aviao(jones, edge540).
+aviao(bonhomme, edge540).
+
+circuito(istanbul).
+circuito(budapest).
+circuito(porto).
+
+venceu(jones, porto).
+venceu(mangold, budapest).
+venceu(mangold, istanbul).
+
+gates(istanbul, 9).
+gates(budapest, 6).
+gates(porto, 5).
+
+ganhou(X):-
+    equipa(Y, X),
+    venceu(Y, _).
+
