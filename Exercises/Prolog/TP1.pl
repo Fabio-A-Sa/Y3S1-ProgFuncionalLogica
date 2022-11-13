@@ -315,3 +315,17 @@ chefiado_por(secretaria_exec, diretor).
 
 % 5.a 
 
+% O cargo de "sisnando" que chefia uma pessoa com cargo analista
+% Quem chefia o técnico e quem chefia quem chefia o técnico
+% O nome e cargo de quem é chefiado por um supervisor
+% O cargo de quem é chefiado pelo diretor cujo nome não é felismina
+
+% 5.b 
+
+% 
+%
+%
+%
+
+% 5.c 
+
