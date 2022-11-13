@@ -67,7 +67,7 @@ parent(haley, poppy).
 % female(haley).                      % yes
 % male(gil).                          % no
 % parent(frank, phil).                % no
-% parent(x, claire).                  % dede ; jay ; no
+% parent(X, claire).                  % dede ; jay ; no
 % parent(clair, X).                   % joe ; manny ; no
 % parent(jay, X), parent(X, Y).       % 5 resultados, pares (X, Y), Y = neto
 % parent(jay,_X), parent(_X, Y)       % 5 resultados, somente os Y
@@ -204,7 +204,30 @@ frequenta(eduardo, redes).
 % frequenta(claudio, X).
 % frequenta(dalmindo, _X).
 % leciona(bernardete, X), frequenta(eduarda, X).
-% frequenta(alberto, X), frequenta(alvaro, Y), X = Y.
+% frequenta(alberto, X), frequenta(alvaro, Y), X == Y.
 
 % 2.c 
 
+aluno(X, Y):-
+    leciona(Y, Z),
+    frequenta(X, Z).
+
+professor(X, Y):-
+    aluno(Y, X).
+
+colega(X, Y):-
+    leciona(X, _Z),
+    leciona(Y, _W).
+
+colega(X, Y):-
+    frequenta(X, Z),
+    frequenta(Y, W),
+    Z == W,
+    X \= Y.
+
+% aluno(bernardo, francisco).
+% aluno(X, bernardete).
+% professor(X, antonio).
+% aluno(Z, bernardete), aluno(Z, diogenes).
+% colega(X, Y), X @< Y.
+% frequenta(X, _Y), frequenta(X, _Z), _Y @< _Z.
