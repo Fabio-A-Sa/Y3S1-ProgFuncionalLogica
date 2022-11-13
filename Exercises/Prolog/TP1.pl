@@ -329,3 +329,21 @@ chefiado_por(secretaria_exec, diretor).
 
 % 5.c 
 
+chefe(X, Y):-
+    chefiado_por(Y, X).
+% R: X = diretor, Y = supervisor_chefe&secretaria_exec
+
+chefiadasmesmocargo(X, Y):-
+    chefiado_por(X, _Y),
+    chefiado_por(Y, _Z),
+    _Y @< _Z.
+% R: tecnico&engenheiro, tecnico&analista, ...
+
+cargonaoresponsavel(X):-        
+    \+chefiado_por(_Z, X).
+% R: Não existem cargos não responsáveis por outros elementos
+
+naochefiada(X):-
+    \+(chefiado_por(X, _Y)).
+% R: diretor
+
