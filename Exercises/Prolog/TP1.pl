@@ -272,7 +272,16 @@ gates(istanbul, 9).
 gates(budapest, 6).
 gates(porto, 5).
 
-ganhou(X):-
-    equipa(Y, X),
-    venceu(Y, _).
+ganhou(X, Y):- % a equipa X venceu uma corrida no percurso Y
+    equipa(Z, X),
+    venceu(Z, Y).
+
+% 3.b 
+
+% venceu(X, porto).
+% ganhou(X, porto).
+% gates(X, _Z), _Z > 8.
+% aviao(X, _Y), _Y \= edge540.
+% venceu(X, _Y), venceu(X, _Z), _Y @< _Z.
+% aviao(_Y, X), venceu(_Y, porto).
 
