@@ -347,3 +347,22 @@ naochefiada(X):-
     \+(chefiado_por(X, _Y)).
 % R: diretor
 
+% Exercise 6 
+
+u(1).
+d(2).
+d(4).
+q(4).
+q(16).
+
+pairs(X, Y):- 
+    d(X), 
+    q(Y).
+
+pairs(X, X):- 
+    u(X).
+
+% Os pares válidos pela expressão são (2, 4), (2, 16), (4, 4), (4, 16) e (1, 1), por esta ordem.
+
+% Exercise 7 
+
