@@ -389,3 +389,8 @@ d(X, Y):-
 
 % 7.b 
 
+% A = qualquer coisa, pois A2 é variável
+% A = 2 
+% A = a1, pois é o único que verifica a(a1, 1) e b(1, b3)
+% A e B podem tomar qualquer valor, graças aos factos a(A2, 2) e b (2, B2)
+% (a1, 2), (a3, 1), (a3, 2), (1, b3), (2, b1), (2, b3)
