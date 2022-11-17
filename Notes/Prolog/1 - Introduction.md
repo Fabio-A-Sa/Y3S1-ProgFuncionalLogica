@@ -36,14 +36,53 @@ is_married(X, Y, CurrentYear):-
 
 ### Operadores
 
-- Negação: \\+
-- Disjunção: ;
-- Conjunção: ,
+- Negação: '\\+'
+- Disjunção: ';'
+- Conjunção: ','
+- Igual: '='. Não faz computações, ou seja, X = 1+1 resultará em X = 1+1.
+- Is: 'is'. Funciona com 'Variável is <Expressão Matemática>'
+- '=:=', X = 40, 1 =:= X mod 2, serve para comparar expressões matemáticas 
+- '==', serve para comparar valores do mesmo tipo. Não funciona como '2-1 == 1' ou 'X == 1' ou 'X == Y'.
 
 #### Documentation
 
 ```prolog
-square(+number, -square) % calcula o quadrado de um valor dado e instanciado
-parent(?parent, ?child) % o argumento pode ser instanciado ou não
+predicado(+number) % tem de estar instanciada, uma constante
+predicado(-number) % não pode estar instanciada, uma variável
+predicado(?number) % o argumento pode ser instanciado ou não
 ```
 
+## Input Output
+
+### Input
+
+```prolog
+read(-X)        % lê do stdin. Temos de colocar ponto (.) no final
+get_char(-C)    % lê apenas um caracter do stdin
+get_code(-C)    % lê apenas um caracter do stdin, mas coloca-o como código ASCII
+```
+
+### Output
+
+```prolog
+write(+X)                   % coloca valores no stdout
+put_char(+C)                % coloca apenas um caracter C no stdout
+put_code(+C)                % coloca um caracter dado pelo código ASCII C no stdout
+format(+Pattern, +ArgList)  % parecido com o printf em C
+```
+
+## Lists
+
+
+```prolog
+append(L1, L2, L)           % Faz concatenação de duas listas, colocando o resultado no terceiro argumento. O(L1).
+member(X, L)                % Verifica se X está presente na lista L
+length(?L, ?N)              % O comprimento da lista. Pode ser usada para gerar números de 0 até infinito, usando length(_, N).
+sort(+L, ?Ordered)          % Este predicado primeiro remove os duplicados de uma lista
+
+:- use_module(library(list))
+
+nth0(?N, ?L, ?X)            % Coloca em X o valor de L na posição X
+select()
+reverse
+```
