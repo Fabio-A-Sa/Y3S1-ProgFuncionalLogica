@@ -44,12 +44,35 @@ is_married(X, Y, CurrentYear):-
 - '=:=', X = 40, 1 =:= X mod 2, serve para comparar expressões matemáticas 
 - '==', serve para comparar valores do mesmo tipo. Não funciona como '2-1 == 1' ou 'X == 1' ou 'X == Y'.
 
-#### Documentation
+#### Documentação de código
 
 ```prolog
 predicado(+number) % tem de estar instanciada, uma constante
 predicado(-number) % não pode estar instanciada, uma variável
 predicado(?number) % o argumento pode ser instanciado ou não
+```
+
+### Recursão
+
+```prolog
+% Recursão sem preocupação com eficiência
+sumN(0, 0).
+sumN(N, Sum) :-
+    N > 0,
+    N1 is N - 1,
+    sumN(N1, Sum1),
+    Sum is Sum1 + N.
+
+% Recursão eficiente: tail recursion, em que é necessário um acumulador
+
+sumN(N, Sum):-
+    sumN(N, Sum, 0).
+sumN(0, Sum, Sum).
+sumN(N, Sum, Acc):-
+    N > 0,
+    N1 is N - 1,
+    Acc1 = Acc + N.
+    sumN(N1, Sum, Acc1).
 ```
 
 ## Input Output
@@ -72,7 +95,6 @@ format(+Pattern, +ArgList)  % parecido com o printf em C
 ```
 
 ## Lists
-
 
 ```prolog
 append(L1, L2, L)           % Faz concatenação de duas listas, colocando o resultado no terceiro argumento. O(L1).
