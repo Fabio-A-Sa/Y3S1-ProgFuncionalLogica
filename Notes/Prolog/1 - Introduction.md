@@ -73,6 +73,12 @@ sumN(N, Sum, Acc):-
     N1 is N - 1,
     Acc1 = Acc + N.
     sumN(N1, Sum, Acc1).
+
+reverse(Xs, Rev):- 
+    reverse(Xs, [], Rev).
+reverse([X|Xs], Acc, Rev):-
+    reverse(Xs, [X|Acc], Rev).
+reverse([], Rev, Rev).
 ```
 
 ## Input Output
@@ -107,6 +113,6 @@ keysort(+L, ?Ordered)           % Ordena uma lista de pares do tipo A-B através
 :- use_module(library(list))
 
 nth0(?N, ?L, ?X)                % Coloca em X o valor de L na posição X
-select(?X, ?XList, ?Y, ?YList)
+select(?X, ?XList, ?Y, ?YList) 
 append(+ListOfLists, -List)
 ```
