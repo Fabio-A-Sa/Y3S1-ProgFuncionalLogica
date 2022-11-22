@@ -22,3 +22,12 @@ list_nth(Index, List, Element):-
     length(Prefix, N).
 
 % Ficha 3
+
+course_classes(UC, Course):-
+    findall(Dia/Hora-Tipo, class(UC, Tipo, Dia, Hora, _), L).
+
+short_classes(L):-
+    findall(UC-Dia/Hora, (class(UC, _, Dia, Hora, Dur), Dur < 2), L).
+
+same_day(UC1, UC2):-
+    findall(D, (class(UC1, _, D, _, _), class(UC2, _, D, _, _)), [_|_]).
