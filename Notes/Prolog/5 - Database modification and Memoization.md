@@ -34,7 +34,7 @@ fib(N, F):-
 ```
 
 ### Método com memorização dos predicados calculados
-#TODO
+
 ```prolog
 fib(0, 0).
 fib(1, 1).
@@ -43,5 +43,6 @@ fib(N, F):-
     N2 is N - 2,
     N1 is N - 1,
     fib(N2, F2), fib(N1, F1),
-    F is F1 + F2.
+    F is F1 + F2,
+    asserta((fib(N, F):- !)).
 ```
