@@ -61,3 +61,10 @@ read_until_between(Min, Max, Value):-
 
 % read_number(X), clear_buffer. % útil para o trabalho prático
 
+imprime_pessoas:-
+    person(X),
+    write(X), nl,
+    fail.
+imprime_pessoas.
+
+#TODO-> listar_pessoas() ver foto
