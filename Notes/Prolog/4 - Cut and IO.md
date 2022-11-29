@@ -35,10 +35,29 @@ main :-
 
 ## Projeto
 
+### Implementação da AI
+
 ```note
 Algoritmo minimax -> gerar todas as possibilidades (cada nível intercalado por jogador e adversário) e escolher aquela que maximiza pontos. A árvore pode ter vários níveis -> quantos mais níveis, mais o computador explora e mais dificil se torna derrotá-lo.
-Para o computador versão fácil -> gerar todas as possibilidades e escolher uma random
+Para o computador versão fácil -> gerar todas as possibilidades e escolher uma random (random_select)
 Para o computador versão difícil -> gerar todas as possibilidades e escolha a de maior pontos para a jogada do computador e/ou a de menores pontos para a jogada seguinte do jogador humano
+```
+
+### Ciclo do jogo
+
+```prolog
+repeat.
+repeat:-
+    repeat.
+
+jogo:-  
+    [Inicializações]
+    repeat,
+    estado_do_jogo(jogador, tabuleiro), % terminar com cut
+    joga(jogador, tabuleiro, proximo_jogador, proximo_tabuleiro), % terminar com cut
+    atualiza_estado(proximo_jogador, proximo_tabuleiro), % terminar com cut
+    terminou, % verifica se terminou. fail se não terminou, volta ao repeat.
+    mostrar_vencedor
 ```
 
 ## Findall, Bagof, Setof
