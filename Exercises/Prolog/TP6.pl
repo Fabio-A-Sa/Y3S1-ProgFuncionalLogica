@@ -42,3 +42,26 @@ separate_aux([H|T], Pred, Ys, [H,Ns]):-
 even(X):- 0 =:= X mod 2.
 
 % Exercício extra com otimização
+
+separate2(L, Pred, SortedList):-
+    separate2_aux(L, Pred, SortedList-Ns, Ns-[]),
+
+separate2_aux([], _, Ys-Ys, Ns-Ns).
+separate2_aux([H|T], Pred, [H|Ys]-TailYs, Ns-TailNs):-
+    Goal =.. [Pred, H],
+    call(Goal), !, 
+    separate2_aux(T, Pred, Ys-TailYs, Ns-TailNs).
+separate2_aux([H|T], Pred, Ys-TailYs, [H,Ns]-TailNs):-
+    separate2_aux(T, Pred, Ys-TailYs, Ns-TailNs).
+
+even(X):- 0 =:= X mod 2.
+
+% Insert 
+
+% insert(+Number, +Goal, +List, -FinalList).
+
+insert(Number, 0, Tail, [Number|Tail]).
+
+insert(Number, Index, [H|T], [H|FinalList]):-
+    Index1 is Index - 1,
+    insert(Number, Index1, T, FinalList).
