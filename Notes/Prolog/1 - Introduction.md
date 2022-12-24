@@ -32,6 +32,9 @@ is_married(X, Y, CurrentYear):-
     Year >= Year1,
     \+divorce(X, Y, Year2),
     Year < Year2.
+
+father(X):- father(X, Y).   % X is a father
+                            % if X is the father of some Y
 ```
 
 ### Operadores
@@ -43,6 +46,11 @@ is_married(X, Y, CurrentYear):-
 - Is: 'is'. Funciona com 'Variável is <Expressão Matemática>', atribui valor ao cálculo;
 - '=:=', X = 40, 1 =:= X mod 2, serve para comparar expressões matemáticas 
 - '==', serve para comparar valores do mesmo tipo. Não funciona como '2-1 == 1' ou 'X == 1' ou 'X == Y'.
+
+- //, divisão inteira, operadores positivos e negativos dão o mesmo resultado;
+- div, divisão fracionária e arredondada para baixo;
+- rem, integer remainder, pode ser positiva ou negativa;
+- mod, integer remainder, resultado positivo;
 
 #### Documentação de código
 

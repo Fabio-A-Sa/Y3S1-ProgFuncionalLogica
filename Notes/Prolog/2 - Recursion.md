@@ -12,8 +12,9 @@ sumN(N, Sum) :-
 % Recursão eficiente: tail recursion, em que é necessário um acumulador
 
 sumN(N, Sum):-
-    sumN(N, Sum, 0).
-sumN(0, Sum, Sum).
+    sumN(N, Sum, 0).    % chamar a função auxiliar
+sumN(0, Sum, Sum).      % o caso base retorna o próprio valor do acumulador
+
 sumN(N, Sum, Acc):-
     N > 0,
     N1 is N - 1,
