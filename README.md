@@ -19,5 +19,19 @@ Notes that I take during theoretical lectures in Markdown <br>
 ### Exercises
 Varied exercises of easy, medium and difficult level, about the subject taught in the present week. They complement the weekly work developed during the practical classes.
 
+### Project 1 - Algebric Manipulation of Polynoms with Haskell (Grade __/20)
+
+- Polynoms normalize;
+- Add polynoms;
+- Subtract polynoms;
+- Multiply polynoms;
+
+### Project 2 - Barca Board Game with Prolog (Grade: __/20)
+
+- Human vs Human;
+- Human vs Bot;
+- Bot vs Bot;
+- AI application with Minimax algorithm with depth two and board evaluation.
+
 **@ Fábio Araújo de Sá** <br>
 **2022/2023**
