@@ -33,3 +33,20 @@ fibonacci(N, F):-
     fibonacci(N1, F1),
     fibonacci(N2, F2),
     F is F1 + F2.
+
+% 1.d
+
+%isPrime(+X)
+isPrime(1).
+isPrime(2).
+isPrime(X):-
+    X > 2,
+    Next is X - 1,
+    isPrimeAux(X, Next).
+
+isPrimeAux(_, 1).
+isPrimeAux(X, N):-
+    X mod N =\= 0,
+    Next is N - 1,
+    isPrimeAux(X, Next).
+
