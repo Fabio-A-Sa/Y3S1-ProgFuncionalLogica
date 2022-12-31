@@ -98,3 +98,13 @@ inner_product([], [], 0).
 inner_product([H1|T1], [H2|T2], Result):-
     inner_product(T1, T2, SubResult),
     Result is (H1 * H2) + SubResult.
+
+% 5.e
+
+%count(+Elem, +List, ?N)
+count(_, [], 0).
+count(Element, [Element|T], Result):-
+    count(Element, T, SubResult),
+    Result is 1 + SubResult, !.
+count(Element, [_|T], Result):-
+    count(Element, T, Result).
