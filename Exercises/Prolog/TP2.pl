@@ -64,3 +64,13 @@ isPrimeAux(X, N):-
 % j Inst = gram e LEIC = feup
 % k One = 1, Two = 2 e Tail = [3, 4]
 % l One = leic e Rest = [Two|Tail]
+
+% Exercício 5
+
+% 5.a
+
+%list_size(+List, ?Size)
+list_size([], 0).
+list_size([_|T], Size):-
+    list_size(T, SubSize),
+    Size is 1 + SubSize.
