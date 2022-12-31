@@ -83,3 +83,11 @@ list_sum([H|T], Sum):-
     list_sum(T, SubSum),
     Sum is H + SubSum.
 
+% 5.c
+
+%list_prod(+List, ?Prod)
+list_prod([], 1).
+list_prod([H|T], Prod):-
+    list_prod(T, Prod),
+    Prod is H * SubProd.
+
