@@ -88,6 +88,6 @@ list_sum([H|T], Sum):-
 %list_prod(+List, ?Prod)
 list_prod([], 1).
 list_prod([H|T], Prod):-
-    list_prod(T, Prod),
+    list_prod(T, SubProd),
     Prod is H * SubProd.
 
