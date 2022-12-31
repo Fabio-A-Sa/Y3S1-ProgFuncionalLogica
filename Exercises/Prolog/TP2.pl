@@ -74,3 +74,12 @@ list_size([], 0).
 list_size([_|T], Size):-
     list_size(T, SubSize),
     Size is 1 + SubSize.
+
+% 5.b 
+
+%list_sum(+List, ?Sum)
+list_sum([], 0).
+list_sum([H|T], Sum):-
+    list_sum(T, SubSum),
+    Sum is H + SubSum.
+
