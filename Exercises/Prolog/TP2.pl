@@ -128,3 +128,5 @@ del_one(Element, [H|T], List):-
     del_one(Element, T, Result),
     append([H], Result, List).
 
+% 6.3 
+
