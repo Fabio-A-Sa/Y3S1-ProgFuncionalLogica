@@ -91,3 +91,10 @@ list_prod([H|T], Prod):-
     list_prod(T, SubProd),
     Prod is H * SubProd.
 
+% 5.d
+
+%inner_product(+List1, +List2, ?Result)
+inner_product([], [], 0).
+inner_product([H1|T1], [H2|T2], Result):-
+    inner_product(T1, T2, SubResult),
+    Result is (H1 * H2) + SubResult.
