@@ -108,3 +108,13 @@ count(Element, [Element|T], Result):-
     Result is 1 + SubResult, !.
 count(Element, [_|T], Result):-
     count(Element, T, Result).
+
+% Exercício 6
+
+% 6.1
+
+%invert(+List,?List2)
+invert([], []).
+invert([H|T], Result):-
+    invert(T, Sublist),
+    append(Sublist, [H], Result).
