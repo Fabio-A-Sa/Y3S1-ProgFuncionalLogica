@@ -50,3 +50,17 @@ isPrimeAux(X, N):-
     Next is N - 1,
     isPrimeAux(X, Next).
 
+% Exercício 4
+
+% a yes
+% b no 
+% c yes 
+% d H = pfl e T = [lbaw, redes, ltw]
+% e H = lbaw T = [ltw]
+% f H = leic T = []
+% g no
+% h H = leic e T = [[pfl, lwt, lbaw, redes]]
+% i H = leic e T = [Two]
+% j Inst = gram e LEIC = feup
+% k One = 1, Two = 2 e Tail = [3, 4]
+% l One = leic e Rest = [Two|Tail]
