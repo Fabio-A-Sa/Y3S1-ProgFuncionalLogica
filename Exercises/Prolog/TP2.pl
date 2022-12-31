@@ -118,3 +118,13 @@ invert([], []).
 invert([H|T], Result):-
     invert(T, Sublist),
     append(Sublist, [H], Result).
+
+% 6.2
+
+%del_one(+Elem, +List1, ?List2)
+del_one(_, [], []).
+del_one(Element, [Element|T], T):- !.
+del_one(Element, [H|T], List):-
+    del_one(Element, T, Result),
+    append([H], Result, List).
+
