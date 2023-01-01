@@ -270,3 +270,11 @@ list_before(First, Second, List):-
 list_replace_one(X, Y, List1, List2):-
     append(Before, [X|After], List1),
     append(Before, [Y|After], List2).
+
+% 7.9
+%list_repeated(+X, +List)
+
+list_repeated(X, List):-
+    append(_, [X|After], List),
+    append(_, [X|_], After).
+
