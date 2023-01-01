@@ -349,3 +349,17 @@ primes_aux(X, N, Result):-
 primes_aux(X, N, Result):-
     NextX is X + 1,
     primes_aux(NextX, N, Result).
+
+% 8.6
+
+%fibs(+N, ?List)
+fibs(N, List):-
+    fibs_aux(1, N, List).
+
+fibs_aux(N, N, [Result]):-
+    fibonacci(N, Result).
+fibs_aux(X, N, Result):-
+    NextX is X + 1,
+    fibs_aux(NextX, N, SubResult),
+    fibonacci(X, Fib),
+    append([Fib], SubResult, Result).
