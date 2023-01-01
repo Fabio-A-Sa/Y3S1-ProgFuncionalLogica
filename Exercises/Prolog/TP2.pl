@@ -158,3 +158,9 @@ del_dups([H|T], List2):-
 
 % 6.6
 
+%list_perm (+L1, +L2)
+list_perm(List1, List2):-
+    length(List1, Len),
+    length(List2, Len),
+    del_all_list(List1, List2, []),
+    del_all_list(List2, List1, []).
