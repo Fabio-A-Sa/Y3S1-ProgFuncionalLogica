@@ -173,3 +173,12 @@ replicate(1, Element, [Element]):- !.
 replicate(N, Element, [Element|List]):-
     NextN is N - 1,
     replicate(NextN, Element, List).
+
+% 6.8
+
+%intersperse(+Elem, +List1, ?List2)
+intersperse(_, [], []):- !.
+intersperse(_, [H], [H]):- !.
+intersperse(Element, [H|T], Result):-
+    intersperse(Element, T, SubResult),
+    append([H, Element], SubResult, Result).
