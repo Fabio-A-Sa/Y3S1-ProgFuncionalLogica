@@ -315,4 +315,12 @@ list_from_to(Inf, Sup, List):-
     list_from_to(NextNumber, Sup, SubList),
     append([Inf], SubList, List).
 
+% 8.3
+
+% list_from_to_step(+Inf, +Step, +Sup, ?List)
+list_from_to_step(Inf, _, Sup, []):- Inf > Sup, !.
+list_from_to_step(Inf, Step, Sup, List):-
+    NextNumber is Inf + Step,
+    list_from_to_step(NextNumber, Step, Sup, SubList),
+    append([Inf], SubList, List).
 
