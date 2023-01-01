@@ -250,5 +250,10 @@ list_append([H|T], Result):-
     list_append(T, SubResult),
     append(H, SubResult, Result).
 
+% 7.6
 
+%list_del(+List, +Elem, ?Res)
+list_del(List, Elem, Res):-
+    append(Before, [Elem|After], List),
+    append(Before, After, Res).
 
