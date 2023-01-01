@@ -44,3 +44,9 @@ sum(A, B, S):- number(A), number(S), !, B is S – A.
 sum(A, B, S):- number(B), number(S), !, A is S – B.
 ```
 
+O operador `=..` retorna um predicado com nome e argumentos ou o contrário:
+
+```prolog
+Predicate =.. [sum, A, B, C] % sum(A, B, B)
+[sum, A, B, C] =.. Predicate % sum(A, B, B)
+```
