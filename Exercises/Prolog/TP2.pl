@@ -286,3 +286,12 @@ list_slice(List1, Index, Size, List2):-
     length(Before, Index),
     append(List2, _, After),
     length(List2, Size).
+
+% 7.11
+
+%list_shift_rotate(+List1, +N, ?List2)
+list_shift_rotate(List1, N, List2):-
+    append(Before, After, List1),
+    length(Before, N),
+    append(After, Before, List2).
+
