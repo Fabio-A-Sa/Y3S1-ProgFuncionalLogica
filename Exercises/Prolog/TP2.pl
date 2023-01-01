@@ -211,3 +211,15 @@ replace([H|T], Index, Old, New, List2):-
     NextIndex is Index - 1,
     replace(T, NextIndex, Old, New, SubResult),
     append([H], SubResult, List2).
+
+% Exercício 7
+
+% 7.1
+
+%list_append(?L1, ?L2, ?L3)
+list_append([], L2, L2).
+list_append([H|T], L2, [H|R]):-
+    list_append(T, L2, R).
+
+% 7.2
+
