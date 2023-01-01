@@ -257,3 +257,10 @@ list_del(List, Elem, Res):-
     append(Before, [Elem|After], List),
     append(Before, After, Res).
 
+% 7.7
+
+%list_before(?First, ?Second, ?List)
+list_before(First, Second, List):-
+    append(_, [First|After], List),
+    append(_, [Second|_], After).
+
