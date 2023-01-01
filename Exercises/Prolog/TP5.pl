@@ -97,5 +97,11 @@ fill_args(Predicate, Index, Arity, Acc, List):-
 
 % Exercício 3 no papel
 
+% Exercício 4
 
+:-op(550, xfx, de).
+:-op(500, fx, aula).
+:-op(550, xfy, pelas).
+:-op(550, xfx, e).
+:-op(600, xfx, as).
 
