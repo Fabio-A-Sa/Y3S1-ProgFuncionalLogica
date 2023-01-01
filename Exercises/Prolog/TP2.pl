@@ -182,3 +182,16 @@ intersperse(_, [H], [H]):- !.
 intersperse(Element, [H|T], Result):-
     intersperse(Element, T, SubResult),
     append([H, Element], SubResult, Result).
+
+% 6.9
+
+%insert_elem(+Index, +List1, +Elem, ?List2)
+insert_elem(0, List, Element, [Element|List]).
+insert_elem(N, [H|T], Element, Result):-
+    length([H|T], X), X > N,
+    NextN is N - 1,
+    insert_elem(NextN, T, Element, SubResult),
+    append([H], SubResult, Result).
+
+% 6.10
+
