@@ -223,3 +223,7 @@ list_append([H|T], L2, [H|R]):-
 
 % 7.2
 
+%list_member(?Elem, ?List)
+list_member(_, []):- fail.
+list_member(Element, List):-
+    append(_, [Element|_], List).
