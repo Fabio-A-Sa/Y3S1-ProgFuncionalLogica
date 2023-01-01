@@ -241,6 +241,14 @@ list_nth(N, List, Elem):-
     append(Before, [Elem|_], List),
     length(Before, N).
 
+% 7.5
+
+%list_append(+ListOfLists, ?List)
+list_append([], []).
+list_append([H], H).
+list_append([H|T], Result):-
+    list_append(T, SubResult),
+    append(H, SubResult, Result).
 
 
 
