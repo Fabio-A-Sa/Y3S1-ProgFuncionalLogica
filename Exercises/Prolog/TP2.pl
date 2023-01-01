@@ -130,3 +130,11 @@ del_one(Element, [H|T], List):-
 
 % 6.3 
 
+%del_all(+Elem, +List1, ?List2)
+del_all(_, [], []).
+del_all(Element, [Element|Tail], Result):-
+    del_all(Element, Tail, Result).
+del_all(Element, [Head|Tail], Result):-
+    del_all(Element, Tail, SubResult),
+    append([Head], SubResult, Result).
+
