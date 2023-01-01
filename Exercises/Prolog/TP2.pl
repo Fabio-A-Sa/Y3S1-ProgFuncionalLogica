@@ -324,3 +324,13 @@ list_from_to_step(Inf, Step, Sup, List):-
     list_from_to_step(NextNumber, Step, Sup, SubList),
     append([Inf], SubList, List).
 
+% 8.4
+
+% safe_step(+Inf, +Step, +Sup, ?Result)
+safe_step(Inf, Step, Sup, Result):-
+    Inf =< Sup,
+    list_from_to_step(Inf, Step, Sup, Result), !.
+safe_step(Inf, Step, Sup, Result):-
+    list_from_to_step(Sup, Step, Inf, Reversed),
+    invert(Reversed, Result).
+
