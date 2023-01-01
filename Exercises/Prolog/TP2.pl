@@ -164,3 +164,12 @@ list_perm(List1, List2):-
     length(List2, Len),
     del_all_list(List1, List2, []),
     del_all_list(List2, List1, []).
+
+% 6.7
+
+%replicate(+Amount, +Elem, ?List) 
+replicate(0, _, []):- !.
+replicate(1, Element, [Element]):- !.
+replicate(N, Element, [Element|List]):-
+    NextN is N - 1,
+    replicate(NextN, Element, List).
