@@ -306,3 +306,13 @@ list_to(N, List):-
     list_to(NextN, SubList),
     append(SubList, [N], List).
 
+% 8.2
+
+%list_from_to(+Inf, +Sup, ?List)
+list_from_to(Sup, Sup, [Sup]).
+list_from_to(Inf, Sup, List):-
+    NextNumber is Inf + 1,
+    list_from_to(NextNumber, Sup, SubList),
+    append([Inf], SubList, List).
+
+
