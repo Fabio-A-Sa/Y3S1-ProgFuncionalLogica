@@ -138,3 +138,23 @@ del_all(Element, [Head|Tail], Result):-
     del_all(Element, Tail, SubResult),
     append([Head], SubResult, Result).
 
+% 6.4
+
+%del_all_list(+ListElems, +List1, ?List2)
+del_all_list(_, [], []):- !.
+del_all_list([], List1, List1):- !.
+del_all_list([H|T], List1, List2):-
+    del_all(H, List1, SubResult),
+    del_all_list(T, SubResult, List2), !.
+
+% 6.5
+
+%del_dups(+List1, ?List2)
+del_dups([], []).
+del_dups([H|T], List2):-
+    del_all(H, T, SubResult),
+    del_dups(SubResult, Another),
+    append([H], Another, List2), !.
+
+% 6.6
+
