@@ -195,3 +195,13 @@ insert_elem(N, [H|T], Element, Result):-
 
 % 6.10
 
+%delete_elem(+Index, +List1, +Elem, ?List2)
+delete_elem(0, [Element|T], Element, T).
+delete_elem(N, [H|T], Element, Result):-
+    length([H|T], X), X > N,
+    NextN is N - 1,
+    delete_elem(NextN, T, Element, SubResult),
+    append([H], SubResult, Result).
+
+% 6.11
+
