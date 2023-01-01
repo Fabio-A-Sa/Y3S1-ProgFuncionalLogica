@@ -295,3 +295,14 @@ list_shift_rotate(List1, N, List2):-
     length(Before, N),
     append(After, Before, List2).
 
+% Exercício 8
+
+% 8.1
+
+%list_to(+N, ?List)
+list_to(0, []).
+list_to(N, List):-
+    NextN is N - 1,
+    list_to(NextN, SubList),
+    append(SubList, [N], List).
+
