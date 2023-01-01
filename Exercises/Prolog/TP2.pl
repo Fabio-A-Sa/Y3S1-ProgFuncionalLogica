@@ -233,3 +233,14 @@ list_member(Element, List):-
 %list_last(+List, ?Last)
 list_last(List, Last):-
     append(_, [Last], List).
+
+% 7.4
+
+%list_nth(?N, ?List, ?Elem)
+list_nth(N, List, Elem):-
+    append(Before, [Elem|_], List),
+    length(Before, N).
+
+
+
+
