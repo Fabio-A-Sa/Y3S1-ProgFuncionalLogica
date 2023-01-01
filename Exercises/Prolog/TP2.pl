@@ -334,3 +334,18 @@ safe_step(Inf, Step, Sup, Result):-
     list_from_to_step(Sup, Step, Inf, Reversed),
     invert(Reversed, Result).
 
+% 8.5
+
+%primes(+N, ?List)
+primes(N, List):-
+    primes_aux(1, N, List).
+
+primes_aux(N, N, []).
+primes_aux(X, N, Result):-
+    isPrime(X),
+    NextX is X + 1,
+    primes_aux(NextX, N, SubResult),
+    append([X], SubResult, Result), !.
+primes_aux(X, N, Result):-
+    NextX is X + 1,
+    primes_aux(NextX, N, Result).
