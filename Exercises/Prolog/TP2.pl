@@ -205,3 +205,9 @@ delete_elem(N, [H|T], Element, Result):-
 
 % 6.11
 
+%replace(+List1, +Index, ?Old, +New, ?List2)
+replace([Old|Tail], 0, Old, New, [New|Tail]).
+replace([H|T], Index, Old, New, List2):-
+    NextIndex is Index - 1,
+    replace(T, NextIndex, Old, New, SubResult),
+    append([H], SubResult, List2).
