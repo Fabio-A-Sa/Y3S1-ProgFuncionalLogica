@@ -278,3 +278,11 @@ list_repeated(X, List):-
     append(_, [X|After], List),
     append(_, [X|_], After).
 
+% 7.10
+
+%list_slice(+List1, +Index, +Size, ?List2)
+list_slice(List1, Index, Size, List2):-
+    append(Before, After, List1),
+    length(Before, Index),
+    append(List2, _, After),
+    length(List2, Size).
