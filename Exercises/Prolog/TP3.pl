@@ -90,3 +90,19 @@ read_until_between(Min, Max, Value):-
     read_number(Value),
     Min =< Value,
     Max >= Value.
+
+% 4.f
+
+%read_string(-X)
+read_string(X):-
+    read_string_aux([], X).
+
+read_string_aux(List, Result):-
+    get_code(C),
+    C \= 10, !,
+    append(List, [C], AnotherList),
+    read_string_aux(AnotherList, Result).
+read_string_aux(String, String).
+
+% 4.g
+
