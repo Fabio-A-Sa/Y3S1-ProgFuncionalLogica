@@ -36,8 +36,26 @@ cut_test_c('five', 'five').
 % 4.a
 
 %print_n(+S, +N)
-print_n(_, 0):- nl.
+print_n(_, 0).
 print_n(Symbol, N):-
     write(Symbol),
     Next is N - 1,
     print_n(Symbol, Next).
+
+% 4.b
+
+%print_text(+Text, +Symbol, +Padding)
+print_text(Text, Symbol, Padding):-
+    write(Symbol),
+    print_n(' ', Padding),
+    text(Text),
+    print_n(' ', Padding),
+    write(Symbol), nl.
+
+text([]).
+text([H|T]):-
+    put_code(H),
+    text(T).
+
+% 4.c
+
