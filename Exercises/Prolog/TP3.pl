@@ -33,3 +33,11 @@ cut_test_c('five', 'five').
 
 % Exercício 4
 
+% 4.a
+
+%print_n(+S, +N)
+print_n(_, 0):- nl.
+print_n(Symbol, N):-
+    write(Symbol),
+    Next is N - 1,
+    print_n(Symbol, Next).
