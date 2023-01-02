@@ -406,3 +406,16 @@ is_ordered([H1, H2 |Tail]):-
     H1 =< H2,
     is_ordered([H2|Tail]).
 
+% 10.b
+
+%insert_ordered(+Value, +List1, ?List2)
+insert_ordered(Value, [], [Value]):- !.
+insert_ordered(Value, [H], [H,Value]):- H =< Value, !.
+insert_ordered(Value, [H], [Value,H]):- !.
+insert_ordered(Value, [H1,H2|T], [H1,Value,H2|T]):-
+    H1 =< Value,
+    H2 >= Value, !.
+insert_ordered(Value, [H1|Tail], Result):-
+    Value >= H1,
+    insert_ordered(Value, Tail, SubResult),
+    append([H1], SubResult, Result).
