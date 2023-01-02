@@ -221,3 +221,6 @@ parent(haley, poppy).
 
 % 5.a
 
+%children(+Person, -Children)
+children(Person, Children):-
+    findall(Child, parent(Child, Person), Children).
