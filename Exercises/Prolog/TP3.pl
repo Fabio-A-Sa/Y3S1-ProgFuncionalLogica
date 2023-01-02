@@ -82,3 +82,11 @@ read_number_aux(Acc, X):-
     read_number_aux(NextAcc, X).
 read_number_aux(Acc, Acc).
 
+% 4.e
+
+%read_until_between(+Min, +Max, -Value)
+read_until_between(Min, Max, Value):-
+    repeat,
+    read_number(Value),
+    Min =< Value,
+    Max >= Value.
