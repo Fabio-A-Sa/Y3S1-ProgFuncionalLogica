@@ -28,4 +28,8 @@ cut_test_c('five', 'five').
 
 % Exercício 3
 
-%
+% Em immature/1 o cut usado é vermelho, pois influencia nos resultados obtidos pelo predicado
+% Em adult/1 o cut usado é verde pois trava o backtracking do prolog por motivos de eficiência de pesquisa
+
+% Exercício 4
+
