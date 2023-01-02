@@ -5,7 +5,7 @@
 % 1.a
 
 %factorial(+N, ?F)
-factorial(0, 0).
+factorial(0, 1).
 factorial(1, 1).
 factorial(N, F):-
     N1 is N-1,
@@ -432,3 +432,28 @@ insert_sort_aux([H|Tail],Ordered, Result):-
     insert_ordered(H, Ordered, SubResult),
     write(SubResult),
     insert_sort_aux(Tail, SubResult, Result).
+
+% Exercício 11
+
+%pascal(+N, ?Lines)
+pascal(-1, []):- !.
+pascal(N, Lines):-
+    NextIndex is N - 1,
+    pascal(NextIndex, NextLines),
+    binom(N, 0, Line),
+    append(NextLines, [Line], Lines).
+
+binom(N, P, []):- P > N, !.
+binom(N, P, Line):-
+    coeficient(N, P, Coeficient),
+    NextP is P + 1,
+    binom(N, NextP, NextCoeficients),
+    append([Coeficient], NextCoeficients, Line).
+
+coeficient(N, N, 1):- !.
+coeficient(N, P, Result):-
+    factorial(N, N_Factorial),
+    factorial(P, P_Factorial),
+    NP is N - P,
+    factorial(NP, NP_Factorial),
+    Result is N_Factorial // (P_Factorial * NP_Factorial), !.
