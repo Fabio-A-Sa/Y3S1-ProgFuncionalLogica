@@ -81,3 +81,4 @@ read_number_aux(Acc, X):-
     NextAcc is Acc * 10 + (C - 48),
     read_number_aux(NextAcc, X).
 read_number_aux(Acc, Acc).
+
