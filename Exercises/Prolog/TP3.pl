@@ -67,3 +67,17 @@ print_banner(Text, Symbol, Padding):-
     print_n(' ', Spaces), print_n(Symbol, 1), nl,
     print_n(Symbol, 1), print_n(' ', Padding), text(Text), print_n(' ', Padding), print_n(Symbol, 1), nl,
     print_n(Symbol, 1), print_n(' ', Spaces), print_n(Symbol, 1), nl,print_n(Symbol, TotalLength), nl.
+
+% 4.d
+
+%read_number(-X)
+read_number(X):-
+    read_number_aux(0, X).
+
+read_number_aux(Acc, X):-
+    get_code(C),
+    C >= 48,
+    C =< 57, !,
+    NextAcc is Acc * 10 + (C - 48),
+    read_number_aux(NextAcc, X).
+read_number_aux(Acc, Acc).
