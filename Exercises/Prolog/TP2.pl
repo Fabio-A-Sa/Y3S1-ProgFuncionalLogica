@@ -394,3 +394,15 @@ undo(Element, Quantity, Result):-
     NewQuantity is Quantity - 1,
     undo(Element, NewQuantity, SubList),
     append([Element], SubList, Result).
+
+% Exercício 10
+
+% 10.a
+
+%is_ordered(+List)
+is_ordered([]).
+is_ordered([_]).
+is_ordered([H1, H2 |Tail]):-
+    H1 =< H2,
+    is_ordered([H2|Tail]).
+
