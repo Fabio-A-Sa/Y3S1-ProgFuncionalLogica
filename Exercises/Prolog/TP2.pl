@@ -418,4 +418,17 @@ insert_ordered(Value, [H1,H2|T], [H1,Value,H2|T]):-
 insert_ordered(Value, [H1|Tail], Result):-
     Value >= H1,
     insert_ordered(Value, Tail, SubResult),
-    append([H1], SubResult, Result).
+    append([H1], SubResult, Result), !.
+insert_ordered(Value, [H1|Tail], [Value,H1|Tail]).
+
+% 10.c
+
+%insert_sort(+List, ?OrderedList)
+insert_sort(List, OrderedList):-
+    insert_sort_aux(List, [], OrderedList).
+
+insert_sort_aux([], Result, Result).
+insert_sort_aux([H|Tail],Ordered, Result):-
+    insert_ordered(H, Ordered, SubResult),
+    write(SubResult),
+    insert_sort_aux(Tail, SubResult, Result).
