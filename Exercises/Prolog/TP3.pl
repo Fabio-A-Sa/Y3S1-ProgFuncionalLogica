@@ -224,3 +224,9 @@ parent(haley, poppy).
 %children(+Person, -Children)
 children(Person, Children):-
     findall(Child, parent(Child, Person), Children).
+
+% 5.b
+
+%children_of(+ListOfPeople, -ListOfPairs)
+children_of(ListOfPeople, ListOfPairs):-
+    findall(Parent-Child, (member(Parent, ListOfPeople),parent(Child, Parent)), ListOfPairs).
