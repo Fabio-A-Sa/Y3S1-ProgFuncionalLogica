@@ -19,7 +19,7 @@ Notes that I take during theoretical lectures in Markdown <br>
 ### Exercises
 Varied exercises of easy, medium and difficult level, about the subject taught in the present week. They complement the weekly work developed during the practical classes.
 
-### Project 1 - Algebric Manipulation of Polynoms with Haskell (Grade __/20)
+### Project 1 - Algebric Manipulation of Polynoms with Haskell (Grade 18.7/20)
 
 - Polynoms normalize;
 - Add polynoms;
