@@ -59,3 +59,11 @@ text([H|T]):-
 
 % 4.c
 
+print_banner(Text, Symbol, Padding):-
+    length(Text, Len),
+    TotalLength is Len + 2*Padding + 2,
+    Spaces is TotalLength - 2,
+    print_n(Symbol, TotalLength), nl, print_n(Symbol, 1),
+    print_n(' ', Spaces), print_n(Symbol, 1), nl,
+    print_n(Symbol, 1), print_n(' ', Padding), text(Text), print_n(' ', Padding), print_n(Symbol, 1), nl,
+    print_n(Symbol, 1), print_n(' ', Spaces), print_n(Symbol, 1), nl,print_n(Symbol, TotalLength), nl.
