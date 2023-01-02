@@ -106,3 +106,12 @@ read_string_aux(String, String).
 
 % 4.g
 
+banner:-
+    write('Some text: '),
+    read_string(Text),
+    write('Symbol: '),
+    get_char(C), 
+    write('Paddind between 1 and 10: '),
+    read_until_between(1, 10, Padding), nl,
+    print_banner(Text, C, Padding).
+
