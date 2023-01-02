@@ -382,3 +382,15 @@ count_until(List, _, Acc, Acc, List).
 
 % 9.b
 
+%un_rle(+List1, ?List2)
+un_rle([], []).
+un_rle([Element-Quantity|Tail], List2):-
+    undo(Element, Quantity, Replies),
+    un_rle(Tail, SubResult),
+    append(Replies, SubResult, List2).
+
+undo(_, 0, []).
+undo(Element, Quantity, Result):-
+    NewQuantity is Quantity - 1,
+    undo(Element, NewQuantity, SubList),
+    append([Element], SubList, Result).
