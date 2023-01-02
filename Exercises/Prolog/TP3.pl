@@ -115,3 +115,30 @@ banner:-
     read_until_between(1, 10, Padding), nl,
     print_banner(Text, C, Padding).
 
+% 4.h
+
+%print_multi_banner(+ListOfTexts, +Symbol, +Padding)
+print_multi_banner(ListOfTexts, Symbol, Padding):-
+    getMax(ListOfTexts, -1, Max),
+    TotalLength is Max + 2*Padding + 2,
+    MinLength is TotalLength - 2,
+    print_n(Symbol, TotalLength), nl, print_n(Symbol, 1), print_n(' ', MinLength), print_n(Symbol, 1), nl,
+    print_texts(ListOfTexts, Max, Padding, Symbol),
+    print_n(Symbol, 1), print_n(' ', MinLength), print_n(Symbol, 1), nl, print_n(Symbol, TotalLength), nl.
+
+getMax([], Result, Result).
+getMax([H|T], Acc, Result):-
+    length(H, Attemp),
+    Attemp >= Acc, !,
+    getMax(T, Attemp, Result).
+getMax([_|T], Acc, Result):-
+    getMax(T, Acc, Result).
+
+print_texts([], _, _, _):- !.
+print_texts([Text|Tail], Max, Padding, Symbol):-
+    length(Text, TextLength),
+    Spaces is (Max - TextLength)//2 + Padding,
+    print_n(Symbol, 1), print_n(' ', Spaces), 
+    text(Text),
+    print_n(' ', Spaces), print_n(Symbol, 1), nl, !, 
+    print_texts(Tail, Max, Padding, Symbol).
