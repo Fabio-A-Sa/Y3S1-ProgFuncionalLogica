@@ -22,3 +22,10 @@ cut_test_b('five').
 cut_test_c(X, Y):- data(X), !, data(Y).
 cut_test_c('five', 'five').
 
+% a) one, two, three, five
+% b) one
+% c) one-one, one-two, one-three
+
+% Exercício 3
+
+%
