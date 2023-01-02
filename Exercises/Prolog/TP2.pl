@@ -363,3 +363,22 @@ fibs_aux(X, N, Result):-
     fibs_aux(NextX, N, SubResult),
     fibonacci(X, Fib),
     append([Fib], SubResult, Result).
+
+% Exercício 9
+
+% 9.a
+
+%rle(+List1, ?List2)
+rle([], []).
+rle([H|T], List2):-
+    count_until(T, H, 1, Result, NewList),
+    rle(NewList, SubList),
+    append([H-Result], SubList, List2).
+
+count_until([Element|Tail], Element, Acc, Result, NewList):-
+    Acc1 is Acc + 1,
+    count_until(Tail, Element, Acc1, Result, NewList), !.
+count_until(List, _, Acc, Acc, List).
+
+% 9.b
+
