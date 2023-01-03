@@ -331,7 +331,7 @@ teachers_of(S, T):-
 
 %common_courses(+S1, +S2, -C)
 common_courses(S1, S2, C):-
-    findall(UC, UC^(frequenta(S1, UC), frequenta(S2, UC)), C).
+    findall(UC, (S1, S2)^(frequenta(S1, UC), frequenta(S2, UC)), C).
 
 % 6.f
 
@@ -344,3 +344,9 @@ more_than_one_course(L):-
 %strangers(-L)
 strangers(L):-
     findall(S1-S2, (frequenta(S1, _), frequenta(S2, _), common_courses(S1, S2, UCs), length(UCs, 0)), L).
+
+% 6.h
+
+%good_groups(-L)
+good_groups(L) :-
+    setof(S1-S2, (UC1, UC2, UCs, Len)^(frequenta(S1, UC1), frequenta(S2, UC2), common_courses(S1, S2, UCs), S1 @< S2, length(UCs, Len), Len > 1), L).
