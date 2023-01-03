@@ -434,4 +434,4 @@ find_class:-
     Final is Begin + Duration,
     Hour >= Begin,
     Hour =< Final,
-    format('~a ~1f ~d', [UC, Begin, Duration]).
+    format('~a ~1f ~d', [UC, Begin, Duration]). 
