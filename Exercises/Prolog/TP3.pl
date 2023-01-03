@@ -393,3 +393,8 @@ short_classes(L):-
 course_classes(Course, Classes):-
     findall(Dia/Hora-Tipo, class(Course, Tipo, Dia, Hora, _) , Classes).
 
+% 7.e
+
+%courses(-L)
+courses(L):-
+    setof(UC, (A, B, C, D)^class(UC, A, B, C, D), L).
