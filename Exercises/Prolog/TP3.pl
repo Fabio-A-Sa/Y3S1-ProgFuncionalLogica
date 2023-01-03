@@ -435,3 +435,16 @@ find_class:-
     Hour >= Begin,
     Hour =< Final,
     format('~a ~1f ~d', [UC, Begin, Duration]). 
+
+% 7.i
+
+%person(-X)
+person(X):-
+    male(X) ; female(X).
+
+%imprime_pessoas/0
+imprime_pessoas:-
+    person(X),
+    write(X), nl,
+    fail.
+imprime_pessoas.
