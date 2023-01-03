@@ -1,5 +1,7 @@
 % 2022/11/29
 
+:-use_module(library(lists)).
+
 % Exercicio 1
 
 % 1.a
@@ -65,3 +67,16 @@ get_all_nodes(ListOfAirports):-
 
 source_or_dest(Airport):- flight(Airport, _, _, _, _, _).
 source_or_dest(Airport):- flight(_, Airport, _, _, _, _).
+
+% 2.b
+
+%most_diversified(-Company)
+most_diversified(Company):-
+    findall(Quantity-Comp, List^(flight(_, _, Comp, _, _, _), get_destinations(Comp, List), length(List, Quantity)), ListOfCompanies),
+    sort(ListOfCompanies, L),
+    last(L, _-Company).
+
+get_destinations(Company, Destinations):-
+    findall(Destination, Company^flight(_, Destination, Company, _, _, _) ,Destinations).
+
+% 2.c
