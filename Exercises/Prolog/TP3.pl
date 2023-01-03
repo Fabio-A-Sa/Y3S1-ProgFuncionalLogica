@@ -255,3 +255,12 @@ couples(List):-
 %spouse_children(+Person, -SC) 
 spouse_children(Person, SC):-   
     setof(Spouse-Children, (parent(_X, Person), parent(_X, Spouse), Person \= Spouse, children(Spouse, Children)), SC).
+
+% 5.g
+
+%immediate_family(+Person, -PC)
+immediate_family(Person, PC):-
+    findall(Parents-Children, (parents(Person, Parents), spouse_children(Person,Children)), PC).
+
+parents(Person, All):-
+    setof(Parent, parent(Parent, Person), All).
