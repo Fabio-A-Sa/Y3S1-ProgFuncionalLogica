@@ -264,3 +264,10 @@ immediate_family(Person, PC):-
 
 parents(Person, All):-
     setof(Parent, parent(Parent, Person), All).
+
+% 5.h
+
+parents_of_two(Parents):-
+    setof(Person, (_X, _Y)^(parent(_X, Person), parent(_Y, Person), _X \= _Y), Parents).
+
+    
