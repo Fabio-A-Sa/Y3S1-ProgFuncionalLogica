@@ -29,3 +29,14 @@ add_parents_aux(Person, N):-
     asserta(parent(Person, Parent)),
     Next is N - 1,
     add_parents_aux(Person, Next).
+
+% 1.c
+
+%remove_person/0
+remove_person:-
+    write('Person to remove: '),
+    read(Person),
+    retractall(parent(_, Person)),
+    retractall(parent(Person, _)),
+    retractall(female(Person)),
+    retractall(male(Person)).
