@@ -59,3 +59,9 @@ flight(porto, frankfurt, lufthansa, lh1177, 1230, 165).
 
 % 2.a
 
+%get_all_nodes(-ListOfAirports)
+get_all_nodes(ListOfAirports):-
+    setof(Airport, source_or_dest(Airport), ListOfAirports).
+
+source_or_dest(Airport):- flight(Airport, _, _, _, _, _).
+source_or_dest(Airport):- flight(_, Airport, _, _, _, _).
