@@ -325,3 +325,9 @@ students_of(T, S):-
 %teachers_of(+S, -T)
 teachers_of(S, T):-
     setof(Teacher, UC^(leciona(Teacher, UC), frequenta(S, UC)), T).
+
+% 6.e
+
+%common_courses(+S1, +S2, -C)
+common_courses(S1, S2, C):-
+    setof(UC, (frequenta(S1, UC), frequenta(S2, UC)), C).
