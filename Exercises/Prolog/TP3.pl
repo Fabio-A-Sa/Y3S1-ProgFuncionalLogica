@@ -142,3 +142,19 @@ print_texts([Text|Tail], Max, Padding, Symbol):-
     text(Text),
     print_n(' ', Spaces), print_n(Symbol, 1), nl, !, 
     print_texts(Tail, Max, Padding, Symbol).
+
+% 4.i
+
+%oh_christmas_tree(+N)
+oh_christmas_tree(N):- tree(0, N).
+
+tree(Max, Max):-
+    Padding is (Max*2 + 1) // 2,
+    print_n(' ', Padding), print_n('*', 1), !.
+tree(N, Max):-
+    Stars is N*2 + 1,
+    MaxStars is Max*2 + 1,
+    Padding is (MaxStars - Stars) // 2,
+    print_n(' ', Padding), print_n('*', Stars), nl,
+    NextTree is N + 1,
+    tree(NextTree, Max).
