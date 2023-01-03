@@ -244,3 +244,9 @@ couple(C):-
     setof(Mother-Father, (parent(_X, Mother), female(Mother), parent(_X, Father), male(Father)), AllCouples),
     member(C, AllCouples).
 
+% 5.e
+
+%couples(-List)
+couples(List):-
+    findall(Couple, couple(Couple) ,List).
+
