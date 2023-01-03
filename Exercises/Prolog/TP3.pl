@@ -236,3 +236,11 @@ children_of(ListOfPeople, ListOfPairs):-
 %family(-F)
 family(Family):-
     setof(Person,(male(Person) ; female(Person)), Family).
+
+% 5.d
+
+%couple(?C)
+couple(C):-
+    setof(Mother-Father, (parent(_X, Mother), female(Mother), parent(_X, Father), male(Father)), AllCouples),
+    member(C, AllCouples).
+
