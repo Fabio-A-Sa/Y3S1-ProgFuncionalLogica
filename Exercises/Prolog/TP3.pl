@@ -309,3 +309,10 @@ frequenta(eduardo, redes).
 %teachers(-T)
 teachers(T):-
     setof(Teacher, UC^leciona(Teacher, UC) , T).
+
+% 6.b
+% A implementação apresentada já elimina os duplicados
+% Porque recorri ao setof
+
+% 6.c
+
