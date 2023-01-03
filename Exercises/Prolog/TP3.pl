@@ -420,3 +420,18 @@ traduz('3 Qua', qua).
 traduz('4 Qui', qui).
 traduz('5 Sex', sex).
 
+% 7.h
+
+%find_class/0
+find_class:-
+    repeat,
+    write('Day: '),
+    read(Day1),
+    traduz(Day, Day1),
+    write('Hour: '),
+    read(Hour),
+    class(UC, _, Day, Begin, Duration),
+    Final is Begin + Duration,
+    Hour >= Begin,
+    Hour =< Final,
+    format('~a ~1f ~d', [UC, Begin, Duration]).
