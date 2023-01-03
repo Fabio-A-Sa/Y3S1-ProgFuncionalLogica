@@ -374,3 +374,13 @@ class(rc, tp, '5 Sex', 10.5, 2).
 same_day(UC1, UC2):-
     class(UC1, _, _Day, _, _),
     class(UC2, _, _Day, _, _).
+
+% 7.b
+
+%daily_courses(+Day, -Courses)
+daily_courses(Day, Courses):-
+    findall(UC, Day^class(UC, _, Day, _, _), Courses).
+
+% 7.c
+
+%
