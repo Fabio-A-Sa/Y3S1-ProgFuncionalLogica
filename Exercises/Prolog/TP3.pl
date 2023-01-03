@@ -306,3 +306,6 @@ frequenta(eduardo, redes).
 
 % 6.a
 
+%teachers(-T)
+teachers(T):-
+    setof(Teacher, UC^leciona(Teacher, UC) , T).
