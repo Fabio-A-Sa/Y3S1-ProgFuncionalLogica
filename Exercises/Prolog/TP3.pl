@@ -250,3 +250,8 @@ couple(C):-
 couples(List):-
     findall(Couple, couple(Couple) ,List).
 
+% 5.f
+
+%spouse_children(+Person, -SC) 
+spouse_children(Person, SC):-   
+    setof(Spouse-Children, (parent(_X, Person), parent(_X, Spouse), Person \= Spouse, children(Spouse, Children)), SC).
