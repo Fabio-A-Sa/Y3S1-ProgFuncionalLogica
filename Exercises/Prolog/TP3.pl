@@ -398,3 +398,16 @@ course_classes(Course, Classes):-
 %courses(-L)
 courses(L):-
     setof(UC, (A, B, C, D)^class(UC, A, B, C, D), L).
+
+% 7.f
+
+%schedule/0
+schedule:-
+    setof(Key1-Key2-(Course-Tipo-Key1-Key2-Duration), class(Course, Tipo, Key1, Key2, Duration), Values),
+    print_courses(Values).
+
+print_courses([]).
+print_courses([Key1-Key2-(Course-Tipo-Key1-Key2-Duration)|Tail]):-
+    format('~a ~a ~a ~1f ~d', [Course, Tipo, Key1, Key2, Duration]), nl,
+    print_courses(Tail).
+
