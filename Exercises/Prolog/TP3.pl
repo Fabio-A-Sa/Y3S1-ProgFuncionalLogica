@@ -370,3 +370,7 @@ class(rc, tp, '5 Sex', 10.5, 2).
 
 % 7.a
 
+%same_day(+UC1, +UC2)
+same_day(UC1, UC2):-
+    class(UC1, _, _Day, _, _),
+    class(UC2, _, _Day, _, _).
