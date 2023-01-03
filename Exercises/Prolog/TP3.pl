@@ -316,3 +316,6 @@ teachers(T):-
 
 % 6.c
 
+%students_of(+T, -S)
+students_of(T, S):-
+    setof(Student, UC^(leciona(T, UC), frequenta(Student, UC)), S).
