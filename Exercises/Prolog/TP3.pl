@@ -383,4 +383,6 @@ daily_courses(Day, Courses):-
 
 % 7.c
 
-%
+%short_classes(-L)
+short_classes(L):-
+    findall(UC-Dia/Hora, (class(UC, _, Dia, Hora, Duration), Duration < 2), L).
