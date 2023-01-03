@@ -303,6 +303,7 @@ frequenta(beatriz, redes).
 frequenta(claudio, redes).
 frequenta(diana, redes).
 frequenta(eduardo, redes).
+frequenta(xico, redes).
 
 % 6.a
 
@@ -330,10 +331,16 @@ teachers_of(S, T):-
 
 %common_courses(+S1, +S2, -C)
 common_courses(S1, S2, C):-
-    setof(UC, (frequenta(S1, UC), frequenta(S2, UC)), C).
+    findall(UC, UC^(frequenta(S1, UC), frequenta(S2, UC)), C).
 
 % 6.f
 
 % more_than_one_course(-L)
 more_than_one_course(L):-
     setof(Student, (UC1, UC2)^(frequenta(Student, UC1), frequenta(Student, UC2), UC1 \= UC2) , L).
+
+% 6.g
+
+%strangers(-L)
+strangers(L):-
+    findall(S1-S2, (frequenta(S1, _), frequenta(S2, _), common_courses(S1, S2, UCs), length(UCs, 0)), L).
