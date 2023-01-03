@@ -270,4 +270,39 @@ parents(Person, All):-
 parents_of_two(Parents):-
     setof(Person, (_X, _Y)^(parent(_X, Person), parent(_Y, Person), _X \= _Y), Parents).
 
-    
+% Exercício 6
+
+leciona(adalberto, algoritmos).
+leciona(bernardete, basesdedados).
+leciona(capitolino, compiladores).
+leciona(diogenes, estatistica).
+leciona(ermelinda, redes).
+
+frequenta(alberto, algoritmos).
+frequenta(bruna, algoritmos).
+frequenta(cristina, algoritmos).
+frequenta(diogo, algoritmos).
+frequenta(eduarda, algoritmos).
+frequenta(antonio, basesdedados).
+frequenta(bruno, basesdedados).
+frequenta(cristina, basesdedados).
+frequenta(duarte, basesdedados).
+frequenta(eduardo, basesdedados).
+frequenta(alberto, compiladores).
+frequenta(bernardo, compiladores).
+frequenta(clara, compiladores).
+frequenta(diana, compiladores).
+frequenta(eurico, compiladores).
+frequenta(antonio, estatistica).
+frequenta(bruna, estatistica).
+frequenta(claudio, estatistica).
+frequenta(duarte, estatistica).
+frequenta(eva, estatistica).
+frequenta(alvaro, redes).
+frequenta(beatriz, redes).
+frequenta(claudio, redes).
+frequenta(diana, redes).
+frequenta(eduardo, redes).
+
+% 6.a
+
