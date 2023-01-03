@@ -411,3 +411,12 @@ print_courses([Key1-Key2-(Course-Tipo-Key1-Key2-Duration)|Tail]):-
     format('~a ~a ~a ~1f ~d', [Course, Tipo, Key1, Key2, Duration]), nl,
     print_courses(Tail).
 
+% 7.g
+
+%traduz(+UglyDay,-Day)
+traduz('1 Seg', seg).
+traduz('2 Ter', ter).
+traduz('3 Qua', qua).
+traduz('4 Qui', qui).
+traduz('5 Sex', sex).
+
