@@ -78,4 +78,4 @@ Semelhante ao Findall mas se não existir qualquer solução, em vez de mostrar 
 
 ### Setof
 
-Semelhante ao Setof, mas retira os elementos repetidos e ordena os resultados obtidos
+Semelhante ao Bagof, mas retira os elementos repetidos e ordena os resultados obtidos
