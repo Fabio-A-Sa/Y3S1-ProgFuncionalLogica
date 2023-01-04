@@ -79,3 +79,14 @@ Semelhante ao Findall mas se não existir qualquer solução, em vez de mostrar 
 ### Setof
 
 Semelhante ao Bagof, mas retira os elementos repetidos e ordena os resultados obtidos
+
+### Existential Quantifier
+
+```prolog
+ ?- bagof(Child, parent(Parent, Child), Children).
+Parent = homer, Children = [lisa, bart, maggie] ? ;
+Parent = marge, Children = [lisa, bart, maggie] ?
+
+ ?- bagof(Child, Parent^parent(Parent, Child), Children).
+Children = [lisa, bart, maggie, lisa, bart, Maggie, ...]
+```
