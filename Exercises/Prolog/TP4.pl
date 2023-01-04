@@ -272,3 +272,12 @@ add_times(Time, Duration, FinalTime, NextDay):-
     NextDay is NewHours1 // 24,
     NewHours is NewHours1 mod 24,
     FinalTime is NewHours * 100 + NewMinutes.
+
+% 2.o
+
+%time_diff(+Time1, +Time2, -Duration)
+time_diff(Time1, Time2, Duration):-
+    Time2 > Time1, !,
+    Duration is ((Time2 // 100)*60 + (Time2 mod 100)) - ((Time1 // 100)*60 + (Time1 mod 100)).
+time_diff(Time1, Time2, Duration):-
+    Duration is (1440 - ((Time1 // 100)*60 + (Time1 mod 100))) + ((Time2 // 100)*60 + (Time2 mod 100)).
