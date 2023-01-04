@@ -160,3 +160,10 @@ find_circular_path(Origin, NextNode, Acc, Path):-
     flight(NextNode, AnotherNode, _, _, _, _),
     \+member(AnotherNode, Acc),
     find_circular_path(Origin, AnotherNode, Acc1, Path).
+
+% 2.i
+
+%find_circular_trips(+MaxSize, +Origin, -Cycles)
+find_circular_trips(MaxSize, Origin, Cycles):-
+    findall(Cycle, find_circular_trip(MaxSize, Origin, Cycle), Cycles).
+
