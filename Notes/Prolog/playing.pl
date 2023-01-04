@@ -2,6 +2,7 @@ connected(a, b).
 connected(b, c).
 connected(f, e).
 connected(c, f).
+connected(c, a).
 connected(e, g).
 connected(k, l).
 connected(m, o).
@@ -51,3 +52,22 @@ construct_path(Origem, Destino, Acc, Path):-
     \+member(Meio, Acc),
     append(Acc, [Meio], Acc1),
     construct_path(Meio, Destino, Acc1, Path).
+
+% Encontra um ciclo existente no grafo
+
+cicle(Path):-
+    is_node(Origem),
+    connected(Origem, Node),
+    find_cicle(Origem, Node, [], SubPath),
+    append([Origem], SubPath, Path). 
+
+find_cicle(Origem, Origem, Acc, Path):-
+    append(Acc, [Origem], Path), !.
+find_cicle(Origem, Destino, Acc, Path):-
+    append(Acc, [Destino], Acc1),
+    connected(Destino, Medio),
+    \+member(Medio, Acc),
+    find_cicle(Origem, Medio, Acc1, Path).
+
+is_node(X):- connected(_, X).
+is_node(X):- connected(X, _).
