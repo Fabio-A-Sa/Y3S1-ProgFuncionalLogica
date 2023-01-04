@@ -185,3 +185,17 @@ bfs([CurrentNode|Rest], Visited, Result):-
 
 % 2.k
 
+%strongly_connected_components(-Components)
+strongly_connected_components(Components):-
+    setof(Node, is_node(Node), Nodes),
+    get_components(Nodes, [], Components).
+
+is_node(Node):- flight(Node, _, _, _, _, _).
+is_node(Node):- flight(_, Node, _, _, _, _).
+
+get_components([], Components, Components).
+get_components([Node|Rest], Accumulator, Components):-
+    bfs([Node], [], Component),
+    append(Accumulator, Component, NextAccumulator),
+    findall(UnvisitedNode, (member(UnvisitedNode, [Node|Rest]), \+member(UnvisitedNode, Component)), UnvisitedNodes),
+    get_components(UnvisitedNodes, NextAccumulator, Components).   
