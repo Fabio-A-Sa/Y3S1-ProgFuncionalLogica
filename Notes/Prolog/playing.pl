@@ -71,3 +71,8 @@ find_cicle(Origem, Destino, Acc, Path):-
 
 is_node(X):- connected(_, X).
 is_node(X):- connected(X, _).
+
+% Encontra todos os ciclos existente no grafo
+
+all_cicles(Paths):-
+    setof(Path, cicle(Path), Paths).
