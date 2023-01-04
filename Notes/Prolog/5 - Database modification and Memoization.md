@@ -48,3 +48,20 @@ fib(N, F):-
     F is F1 + F2,
     asserta((fib(N, F):- !)).
 ```
+
+## Fail Driven Loops
+
+São úteis para enumerar todos os predicados da base de factos:
+
+```prolog
+%person(-X)
+person(X):-
+    male(X) ; female(X).
+
+%imprime_pessoas/0
+imprime_pessoas:-
+    person(X),
+    write(X), nl,
+    fail.
+imprime_pessoas.
+```
