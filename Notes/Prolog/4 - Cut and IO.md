@@ -90,3 +90,9 @@ Parent = marge, Children = [lisa, bart, maggie] ?
  ?- bagof(Child, Parent^parent(Parent, Child), Children).
 Children = [lisa, bart, maggie, lisa, bart, Maggie, ...]
 ```
+
+## Substitution
+
+- parent(homer, bart) is a common instance of parent(X, bart) and parent(homer, Y);
+- parent(X, bart) is more general than parent(homer, bart);
+- parent(Y, bart) is a variant of parent(X, bart);
