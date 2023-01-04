@@ -77,18 +77,6 @@ is_node(X):- connected(X, _).
 all_cicles(Paths):-
     setof(Path, cicle(Path), Paths).
 
-% BFS
-
-connects_bfs(S, F):-
-    connects_bfs([S], F, [S]).
-
-connects_bfs([F|_], F, V):-
-    write(V), !.
-connects_bfs([S|R], F, V):-
-    findall(N, (connected(S, N), \+member(N, V), \+member(N, [S|R])), L),
-    append(R, L, NR),
-    connects_bfs(NR, F, [S|V]).
-
 % Percorre o grafo de Origem até Destino fazendo pesquisa em largura
 
 path_bfs(Origem, Destino):-
