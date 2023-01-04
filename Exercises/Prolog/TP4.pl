@@ -262,3 +262,13 @@ get_max([Number-_|Rest], Acc, Max):-
     get_max(Rest, Number, Max).
 get_max([_|Rest], Acc, Max):- get_max(Rest, Acc, Max).
 
+% 2.n
+
+%add_times(+Time, +Duration, -FinalTime, -NextDay)
+add_times(Time, Duration, FinalTime, NextDay):-
+    Minutes is (Time // 100)*60 + (Time mod 100) + Duration,
+    NewMinutes is Minutes mod 60,
+    NewHours1 is Minutes // 60,
+    NextDay is NewHours1 // 24,
+    NewHours is NewHours1 mod 24,
+    FinalTime is NewHours * 100 + NewMinutes.
