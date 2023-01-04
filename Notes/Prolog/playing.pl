@@ -1,3 +1,5 @@
+:-use_module(library(lists)).
+
 connected(a, b).
 connected(b, c).
 connected(f, e).
@@ -40,18 +42,18 @@ is_connected(Origem, Destino):-
 
 % Verifica se há conexão entre um ponto e outro, evitando ciclos e mostrando o caminho percorrido.
 
-path(Origem, Destino):-
-    construct_path(Origem, Destino, [Origem], Path),
+path_dfs(Origem, Destino):-
+    construct_path_dfs(Origem, Destino, [Origem], Path),
     write(Path).
 
-construct_path(Origem, Destino, Acc, Path):-
+construct_path_dfs(Origem, Destino, Acc, Path):-
     connected(Origem, Destino),
     append(Acc, [Destino], Path).
-construct_path(Origem, Destino, Acc, Path):-
+construct_path_dfs(Origem, Destino, Acc, Path):-
     connected(Origem, Meio),
     \+member(Meio, Acc),
     append(Acc, [Meio], Acc1),
-    construct_path(Meio, Destino, Acc1, Path).
+    construct_path_dfs(Meio, Destino, Acc1, Path).
 
 % Encontra um ciclo existente no grafo
 
@@ -74,3 +76,28 @@ is_node(X):- connected(X, _).
 
 all_cicles(Paths):-
     setof(Path, cicle(Path), Paths).
+
+% BFS
+
+connects_bfs(S, F):-
+    connects_bfs([S], F, [S]).
+
+connects_bfs([F|_], F, V):-
+    write(V), !.
+connects_bfs([S|R], F, V):-
+    findall(N, (connected(S, N), \+member(N, V), \+member(N, [S|R])), L),
+    append(R, L, NR),
+    connects_bfs(NR, F, [S|V]).
+
+% Percorre o grafo de Origem até Destino fazendo pesquisa em largura
+
+path_bfs(Origem, Destino):-
+    construct_path_bfs([Origem], Destino, [], Path),
+    write(Path).
+
+construct_path_bfs([Destino|_], Destino, Visited, Path):-
+    reverse([Destino|Visited], Path).
+construct_path_bfs([Node|Nodes], Destino, Visited, Path):-
+    findall(NextNode, (connected(Node, NextNode), \+member(NextNode, Visited), \+member(NextNode, [Node|Nodes])), DirectChildren),
+    append(Nodes, DirectChildren, NewNodes),
+    construct_path_bfs(NewNodes, Destino, [Node|Visited], Path).
