@@ -55,11 +55,9 @@ construct_path(Origem, Destino, Acc, Path):-
 
 % Encontra um ciclo existente no grafo
 
-cicle(Path):-
-    is_node(Origem),
+cicle([Origem|SubPath]):-
     connected(Origem, Node),
-    find_cicle(Origem, Node, [], SubPath),
-    append([Origem], SubPath, Path). 
+    find_cicle(Origem, Node, [], SubPath).
 
 find_cicle(Origem, Origem, Acc, Path):-
     append(Acc, [Origem], Path), !.
