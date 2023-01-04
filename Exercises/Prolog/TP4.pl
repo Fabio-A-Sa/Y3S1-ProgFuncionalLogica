@@ -112,3 +112,10 @@ get_codes([Origin,Destination|Something],Acc, Result):-
     flight(Origin, Destination, _, Code, _, _),
     append(Acc, [Code], Acc1),
     get_codes([Destination|Something], Acc1, Result).
+
+% 2.e
+
+%find_all_flights (+Origin, +Destination, -ListOfFlights)
+find_all_flights(Origin, Destination, ListOfFlights):-
+    findall(Path, find_flights(Origin, Destination, Path), ListOfFlights).
+
