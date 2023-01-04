@@ -15,7 +15,9 @@ retractall/1 -> remove todos os resultados da base de dados interna
 retractall(parent(homer, _)) -> remove todos os predicados que contêm o "homer" como pai
 
 listing/0 -> lista todas as clauses do programa
-listing/1 -> lista todas as clauses do predicado dado no argumento
+listing/1 -> lista todas as clauses do predicado dado no argumento (parent/2, por exemplo)
+
+abolish/1 -> remove todas as clauses do programa que tenham aquele predicado (parent/2, por exemplo)
 ```
 
 ## Memoization
