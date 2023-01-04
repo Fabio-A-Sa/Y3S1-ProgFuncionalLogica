@@ -292,3 +292,19 @@ waiting_time(Flight1, Flight2, WaitingTime):-
     time_diff(HorarioChegada, HorarioPartida, WaitingTime).
 
 % 2.q
+
+%filter_flights(+Origin, +Destination, +MaxWait, +MaxStops, -Fs)
+filter_flights(Origin, Destination, MaxWait, MaxStops, Fs):-
+    findall(Flight, (find_flights(Origin, Destination, Flight),    
+                     length(Flight, Len), 
+                     Len < MaxStops,
+                     verify_flight(Flight, MaxWait)), Fs).
+
+verify_flight([_], _).
+verify_flight([Voo1,Voo2|Resto], MaxWait):-
+    waiting_time(Voo1, Voo2, Waiting),
+    Waiting =< MaxWait, !,
+    verify_flight([Voo2|Resto], MaxWait).
+verify_flight(_,_):- !, fail.
+
+    
