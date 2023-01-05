@@ -217,3 +217,48 @@ get_all_circular_trips(Cycles):-
 get_all_codes(Codes):-
     setof(Code, flight(_, _, _, Code, _, _), Codes).
 
+% 2.m
+
+%central_betweeness(-Nodes)
+central_betweeness(Nodes):-
+    % Encontra todos os caminhos possíveis com pelo menos 2 voos => há pelo menos uma cidade intermédia
+    findall(ShortPath, (X, Y, Len)^(is_node(X), is_node(Y), 
+                       find_flights_least_stops(X, Y, ShortPath), 
+                       length(ShortPath, Len), Len > 1), Paths),
+    get_betweens(Paths, [], NodeFrequency),
+    sort(NodeFrequency, SingleNodes),
+    make_pairs(SingleNodes, NodeFrequency, [], Pairs),
+    get_max(Pairs, -1, Max),
+    findall(Node, member(Max-Node, Pairs), Nodes).
+
+get_betweens([], Accumulator, Accumulator).
+get_betweens([Path|OthersPaths], Accumulator, Nodes):-
+    [_|Rest] = Path,
+    get_middle(Rest, Accumulator, NextAccumulator),
+    get_betweens(OthersPaths, NextAccumulator, Nodes).
+
+get_middle([], Accumulator, Accumulator).
+get_middle([FlightCode|Rest], Accumulator, Nodes):-
+    flight(Origin, _, _, FlightCode, _, _),
+    append(Accumulator, [Origin], NewAccumulator),
+    get_middle(Rest, NewAccumulator, Nodes).
+
+make_pairs([], _, Pairs, Pairs).
+make_pairs([Node|Rest], Frequency, Accumulator, Pairs):-
+    get_frequency(Node, Frequency, 0, Number),
+    append(Accumulator, [Number-Node], NewAccumulator),
+    make_pairs(Rest, Frequency, NewAccumulator, Pairs).
+
+get_frequency(_, [], Number, Number).
+get_frequency(Node, [Node|Rest], Acc, Number):-
+    Acc1 is Acc + 1, !,
+    get_frequency(Node, Rest, Acc1, Number).
+get_frequency(Node, [_|Rest], Acc, Number):-
+    get_frequency(Node, Rest, Acc, Number).
+
+get_max([], Max, Max).
+get_max([Number-_|Rest], Acc, Max):-
+    Number >= Acc, !,
+    get_max(Rest, Number, Max).
+get_max([_|Rest], Acc, Max):- get_max(Rest, Acc, Max).
+
