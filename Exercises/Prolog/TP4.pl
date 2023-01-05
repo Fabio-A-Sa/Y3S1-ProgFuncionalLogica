@@ -81,7 +81,7 @@ get_destinations(Company, Destinations):-
 
 % 2.c
 
-%find_flights(+Origin, +Destination, -Flights):-
+%find_flights(+Origin, +Destination, -Flights)
 find_flights(Origin, Destination, Flights):-
     find_flights_dfs(Origin, Destination, [], Flights).
 
@@ -92,4 +92,23 @@ find_flights_dfs(Origin, Destination, Acc, Flights):-
     append(Acc, [Code], Acc1),
     find_flights_dfs(Node, Destination, Acc1, Flights).
 
-find_flights_breadth(+Origin, +Destination, -Flights):-
+% 2.d
+
+%find_flights_breadth(+Origin, +Destination, -Flights)
+find_flights_breadth(Origin, Destination, Flights):-
+    find_flights_bfs([Origin], Destination, [], Flights).
+
+find_flights_bfs([Destination|_], Destination, Visited, Flights):-
+    reverse([Destination|Visited], Reversed),
+    get_codes(Reversed, [], Flights).
+find_flights_bfs([CurrentNode|OldNodes], Destination, Visited, Flights):-
+    findall(Child, (flight(CurrentNode, Child, _, _, _, _), \+member(Child, OldNodes), \+member(Child, Visited)), NewNodes),
+    append(OldNodes, NewNodes, Nodes),
+    find_flights_bfs(Nodes, Destination, [CurrentNode|Visited], Flights).
+
+get_codes([], Result, Result).
+get_codes([_], Result, Result).
+get_codes([Origin,Destination|Something],Acc, Result):-
+    flight(Origin, Destination, _, Code, _, _),
+    append(Acc, [Code], Acc1),
+    get_codes([Destination|Something], Acc1, Result).
