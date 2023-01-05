@@ -323,4 +323,4 @@ get_total_time([Voo1, Voo2 | Resto], Acc, Time):-
     flight(_, _, _, Voo1, _, Duration),
     waiting_time(Voo1, Voo2, WaitingTime),
     NewAcc is Acc + Duration + WaitingTime,
-    get_total_time([Voo2|Resto], NewAcc, Time).
+    get_total_time([Voo2|Resto], NewAcc, Time). 
