@@ -281,3 +281,14 @@ time_diff(Time1, Time2, Duration):-
     Duration is ((Time2 // 100)*60 + (Time2 mod 100)) - ((Time1 // 100)*60 + (Time1 mod 100)).
 time_diff(Time1, Time2, Duration):-
     Duration is (1440 - ((Time1 // 100)*60 + (Time1 mod 100))) + ((Time2 // 100)*60 + (Time2 mod 100)).
+
+% 2.p
+
+%waiting_time(+Flight1, +Flight2, -WaitingTime)
+waiting_time(Flight1, Flight2, WaitingTime):-
+    flight(_, Destino, _, Flight1, Time1, Duration1),
+    flight(Destino, _, _, Flight2, HorarioPartida, _),
+    add_times(Time1, Duration1, HorarioChegada, _),
+    time_diff(HorarioChegada, HorarioPartida, WaitingTime).
+
+% 2.q
