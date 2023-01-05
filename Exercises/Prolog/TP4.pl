@@ -307,4 +307,20 @@ verify_flight([Voo1,Voo2|Resto], MaxWait):-
     verify_flight([Voo2|Resto], MaxWait).
 verify_flight(_,_):- !, fail.
 
-    
+% 2.r
+
+%get_ordered_flights(+Origin, +Destination, -Flights)
+get_ordered_flights(Origin, Destination, Flights):-
+    findall(Time-Flight, (find_flights(Origin, Destination, Flight), get_total_time(Flight, 0, Time)), Pairs),
+    keysort(Pairs, SortedPairs),
+    findall(SortedFlight, member(_-SortedFlight, SortedPairs), Flights).
+
+get_total_time([], Time, Time).
+get_total_time([Code], Acc, Time):-
+    flight(_, _, _, Code, _, Duration),
+    Time is Acc + Duration.
+get_total_time([Voo1, Voo2 | Resto], Acc, Time):-
+    flight(_, _, _, Voo1, _, Duration),
+    waiting_time(Voo1, Voo2, WaitingTime),
+    NewAcc is Acc + Duration + WaitingTime,
+    get_total_time([Voo2|Resto], NewAcc, Time).
