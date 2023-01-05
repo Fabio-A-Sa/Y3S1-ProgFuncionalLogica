@@ -199,3 +199,21 @@ get_components([Node|Rest], Accumulator, Components):-
     append(Accumulator, Component, NextAccumulator),
     findall(UnvisitedNode, (member(UnvisitedNode, [Node|Rest]), \+member(UnvisitedNode, Component)), UnvisitedNodes),
     get_components(UnvisitedNodes, NextAccumulator, Components).   
+
+% 2.l
+
+%bridges(-ListOfBridges)
+bridges(ListOfBridges):-
+    get_all_circular_trips(CircularCodes),
+    get_all_codes(AllCodes),
+    setof(Bridge, (member(Bridge, AllCodes), \+member(Bridge, CircularCodes)), ListOfBridges).
+
+get_all_circular_trips(Cycles):-
+    setof(Code, (Origin, Cycle, Codes)^(is_node(Origin), 
+                                        find_circular_trip(100000, Origin, Cycle), 
+                                        get_codes(Cycle, [], Codes), 
+                                        member(Code, Codes)), Cycles).
+
+get_all_codes(Codes):-
+    setof(Code, flight(_, _, _, Code, _, _), Codes).
+
