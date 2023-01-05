@@ -167,3 +167,21 @@ find_circular_path(Origin, NextNode, Acc, Path):-
 find_circular_trips(MaxSize, Origin, Cycles):-
     findall(Cycle, find_circular_trip(MaxSize, Origin, Cycle), Cycles).
 
+% 2.j
+
+%strongly_connected(+ListOfNodes)
+strongly_connected([]).
+strongly_connected([_]).
+strongly_connected([Node|Rest]):-
+    bfs([Node], [], Visited),
+    findall(UnvisitedNode, (member(UnvisitedNode, [Node|Rest]), \+member(UnvisitedNode, Visited)), UnvisitedNodes),
+    length(UnvisitedNodes, 0).
+
+bfs([], Visited, Visited).
+bfs([CurrentNode|Rest], Visited, Result):-
+    findall(Node, (flight(CurrentNode, Node, _, _, _, _), \+member(Node, Visited), \+member(Node, Rest)), NewNodes),
+    append(Rest, NewNodes, List),
+    bfs(List, [CurrentNode|Visited], Result).
+
+% 2.k
+
