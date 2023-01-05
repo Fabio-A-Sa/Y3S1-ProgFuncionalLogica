@@ -119,3 +119,19 @@ get_codes([Origin,Destination|Something],Acc, Result):-
 find_all_flights(Origin, Destination, ListOfFlights):-
     findall(Path, find_flights(Origin, Destination, Path), ListOfFlights).
 
+% 2.f
+
+%find_flights_least_stops(+Origin, +Destination, -ListOfFlights)
+find_flights_least_stops(Origin, Destination, ListOfFlights):-
+    find_all_flights(Origin, Destination, [One|Rest]),
+    get_min([One|Rest], One, ListOfFlights).
+
+get_min([], Minimal, Minimal).
+get_min([Possible|Rest], Minimal, ListOfFlights):-
+    length(Possible, A),
+    length(Minimal, Min),
+    A =< Min, !, 
+    get_min(Rest, Possible, ListOfFlights).
+get_min([_|Rest], Minimal, ListOfFlights):-
+    get_min(Rest, Minimal, ListOfFlights).
+
