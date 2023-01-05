@@ -96,11 +96,11 @@ find_flights_dfs(Origin, Destination, Acc, Flights):-
 
 %find_flights_breadth(+Origin, +Destination, -Flights)
 find_flights_breadth(Origin, Destination, Flights):-
-    find_flights_bfs([Origin], Destination, [], Flights).
+    find_flights_bfs([Origin], Destination, [], Reversed),
+    get_codes(Reversed, [], Flights).
 
 find_flights_bfs([Destination|_], Destination, Visited, Flights):-
-    reverse([Destination|Visited], Reversed),
-    get_codes(Reversed, [], Flights).
+    reverse([Destination|Visited], Flights).
 find_flights_bfs([CurrentNode|OldNodes], Destination, Visited, Flights):-
     findall(Child, (flight(CurrentNode, Child, _, _, _, _), \+member(Child, OldNodes), \+member(Child, Visited)), NewNodes),
     append(OldNodes, NewNodes, Nodes),
@@ -135,3 +135,11 @@ get_min([Possible|Rest], Minimal, ListOfFlights):-
 get_min([_|Rest], Minimal, ListOfFlights):-
     get_min(Rest, Minimal, ListOfFlights).
 
+% 2.g
+
+%find_flights_stops(+Origin, +Destination, +Stops, -ListFlights)
+find_flights_stops(Origin, Destination, Stops, ListFlights):-
+    find_flights_bfs([Origin], Destination, [], Reversed),
+    findall(Edge, (member(Edge, Stops), \+member(Edge, Reversed)), List),
+    length(List, 0),
+    get_codes(Reversed, [], ListFlights).
