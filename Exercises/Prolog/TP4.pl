@@ -80,3 +80,16 @@ get_destinations(Company, Destinations):-
     findall(Destination, Company^flight(_, Destination, Company, _, _, _) ,Destinations).
 
 % 2.c
+
+%find_flights(+Origin, +Destination, -Flights):-
+find_flights(Origin, Destination, Flights):-
+    find_flights_dfs(Origin, Destination, [], Flights).
+
+find_flights_dfs(Destination, Destination, Flights, Flights).
+find_flights_dfs(Origin, Destination, Acc, Flights):-
+    flight(Origin, Node, _, Code, _, _),
+    \+member(Code, Acc),
+    append(Acc, [Code], Acc1),
+    find_flights_dfs(Node, Destination, Acc1, Flights).
+
+find_flights_breadth(+Origin, +Destination, -Flights):-
