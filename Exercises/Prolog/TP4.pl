@@ -143,3 +143,20 @@ find_flights_stops(Origin, Destination, Stops, ListFlights):-
     findall(Edge, (member(Edge, Stops), \+member(Edge, Reversed)), List),
     length(List, 0),
     get_codes(Reversed, [], ListFlights).
+
+% 2.h
+
+%find_circular_trip (+MaxSize, +Origin, -Cycle)
+find_circular_trip(MaxSize, Origin, Cycle):-
+    flight(Origin, Destination, _, _, _, _),
+    find_circular_path(Origin, Destination, [], Cycle),
+    length(Cycle, Length),
+    Length =< MaxSize.
+
+find_circular_path(Origin, Origin, Acc, [Origin|Path]):-
+    append(Acc, [Origin], Path), !.
+find_circular_path(Origin, NextNode, Acc, Path):-
+    append(Acc, [NextNode], Acc1),
+    flight(NextNode, AnotherNode, _, _, _, _),
+    \+member(AnotherNode, Acc),
+    find_circular_path(Origin, AnotherNode, Acc1, Path).
