@@ -26,5 +26,14 @@ Para contornar a existência de loops, é necessário existir um acumulador (uma
 Para buscas em largura, de modo a percorrer os nós mais próximos primeiro, usa-se esta técnica:
 
 ```prolog
+path_bfs(Origem, Destino):-
+    construct_path_bfs([Origem], Destino, [], Path),
+    write(Path).
 
+construct_path_bfs([Destino|_], Destino, Visited, Path):-
+    reverse([Destino|Visited], Path).
+construct_path_bfs([Node|Nodes], Destino, Visited, Path):-
+    findall(NextNode, (connected(Node, NextNode), \+member(NextNode, Visited), \+member(NextNode, [Node|Nodes])), DirectChildren),
+    append(Nodes, DirectChildren, NewNodes),
+    construct_path_bfs(NewNodes, Destino, [Node|Visited], Path).
 ```
