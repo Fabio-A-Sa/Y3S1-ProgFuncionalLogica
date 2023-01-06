@@ -22,3 +22,9 @@ connects_dfs(S, F):-
 Para contornar a existência de loops, é necessário existir um acumulador (uma lista), que reuna todos os 
 
 ## Breath-First Search (BFS)
+
+Para buscas em largura, de modo a percorrer os nós mais próximos primeiro, usa-se esta técnica:
+
+```prolog
+
+```
