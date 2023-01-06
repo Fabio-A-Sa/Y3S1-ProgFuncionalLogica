@@ -90,3 +90,12 @@ fill_args(Predicate, Index, Arity, Acc, List):-
     append(Acc, [Arg], Acc1),
     NextIndex is Index + 1,
     fill_args(Predicate, NextIndex, Arity, Acc1, List).
+
+% 2.c
+
+:-op(400, xfx, my_univ).
+
+% Exercício 3 no papel
+
+
+
