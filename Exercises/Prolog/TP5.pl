@@ -45,3 +45,10 @@ separate_aux([Element|Rest], Pred, Yes, AccYes, No, AccNo):-
     separate_aux(Rest, Pred, Yes, AccYes, No, NewAccNo).
 
 even(X):- 0 =:= X mod 2.
+
+% 1.d
+
+%ask_execute/0
+ask_execute:-
+    read(Operation),
+    call(Operation).
