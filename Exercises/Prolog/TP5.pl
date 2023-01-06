@@ -52,3 +52,19 @@ even(X):- 0 =:= X mod 2.
 ask_execute:-
     read(Operation),
     call(Operation).
+
+% Exercício 2
+
+% 2.1
+
+%my_arg(Index, Functor, Arg)
+my_arg(Index, Functor, Arg):-
+    Functor =.. List,
+    length(List, Len),
+    Len >= Index,
+    get_index(Index, List, Arg).
+
+get_index(0, [Arg|_], Arg).
+get_index(Index, [_|Rest], Arg):-
+    NextIndex is Index - 1,
+    get_index(NextIndex, Rest, Arg).
