@@ -75,3 +75,18 @@ get_index(Index, [_|Rest], Arg):-
 my_functor(Predicate, Name, Arity):-
     Predicate =.. [Name|Args],
     length(Args, Arity).
+
+% 2.b
+
+%my_univ(+Predicate, -List)
+my_univ(Predicate, List):-
+    my_functor(Predicate, Name, Arity),
+    fill_args(Predicate, 1,  Arity, [Name], List).
+
+fill_args(_, Index, Arity, List, List):-
+    Index > Arity, !.
+fill_args(Predicate, Index, Arity, Acc, List):-
+    my_arg(Index, Predicate, Arg),
+    append(Acc, [Arg], Acc1),
+    NextIndex is Index + 1,
+    fill_args(Predicate, NextIndex, Arity, Acc1, List).
