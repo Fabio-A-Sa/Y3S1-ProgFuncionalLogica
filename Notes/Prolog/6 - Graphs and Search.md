@@ -19,7 +19,22 @@ connects_dfs(S, F):-
     connects_dfs(N, F).
 ```
 
-Para contornar a existência de loops, é necessário existir um acumulador (uma lista), que reuna todos os 
+Para contornar a existência de loops, é necessário existir um acumulador (uma lista), que reuna todos os nós já visitados até encontrar o destino final:
+
+```prolog
+path_dfs(Origem, Destino):-
+    construct_path_dfs(Origem, Destino, [Origem], Path),
+    write(Path).
+
+construct_path_dfs(Origem, Destino, Acc, Path):-
+    connected(Origem, Destino),
+    append(Acc, [Destino], Path).
+construct_path_dfs(Origem, Destino, Acc, Path):-
+    connected(Origem, Meio),
+    \+member(Meio, Acc),
+    append(Acc, [Meio], Acc1),
+    construct_path_dfs(Meio, Destino, Acc1, Path).
+```
 
 ## Breath-First Search (BFS)
 
@@ -36,4 +51,22 @@ construct_path_bfs([Node|Nodes], Destino, Visited, Path):-
     findall(NextNode, (connected(Node, NextNode), \+member(NextNode, Visited), \+member(NextNode, [Node|Nodes])), DirectChildren),
     append(Nodes, DirectChildren, NewNodes),
     construct_path_bfs(NewNodes, Destino, [Node|Visited], Path).
+```
+
+### Ciclos nos grafos
+
+Podem ser determinados tanto com DFS como com BFS. A técnica é sempre tentar encontrar um caminho que contenha o nó inicial:
+
+```prolog
+cicle([Origem|SubPath]):-
+    connected(Origem, Node),
+    find_cicle(Origem, Node, [], SubPath).
+
+find_cicle(Origem, Origem, Acc, Path):-
+    append(Acc, [Origem], Path), !.
+find_cicle(Origem, Destino, Acc, Path):-
+    append(Acc, [Destino], Acc1),
+    connected(Destino, Medio),
+    \+member(Medio, Acc),
+    find_cicle(Origem, Medio, Acc1, Path).
 ```
