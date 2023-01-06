@@ -33,3 +33,14 @@ append_dl( [a, b, c | Y ]\Y, [d, e, f | W]\W, A).
 % Y=[d,e,f|W]
 % A=[a,b,c,d,e,f|W]\W
 ```
+
+## 7.3 - Metaprogramming Operators
+
+Essencialmente operadores de *type checking*, assim é possível criar definições de predicados para todos os tipos instanciados e não instanciados:
+
+```prolog
+sum(A, B, S):- number(A), number(B), !, S is A + B.
+sum(A, B, S):- number(A), number(S), !, B is S – A.
+sum(A, B, S):- number(B), number(S), !, A is S – B.
+```
+
