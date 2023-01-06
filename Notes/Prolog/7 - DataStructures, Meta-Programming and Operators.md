@@ -50,3 +50,12 @@ O operador `=..` retorna um predicado com nome e argumentos ou o contrário:
 Predicate =.. [sum, A, B, C] % sum(A, B, B)
 [sum, A, B, C] =.. Predicate % sum(A, B, B)
 ```
+
+O predicado `functor/3` constroi ou retira dados de nome do functor e a aridade deste:
+
+```prolog
+functor(parent(homer, bart), Name, Arity).  % Name = homer , Arity = 2
+functor(Term, parent, 2)                    % Term = parent(_A, _B)
+```
+
+O predicado `call/1` executa
