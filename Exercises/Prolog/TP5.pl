@@ -27,3 +27,21 @@ fold(Pred, StartValue, [Element|Rest], FinalValue):-
     fold(Pred, Result, Rest, FinalValue).
 
 sum(A, B, R):- R is A + B.
+
+% 1.c
+
+%separate(+List, +Pred, -Yes, -No)
+separate(List, Pred, Yes, No):-
+    separate_aux(List, Pred, Yes, [], No, []).
+
+separate_aux([], _, Yes, Yes, No, No).
+separate_aux([Element|Rest], Pred, Yes, AccYes, No, AccNo):-
+    Condition =.. [Pred, Element],
+    Condition, !,
+    append(AccYes, [Element], NewAccYes),
+    separate_aux(Rest, Pred, Yes, NewAccYes, No, AccNo).
+separate_aux([Element|Rest], Pred, Yes, AccYes, No, AccNo):-
+    append(AccNo, [Element], NewAccNo),
+    separate_aux(Rest, Pred, Yes, AccYes, No, NewAccNo).
+
+even(X):- 0 =:= X mod 2.
