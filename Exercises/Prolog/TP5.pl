@@ -97,11 +97,22 @@ fill_args(Predicate, Index, Arity, Acc, List):-
 
 % Exercício 3 no papel
 
-% Exercício 4
+% Exercício 4 - pode ser verificado usando o predicado write_canonical(+Expression)
 
 :-op(550, xfx, de).
 :-op(500, fx, aula).
 :-op(550, xfy, pelas).
 :-op(550, xfx, e).
 :-op(600, xfx, as).
+
+% 4.a
+% as(de(aula(t),pfl),pelas(segundas,11))
+
+% 4.b
+% as(de(aula(tp),pfl),pelas(tercas,e(10,30)))
+
+% 4.c
+% as(e(aula(11),aula(12)),pelas(4,pelas(cinco,pelas(6,sete))))
+
+% Exercício 5
 
