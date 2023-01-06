@@ -55,7 +55,7 @@ construct_path_bfs([Node|Nodes], Destino, Visited, Path):-
 
 ### Ciclos nos grafos
 
-Podem ser determinados tanto com DFS como com BFS. A técnica é sempre tentar encontrar um caminho que contenha o nó inicial:
+Podem ser determinados tanto com DFS como com BFS. A técnica é sempre tentar encontrar um caminho que contenha o nó inicial. 
 
 ```prolog
 cicle([Origem|SubPath]):-
@@ -69,4 +69,11 @@ find_cicle(Origem, Destino, Acc, Path):-
     connected(Destino, Medio),
     \+member(Medio, Acc),
     find_cicle(Origem, Medio, Acc1, Path).
+```
+
+Para o nó inicial usa-se uma origem qualquer, que pode ser invocada com o predicado is_node/1.
+
+```prolog
+is_node(X):- connected(_, X).
+is_node(X):- connected(X, _).
 ```
