@@ -64,3 +64,15 @@ O predicado `call/1` executa o argumento:
 B = parent(homer, bart), call(B). % yes
 ```
 
+Exemplo da utilização de metaprogramming para implementar um predicado de ordem superior:
+
+```prolog
+map([], _).
+map([Arg|Resto], Predicate):-
+    G =.. [Predicate, Arg],
+    G,
+    map(Resto, Predicate).
+
+map([1, 2, a, b], write). % 12ab
+```
+
