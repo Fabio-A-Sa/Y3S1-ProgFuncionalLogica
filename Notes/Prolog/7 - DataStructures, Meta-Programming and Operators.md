@@ -90,5 +90,5 @@ X is 5 + 3 * 2
 O predicado `op/3` pode ser usado para especificar os novos operadores:
 
 ```prolog
-
+% op(+Precedence, +Type, +Name) % Type is fx, fy, xf, yf, xfx, yfx, xfy, não existe yfy
 ```
