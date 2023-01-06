@@ -76,3 +76,19 @@ map([Arg|Resto], Predicate):-
 map([1, 2, a, b], write). % 12ab
 ```
 
+## 7.4 - Operators
+
+Todos os operadores de Prolog têm nível de precedência entre 1 e 1200. A precedência indica qual das operações é realizada primeiro. Neste caso a multiplicação tem precedência menor que a soma, ou seja, é executada primeiro:
+
+```prolog
+X is 5 + 3 * 2
+```
+
+- A operação divisão é associativa à esquerda: 10 / 2 / 5 == (10 / 2) / 5
+- A operação exponenciação é associativa à direita: 10 ^ 2 ^ 5 == 10 ^ (2 ^ 5)
+
+O predicado `op/3` pode ser usado para especificar os novos operadores:
+
+```prolog
+
+```
