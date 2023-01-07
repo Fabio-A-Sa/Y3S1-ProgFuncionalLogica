@@ -135,3 +135,9 @@ fill_args(Predicate, Index, Arity, Acc, List):-
 :-op(500, xfx, then).
 :-op(400, fy, if).
 :-op(400, xfx, else).
+
+if X then Y else _:-
+    X,
+    Y.
+if _ then _ else Z:-
+    Z.
