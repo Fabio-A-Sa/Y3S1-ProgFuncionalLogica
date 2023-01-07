@@ -58,4 +58,9 @@ functor(parent(homer, bart), Name, Arity).  % Name = homer , Arity = 2
 functor(Term, parent, 2)                    % Term = parent(_A, _B)
 ```
 
-O predicado `call/1` executa
+O predicado `call/1` executa o argumento:
+
+```prolog
+B = parent(homer, bart), call(B). % yes
+```
+
