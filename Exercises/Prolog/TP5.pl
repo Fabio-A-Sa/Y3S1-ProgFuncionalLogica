@@ -118,14 +118,20 @@ fill_args(Predicate, Index, Arity, Acc, List):-
 
 % 5.a
 
-% Uma possível árvore seria a seguinte
+% Uma possível árvore seria a seguinte:
 % to(from(flight(tp1949), porto), at(lisbon, :(16, 15)))
 
-:-op(500,xfy,to).
-:-op(400,xfy,from).
+:-op(500,xfx,to).
+:-op(400,xfx,from).
 :-op(300,fx,flight).
-:-op(400,xfy,at).
+:-op(400,xfx,at).
 :-op(300,xfx,:).
 
 % 5.b
 
+% Uma possível árvore seria a seguinte:
+% then(if(X), else(Y, Z))
+
+:-op(500, xfx, then).
+:-op(400, fy, if).
+:-op(400, xfx, else).
