@@ -325,6 +325,43 @@ get_total_time([Voo1, Voo2 | Resto], Acc, Time):-
     NewAcc is Acc + Duration + WaitingTime,
     get_total_time([Voo2|Resto], NewAcc, Time). 
 
+% Exercise without otimization
+
+separate(L, Pred, SortedList):-
+    separate_aux(L, Pred, Ys, Ns),
+    append(Ys, Ns, SortedList).
+
+separate_aux([], _, [], []).
+separate_aux([H|T], Pred, [H, Ys], Ns):-
+    Goal =.. [Pred, H],
+    call(Goal), !, 
+    separate_aux(T, Pred, Ys, Ns).
+separate_aux([H|T], Pred, Ys, [H,Ns]):-
+    separate_aux(T, Pred, Ys, Ns).
+
+even(X):- 0 =:= X mod 2.
+
+% Exercíse with otimization
+
+separate2(L, Pred, SortedList):-
+    separate2_aux(L, Pred, SortedList-Ns, Ns-[]),
+
+separate2_aux([], _, Ys-Ys, Ns-Ns).
+separate2_aux([H|T], Pred, [H|Ys]-TailYs, Ns-TailNs):-
+    Goal =.. [Pred, H],
+    call(Goal), !, 
+    separate2_aux(T, Pred, Ys-TailYs, Ns-TailNs).
+separate2_aux([H|T], Pred, Ys-TailYs, [H,Ns]-TailNs):-
+    separate2_aux(T, Pred, Ys-TailYs, Ns-TailNs).
+
+% Insert implementation
+
+% insert(+Number, +Goal, +List, -FinalList).
+insert(Number, 0, Tail, [Number|Tail]).
+insert(Number, Index, [H|T], [H|FinalList]):-
+    Index1 is Index - 1,
+    insert(Number, Index1, T, FinalList).
+
 % Playing with graphs
 
 connected(a, b).
