@@ -147,6 +147,16 @@ if _ then _ else Z:-
 % 6.1
 
 :-op(500, xfx, exists_in).
+
 Element exists_in List:-
     member(Element, List).
+
+% 6.2
+
+:-op(500, xfx, to).
+:-op(400, fx, append).
+:-op(400, xfx, results).
+
+append A to B results C:-
+    append(B, [A], C).
 
