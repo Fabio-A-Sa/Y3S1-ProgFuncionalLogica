@@ -141,3 +141,12 @@ if X then Y else _:-
     Y.
 if _ then _ else Z:-
     Z.
+
+% Exercício 6
+
+% 6.1
+
+:-op(500, xfx, exists_in).
+Element exists_in List:-
+    member(Element, List).
+
