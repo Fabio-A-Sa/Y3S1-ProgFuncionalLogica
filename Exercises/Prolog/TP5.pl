@@ -160,3 +160,17 @@ Element exists_in List:-
 append A to B results C:-
     append(B, [A], C).
 
+% 6.3
+
+:-op(500, xfx, from).
+:-op(400, fx, remove).
+:-op(400, xfx, results).
+
+remove Element from List results Result:-
+    remove(Element, List, Result).
+
+remove(_, [], []).
+remove(Element, [Element|Result], Result):- !.
+remove(Element, [H|Tail], Result):-
+    remove(Element, Tail, Rest),
+    append([H], Rest, Result).
