@@ -28,4 +28,11 @@ played('A Player', 'Carrier Shift: Game Over', 48, 24).
 played('A Star Player', 'Duas Botas', 37, 16).
 played('Best Player Ever', 'Duas Botas', 33, 22).
 
+% 1
 
+%achievedALot(+Player)
+achievedALot(Player):-
+    played(Player, _, _, Percentage),
+    Percentage >= 80.
+
+    
