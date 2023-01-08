@@ -75,3 +75,12 @@ listGamesOfCategory(Category):-
     format('~a (~d)\n', [Name, MinAge]),
     fail.
 listGamesOfCategory(_).
+
+% 5
+
+%updatePlayer(+Player, +Game, +Hours, +Percentage)
+updatePlayer(Player, Game, Hours, Percentage):-
+    retract(played(Player, Game, Hours1, Percentage1)),
+    Hours2 is Hours1 + Hours,
+    Percentage2 is Percentage1 + Percentage,
+    asserta(played(Player, Game, Hours2, Percentage2)).
