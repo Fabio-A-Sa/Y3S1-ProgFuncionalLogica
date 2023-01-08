@@ -104,3 +104,18 @@ get_games(_, Games, Games).
 %ageRange(+MinAge, +MaxAge, -Players)
 ageRange(MinAge, MaxAge, Players):-
     findall(Name, Age^(player(Name, _, Age), Age >= MinAge, Age =< MaxAge), Players).
+
+% 8
+
+%averageAge(+Game, -AverageAge)
+averageAge(Game, AverageAge):-
+    findall(Age, (player(_, Username, Age), played(Username, Game, _, _)), Ages),
+    sum_all(Ages, 0, Sum),
+    length(Ages, Len),
+    AverageAge is Sum / Len.
+
+sum_all([], Sum, Sum).
+sum_all([Element|Rest], Acc, Sum):-
+    NewAcc is Acc + Element,
+    sum_all(Rest, NewAcc, Sum).
+
