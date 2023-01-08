@@ -43,3 +43,26 @@ isAgeAppropriate(Name, Game):-
     game(Game, _, MinAge),
     player(Name, _, Age),
     Age >= MinAge.
+
+% 3
+
+%timePlayingGames(+Player, +Games, -ListOfTimes, -SumTimes)
+timePlayingGames(Player, Games, ListOfTimes, SumTimes):-
+    fill_times(Player, Games, [], ListOfTimes),
+    sum_times(ListOfTimes, 0, SumTimes).
+
+fill_times(_, [], List, List).
+fill_times(Player, [Game|Rest], Acc, List):-
+    played(Player, Game, Time, _), !,
+    append(Acc, [Time], NewAcc),
+    fill_times(Player, Rest, NewAcc, List).
+fill_times(Player, [Game|Rest], Acc, List):-
+    \+played(Player, Game, _ , _),
+    append(Acc, [0], NewAcc),
+    fill_times(Player, Rest, NewAcc, List).
+
+sum_times([], Sum, Sum).
+sum_times([Element|Rest], Acc, Sum):-
+    NewAcc is Element + Acc,
+    sum_times(Rest, NewAcc, Sum).
+
