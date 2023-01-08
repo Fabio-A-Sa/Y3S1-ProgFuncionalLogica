@@ -143,3 +143,21 @@ whatDoesItDo(Username):-
 
 matrix([[8, 8, 7, 7], [2, 4, 4], [3, 3], [1]]).
 
+% 12
+
+%areClose(+Distance, +Matrix, -Pairs)
+areClose(Distance, Matrix, Pairs):-
+    length(Matrix, Len),
+    Max is Len + 1,
+    findall(Row/Col, (between(1, Max, Row), between(1, Max, Col), Row < Col, get_distance(Row/Col, Matrix, D), D =< Distance), Pairs).
+
+get_distance(Col/Col, _,  0):- !.
+get_distance(Row/Col, Matrix, D):-
+    Col > Row, !,
+    Index is Col - Row,
+    nth1(Row, Matrix, Line),
+    nth1(Index, Line, D),
+    write(Row/Col/D), nl.
+get_distance(Row/Col, Matrix, D):-
+    get_distance(Col/Row, Matrix, D), !.
+
