@@ -84,3 +84,17 @@ updatePlayer(Player, Game, Hours, Percentage):-
     Hours2 is Hours1 + Hours,
     Percentage2 is Percentage1 + Percentage,
     asserta(played(Player, Game, Hours2, Percentage2)).
+
+% 6
+
+%fewHours(+Player, -Games)
+fewHours(Player, Games):-
+    get_games(Player, [], Games).
+
+get_games(Player, Acc, Games):-
+    played(Player, Game, Hours, _),
+    Hours < 10,
+    \+member(Game, Acc), !,
+    append(Acc, [Game], NewAcc),
+    get_games(Player, NewAcc, Games).
+get_games(_, Games, Games).
