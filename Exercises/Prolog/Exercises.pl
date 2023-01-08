@@ -161,3 +161,8 @@ get_distance(Row/Col, Matrix, D):-
 get_distance(Row/Col, Matrix, D):-
     get_distance(Col/Row, Matrix, D), !.
 
+% 13
+% Sugiro uma representação de uma lista que contenha [ID, Left, Right], com Left/Right representados da mesma forma e nos nós apenas o nome do país
+
+dendo([1, [2, [5, [7, [8, australia, [9, [10, stahelena, anguila], georgiadosul]], reinounido], [6, servia, franca]], [3, [4,niger, india], irlanda]], brasil]).
+
