@@ -166,3 +166,25 @@ get_distance(Row/Col, Matrix, D):-
 
 dendo([1, [2, [5, [7, [8, australia, [9, [10, stahelena, anguila], georgiadosul]], reinounido], [6, servia, franca]], [3, [4,niger, india], irlanda]], brasil]).
 
+% 14
+
+%distance(+Pais1, +Pais2, +Dendo, -Distancia)
+distance(Pais1, Pais2, Dendo, Distancia):-
+    find(Pais1, Dendo, 0, Distancia1),
+    find(Pais2, Dendo, 0, Distancia2),
+    min(Distancia1, Distancia2, Min),
+    max(Distancia1, Distancia2, Max),
+    Distancia is Max - Min.
+.
+find(Atom, Atom, Distance, Distance):- !.
+find(Atom, [_, Left, Right], Acc, Distance):-
+    NewAcc is Acc + 1,
+    find(Atom, Left, NewAcc, Distance1),
+    find(Atom, Right, NewAcc, Distance2),
+    max(Distance1, Distance2, Distance), !.
+find(_, _, _, -1000).
+
+max(A, B, A):- A > B, !.
+max(_, B, B).
+min(A, B, A):- A < B, !.
+min(_, B, B).
