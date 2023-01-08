@@ -35,4 +35,11 @@ achievedALot(Player):-
     played(Player, _, _, Percentage),
     Percentage >= 80.
 
-    
+% 2
+
+%isAgeAppropriate(+Name, +Game)
+
+isAgeAppropriate(Name, Game):-
+    game(Game, _, MinAge),
+    player(Name, _, Age),
+    Age >= MinAge.
