@@ -66,3 +66,12 @@ sum_times([Element|Rest], Acc, Sum):-
     NewAcc is Element + Acc,
     sum_times(Rest, NewAcc, Sum).
 
+% 4
+
+%listGamesOfCategory(+Category)
+listGamesOfCategory(Category):-
+    game(Name, Categories, MinAge),
+    member(Category, Categories),
+    format('~a (~d)\n', [Name, MinAge]),
+    fail.
+listGamesOfCategory(_).
