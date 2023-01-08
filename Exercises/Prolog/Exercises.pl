@@ -127,3 +127,14 @@ mostEffectivePlayers(Game, Players):-
     All = [_-Max|_],
     findall(Player, member(Player-Max, All), Players).
 
+% 10
+
+%whatDoesItDo(?X)
+% Verifica se o player de username X joga sempre jogos apropriados à sua idade, ou seja, em que a idade mínima
+% é sempre inferior à idade do jogador.
+% Existe um green cut para auxiliar na eficiência: como sabemos que os usernames são únicos, não necessita de computar mais
+% pesquisas, pelo que o backtracking é cortado
+whatDoesItDo(Username):-
+    player(_, Username, Age), !,
+    \+( played(Username, Game, _, _), game(Game, _, MinAge), Age > MinAge ).
+
