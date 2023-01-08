@@ -119,3 +119,11 @@ sum_all([Element|Rest], Acc, Sum):-
     NewAcc is Acc + Element,
     sum_all(Rest, NewAcc, Sum).
 
+% 9
+
+%mostEffectivePlayers(+Game, -Players)
+mostEffectivePlayers(Game, Players):-
+    setof(Player-Percentage, (Player, Game, Hours, Perc)^(played(Player, Game, Hours, Perc), Percentage is Perc / Hours), All),
+    All = [_-Max|_],
+    findall(Player, member(Player-Max, All), Players).
+
