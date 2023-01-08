@@ -98,3 +98,9 @@ get_games(Player, Acc, Games):-
     append(Acc, [Game], NewAcc),
     get_games(Player, NewAcc, Games).
 get_games(_, Games, Games).
+
+% 7
+
+%ageRange(+MinAge, +MaxAge, -Players)
+ageRange(MinAge, MaxAge, Players):-
+    findall(Name, Age^(player(Name, _, Age), Age >= MinAge, Age =< MaxAge), Players).
