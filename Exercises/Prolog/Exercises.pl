@@ -138,3 +138,8 @@ whatDoesItDo(Username):-
     player(_, Username, Age), !,
     \+( played(Username, Game, _, _), game(Game, _, MinAge), Age > MinAge ).
 
+% 11
+% Sugiro uma lista de listas de elementos [[8, 8, 7, 7], [2, 4, 4], [3, 3], [1]]
+
+matrix([[8, 8, 7, 7], [2, 4, 4], [3, 3], [1]]).
+
