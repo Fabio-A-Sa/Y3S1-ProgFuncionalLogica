@@ -261,3 +261,22 @@ get_countries(_, ListOfCoutries, ListOfCoutries).
 
 get_airport_code(Company, Code):- flight(_, Code, _, _, _, Company).
 get_airport_code(Company, Code):- flight(_, _, Code, _, _, Company).
+
+% 5
+
+%pairableFlights/0
+pairableFlight:-
+    airport(_, Airport, _),
+    flight(Code1, _, Airport, _, _, _),
+    flight(Code2, Airport, _, TimePartida, _, _),
+    arrivalTime(Code1, TimeChegada),
+    get_minutes(TimeChegada, T1),
+    get_minutes(TimePartida, T2),
+    Gap is T2 - T1,
+    Gap =< 90, Gap >= 30,
+    format('~a - ~a \\ ~a \n', [Airport, Code1, Code2]),
+    fail.
+pairableFlight.
+
+get_minutes(Inicio, Result):-
+    Result is (Inicio // 100) * 60 + (Inicio mod 100).
