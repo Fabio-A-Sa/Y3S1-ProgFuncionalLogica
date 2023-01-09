@@ -220,3 +220,17 @@ flight('AF1025', 'LPPT', 'LFPG', 1310, 155, 'ARF').
 short(Flight):-
     flight(Flight, _, _, _, Time, _),
     Time =< 90.
+
+% 2
+
+%shorter(+Flight1, +Flight2, -ShorterFlight)
+shorter(Flight1, Flight2, Flight2):-
+    flight(Flight1,_, _, _, Time1, _),
+    flight(Flight2,_, _, _, Time2, _),
+    Time1 \= Time2,
+    Time1 > Time2, !.
+shorter(Flight1, Flight2, Flight1):-
+    flight(Flight1,_, _, _, Time1, _),
+    flight(Flight2,_, _, _, Time2, _),
+    Time1 \= Time2,
+    Time1 < Time2.
