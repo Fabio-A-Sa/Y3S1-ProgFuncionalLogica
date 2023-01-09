@@ -280,3 +280,41 @@ pairableFlight.
 
 get_minutes(Inicio, Result):-
     Result is (Inicio // 100) * 60 + (Inicio mod 100).
+
+% 6
+
+%tripDays(+Trip, +Time, -FlightTimes, -Days)
+tripDays([Begin|Resto], Time, FlightTimes, Days):-
+    airport(_, AirportCode, Begin),
+    get_times(Resto, AirportCode, Time, [], FlightTimes),
+    get_days(FlightTimes, 1, Days).
+
+get_times([], _, _, Times, Times).
+get_times([Pais|Resto], AirportCode, Time, Acc, Times):-
+    airport(_, Airport, Pais),
+    flight(_, AirportCode, Airport, Inicio, Duracao, _),
+    Inicio >= Time, !,
+    append(Acc, [Inicio], NewAcc),
+    NewDuracao is Duracao + 30,
+    sum_minutes(NewDuracao, Duracao, NewSlot),
+    get_times(Resto, Airport, NewSlot, NewAcc, Times).
+get_times([Pais|Resto], AirportCode, Time, Acc, Times):-
+    Time \= 0,
+    get_times([Pais|Resto], AirportCode, 0, Acc, Times), !.
+get_times(_, _, 0, _, _):-
+    !, fail.
+
+sum_minutes(Time, Duration, Result):-
+    TotalTime is (Time // 100) * 60 + (Time mod 100) + Duration,
+    Minutes is TotalTime mod 60,
+    Hours is (TotalTime // 60) mod 24,
+    Result is Hours*100 + Minutes.
+
+get_days([], Days, Days):- !.
+get_days([_], Days, Days):- !.
+get_days([Time1, Time2 | Resto], Acc, Days):-
+    Time1 < Time2, !,
+    get_days([Time2|Resto], Acc, Days).
+get_days([_, Time2 | Resto], Acc, Days):-
+    NextAcc is Acc + 1,
+    get_days([Time2|Resto], NextAcc, Days).
