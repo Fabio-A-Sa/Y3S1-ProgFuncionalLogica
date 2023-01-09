@@ -361,3 +361,24 @@ dif_max_2(X, Y):- X < Y, X >= Y - 2.
 
 % 11
 
+%make_max_pairs(+L, +P, -S)
+make_max_pairs(L, P, S):-
+    aux_pairs(L, P, [], S).
+
+aux_pairs([], _, List, List).
+aux_pairs([Element|Rest], P, Acc, Lists):-
+    aux_aux_pairs(Element, Rest, P, [], Another),
+    append(Acc, Another, New),
+    aux_pairs(Rest, P, New, Lists).
+
+aux_aux_pairs(_, [], _, Lists, Lists).
+aux_aux_pairs(Element, [X|Rest], P, Acc, Lists):-
+    Pred =.. [P, Element, X], Pred, !,
+    append(Acc, [Element-X], New),
+    aux_aux_pairs(Element, Rest, P, New, Lists).
+aux_aux_pairs(Element, [X|Rest], P, Acc, Lists):-
+    Pred =.. [P, X, Element], Pred, !,
+    append(Acc, [X-Element], New),
+    aux_aux_pairs(Element, Rest, P, New, Lists).
+aux_aux_pairs(Element, [_|Rest], P, Acc, Lists):-
+    aux_aux_pairs(Element, Rest, P, Acc, Lists).
