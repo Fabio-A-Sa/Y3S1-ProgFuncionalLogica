@@ -244,3 +244,20 @@ arrivalTime(Flight, ArrivalTime):-
     Minutes is TotalTime mod 60,
     Hours is (TotalTime // 60) mod 24,
     ArrivalTime is Hours*100 + Minutes.
+
+% 4 
+
+%countries(+Company, -ListOfCoutries)
+countries(Company, ListOfCoutries):-
+    get_countries(Company, [], ListOfCoutries).
+
+get_countries(Company, Acc, ListOfCoutries):-
+    get_airport_code(Company, Code),
+    airport(_, Code, Pais),
+    \+member(Pais, Acc), !,
+    append(Acc, [Pais], NewAcc),
+    get_countries(Company, NewAcc, ListOfCoutries).
+get_countries(_, ListOfCoutries, ListOfCoutries).
+
+get_airport_code(Company, Code):- flight(_, Code, _, _, _, Company).
+get_airport_code(Company, Code):- flight(_, _, Code, _, _, Company).
