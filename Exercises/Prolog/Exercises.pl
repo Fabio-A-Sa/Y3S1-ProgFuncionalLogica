@@ -382,3 +382,24 @@ aux_aux_pairs(Element, [X|Rest], P, Acc, Lists):-
     aux_aux_pairs(Element, Rest, P, New, Lists).
 aux_aux_pairs(Element, [_|Rest], P, Acc, Lists):-
     aux_aux_pairs(Element, Rest, P, Acc, Lists).
+
+% 12
+
+%whitoff(+N,-W)
+whitoff(N, W):-
+    get_all(N, 1, 0, [], [_|W], min), !.
+
+get_all(Max, L, _, W, W, _):- L > Max, !.
+get_all(Max, L, Delta, W, W, _):- R is L + Delta, R > Max, !.
+get_all(Max, L, Delta, Acc, W, min):- !,
+    L1 is L + Delta,
+    append(Acc, [(L-L1),(L1-L)], NewAcc),
+    NextDelta is Delta + 1,
+    NextL is L + 1,
+    get_all(Max, NextL, NextDelta, NewAcc, W, max).
+get_all(Max, L, Delta, Acc, W, max):- !,
+    L1 is L + Delta,
+    append(Acc, [(L-L1),(L1-L)], NewAcc),
+    NextDelta is Delta + 1,
+    NextL is L1 + 1,
+    get_all(Max, NextL, NextDelta, NewAcc, W, min).
