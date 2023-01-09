@@ -332,3 +332,11 @@ sum([], A, A).
 sum([Element|S], Acc, A):-
     NewAcc is Acc + Element,
     sum(S, NewAcc, A).
+
+% 8
+
+%mostInternational(-List)
+mostInternational(List):-
+    findall(Total-Company, (Company, List)^(company(Company, _, _, _), get_countries(Company, [], List), length(List, Total)), All),
+    All = [Max-_|_],
+    findall(C, member(Max-C, All), List).
