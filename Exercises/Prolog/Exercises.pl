@@ -318,3 +318,17 @@ get_days([Time1, Time2 | Resto], Acc, Days):-
 get_days([_, Time2 | Resto], Acc, Days):-
     NextAcc is Acc + 1,
     get_days([Time2|Resto], NextAcc, Days).
+
+% 7
+
+%avg(+Airport, -AvgAirport)
+avg(Airport, Avg):-
+    findall(Duration, flight(_, Airport, _, _, Duration, _), All),
+    sum(All, 0, Result),
+    length(All, R),
+    Avg is Result / R.
+
+sum([], A, A).
+sum([Element|S], Acc, A):-
+    NewAcc is Acc + Element,
+    sum(S, NewAcc, A).
