@@ -234,3 +234,13 @@ shorter(Flight1, Flight2, Flight1):-
     flight(Flight2,_, _, _, Time2, _),
     Time1 \= Time2,
     Time1 < Time2.
+
+% 3
+
+%arrivalTime(+Flight, -ArrivalTime)
+arrivalTime(Flight, ArrivalTime):-
+    flight(Flight,_, _, Inicio, Time, _),
+    TotalTime is (Inicio // 100) * 60 + (Inicio mod 100) + Time,
+    Minutes is TotalTime mod 60,
+    Hours is (TotalTime // 60) mod 24,
+    ArrivalTime is Hours*100 + Minutes.
