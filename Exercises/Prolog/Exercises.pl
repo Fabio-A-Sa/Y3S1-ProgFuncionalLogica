@@ -205,11 +205,18 @@ company('AFR', 'Société Air France S.A', 1933, 'France').
 company('BAW', 'British Airways', 1974, 'United Kingdom').
 
 %flight(Designation, Origin, Destination, DepartureTIme, Duration, Company)
-fligth('TP1923', 'LPPR', 'LPPT', 1115, 55, 'TAP').
-fligth('TP1968', 'LPPT', 'LPPR', 2235, 55, 'TAP').
-fligth('TP842', 'LPPT', 'LIRF', 1450, 195, 'TAP').
-fligth('TP843', 'LIRF', 'LPPT', 1935, 195, 'TAP').
-fligth('FR5483', 'LPPR', 'LEMD', 630, 105, 'RYR').
-fligth('FR5484', 'LEMD', 'LPPR', 1935, 105, 'RYR').
-fligth('AF1024', 'LFPG', 'LPPT', 940, 155, 'ARF').
-fligth('AF1025', 'LPPT', 'LFPG', 1310, 155, 'ARF').
+flight('TP1923', 'LPPR', 'LPPT', 1115, 55, 'TAP').
+flight('TP1968', 'LPPT', 'LPPR', 2235, 55, 'TAP').
+flight('TP842', 'LPPT', 'LIRF', 1450, 195, 'TAP').
+flight('TP843', 'LIRF', 'LPPT', 1935, 195, 'TAP').
+flight('FR5483', 'LPPR', 'LEMD', 630, 105, 'RYR').
+flight('FR5484', 'LEMD', 'LPPR', 1935, 105, 'RYR').
+flight('AF1024', 'LFPG', 'LPPT', 940, 155, 'ARF').
+flight('AF1025', 'LPPT', 'LFPG', 1310, 155, 'ARF').
+
+% 1
+
+%short(+Flight)
+short(Flight):-
+    flight(Flight, _, _, _, Time, _),
+    Time =< 90.
