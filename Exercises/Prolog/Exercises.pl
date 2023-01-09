@@ -175,7 +175,7 @@ distance(Pais1, Pais2, Dendo, Distancia):-
     min(Distancia1, Distancia2, Min),
     max(Distancia1, Distancia2, Max),
     Distancia is Max - Min.
-.
+
 find(Atom, Atom, Distance, Distance):- !.
 find(Atom, [_, Left, Right], Acc, Distance):-
     NewAcc is Acc + 1,
@@ -188,3 +188,28 @@ max(A, B, A):- A > B, !.
 max(_, B, B).
 min(A, B, A):- A < B, !.
 min(_, B, B).
+
+% Teste 1 de 2018
+
+%airport(Name, ICAO, Country)
+airport('Aeroporto Francisco Sá Carneiro', 'LPPR', 'Portugal').
+airport('Aeroporto Humberto Delgado', 'LPPT', 'Portugal').
+airport('Aeropuerto Adolfo Suárez Madrid-Barajas', 'LEMD', 'Spain').
+airport('Aéroport de Paris-Charles-de-Gaulle Roissy Airport', 'LFPG', 'France').
+airport('Aeroporto Internazionale di Roma-Fiumicino - Leonardo da Vinci', 'LIRF', 'Italy').
+
+%company(ICAO, Name, Year, Coutry)
+company('TAP', 'TAP Air Portugal', 1945, 'Portugal').
+company('RYR', 'Ryanair', 1984, 'Ireland').
+company('AFR', 'Société Air France S.A', 1933, 'France').
+company('BAW', 'British Airways', 1974, 'United Kingdom').
+
+%flight(Designation, Origin, Destination, DepartureTIme, Duration, Company)
+fligth('TP1923', 'LPPR', 'LPPT', 1115, 55, 'TAP').
+fligth('TP1968', 'LPPT', 'LPPR', 2235, 55, 'TAP').
+fligth('TP842', 'LPPT', 'LIRF', 1450, 195, 'TAP').
+fligth('TP843', 'LIRF', 'LPPT', 1935, 195, 'TAP').
+fligth('FR5483', 'LPPR', 'LEMD', 630, 105, 'RYR').
+fligth('FR5484', 'LEMD', 'LPPR', 1935, 105, 'RYR').
+fligth('AF1024', 'LFPG', 'LPPT', 940, 155, 'ARF').
+fligth('AF1025', 'LPPT', 'LFPG', 1310, 155, 'ARF').
