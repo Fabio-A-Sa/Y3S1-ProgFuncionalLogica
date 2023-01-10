@@ -438,4 +438,10 @@ n_jogadas_treinador(Treinador, NumeroJogadas):-
     member([Min-Max]-Treinador, List),
     NumeroJogadas is Max - Min + 1.
 
+% 3
 
+%ganhou(?Jornada, ?EquipaVencedora, ?EquipaDerrotada)
+ganhou(Jornada, EquipaVencedora, EquipaDerrotada):-
+    jogo(Jornada, EquipaVencedora, EquipaDerrotada, V-D), V > D, !.
+ganhou(Jornada, EquipaVencedora, EquipaDerrotada):-
+    jogo(Jornada, EquipaDerrotada, EquipaVencedora, D-V), V > D, !.
