@@ -454,7 +454,8 @@ ganhou(Jornada, EquipaVencedora, EquipaDerrotada):-
 
 :-op(200, xfx, venceu).
 
-
+% 6
 
 o Equipa1 venceu o Equipa2 :-
     jogo(_, Equipa1, Equipa2, V-D), V > D, !.
+
