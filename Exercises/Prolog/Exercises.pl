@@ -425,8 +425,17 @@ treinadores(maritimo, [[1-3]-jose_gomes]).
 %n_treinadores(?Equipa, ?Número)
 n_treinadores(Equipa, Numero):-
     treinadores(Equipa, List),
-    Length(List, Numero).
+    length(List, Numero).
 
 % 2
 
-%
+%n_jogadas_treinador(?Treinador, ?NumeroJogadas)
+n_jogadas_treinador(Treinador, 1):-
+    treinadores(_, List),
+    member([N-N]-Treinador, List), !.
+n_jogadas_treinador(Treinador, NumeroJogadas):-
+    treinadores(_, List),
+    member([Min-Max]-Treinador, List),
+    NumeroJogadas is Max - Min + 1.
+
+
