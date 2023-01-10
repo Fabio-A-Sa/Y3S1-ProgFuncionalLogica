@@ -340,3 +340,24 @@ mostInternational(List):-
     findall(Total-Company, (Company, List)^(company(Company, _, _, _), get_countries(Company, [], List), length(List, Total)), All),
     All = [Max-_|_],
     findall(C, member(Max-C, All), List).
+
+% 9 e 10
+
+make_pairs(N, P, [X-Y|Zs]):-
+    sort(N, L),
+    select(X, L, L2),
+    select(Y, L2, L3),
+    G =.. [P, X, Y], G,
+    !,
+    make_pairs(L3, P, Zs).
+make_pairs(N, P, [X-Y|Zs]):-
+    sort(N, L),
+    select(X, L, L2),
+    select(Y, L2, L3), !,
+    make_pairs(L3, P, Zs).
+make_pairs([], _, []).
+
+dif_max_2(X, Y):- X < Y, X >= Y - 2.
+
+% 11
+
