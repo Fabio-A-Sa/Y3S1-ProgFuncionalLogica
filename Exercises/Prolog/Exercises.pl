@@ -445,3 +445,6 @@ ganhou(Jornada, EquipaVencedora, EquipaDerrotada):-
     jogo(Jornada, EquipaVencedora, EquipaDerrotada, V-D), V > D, !.
 ganhou(Jornada, EquipaVencedora, EquipaDerrotada):-
     jogo(Jornada, EquipaDerrotada, EquipaVencedora, D-V), V > D, !.
+
+% 4 Alínea C
+% 5 Alínea D
