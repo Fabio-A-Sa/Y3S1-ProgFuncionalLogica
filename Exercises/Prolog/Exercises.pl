@@ -442,9 +442,17 @@ n_jogadas_treinador(Treinador, NumeroJogadas):-
 
 %ganhou(?Jornada, ?EquipaVencedora, ?EquipaDerrotada)
 ganhou(Jornada, EquipaVencedora, EquipaDerrotada):-
-    jogo(Jornada, EquipaVencedora, EquipaDerrotada, V-D), V > D, !.
+    jogo(Jornada, EquipaVencedora, EquipaDerrotada, V-D), V > D.
 ganhou(Jornada, EquipaVencedora, EquipaDerrotada):-
-    jogo(Jornada, EquipaDerrotada, EquipaVencedora, D-V), V > D, !.
+    jogo(Jornada, EquipaDerrotada, EquipaVencedora, D-V), V > D.
 
 % 4 Alínea C
-% 5 Alínea D
+
+:-op(180, fx, o).
+
+% 5 Alínea E
+
+:-op(200, xfx, venceu).
+
+o Equipa1 venceu o Equipa2 :-
+    jogo(_, Equipa1, Equipa2, V-D), V > D, !.
