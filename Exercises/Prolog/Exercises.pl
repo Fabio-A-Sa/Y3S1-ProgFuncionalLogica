@@ -421,3 +421,12 @@ treinadores(benfica, [[1-3]-bruno-lage]).
 treinadores(maritimo, [[1-3]-jose_gomes]).
 
 % 1
+
+%n_treinadores(?Equipa, ?Número)
+n_treinadores(Equipa, Numero):-
+    treinadores(Equipa, List),
+    Length(List, Numero).
+
+% 2
+
+%
