@@ -403,3 +403,21 @@ get_all(Max, L, Delta, Acc, W, max):- !,
     NextDelta is Delta + 1,
     NextL is L1 + 1,
     get_all(Max, NextL, NextDelta, NewAcc, W, min).
+
+% Teste 1 de 2020
+
+%jogo(Partida, Equipa1, Equipa2, Resultado)
+jogo(1, sporting, porto, 1-2).
+jogo(1, maritimo, benfica, 2-0).
+jogo(2, sporting, benfica, 0-2).
+jogo(2, porto, maritimo, 1-0).
+jogo(3, maritimo, sporting, 1-1).
+jogo(3, benfica, porto, 0-2).
+
+%treinadores(Equipa, [[Época-Treinador]])
+treinadores(porto, [[1-3]-sergio_conceicao]).
+treinadores(sporting, [[1-2]-silas, [3-3]-ruben_amorim]).
+treinadores(benfica, [[1-3]-bruno-lage]).
+treinadores(maritimo, [[1-3]-jose_gomes]).
+
+% 1
