@@ -537,3 +537,19 @@ diff(X, Y, D):-
     Y > X, !, 
     D is Y - X + 1.
 diff(X, Y, D):- !, diff(Y, X, D).
+
+% 14
+
+pascal(1, [1]) :- !.
+pascal(N, L) :-
+    N1 is N - 1,
+    pascal(N1, L1),
+    append([0], L1, L2),
+    append(L2, [0], Aux),
+    aux_pascal([], L, Aux), !.
+
+aux_pascal(L, L, [_ | []]).
+aux_pascal(Acc, L, [Elem1, Elem2 | Rest]) :-
+    NewElem is Elem1 + Elem2,
+    append(Acc, [NewElem], NewAcc),
+    aux_pascal(NewAcc, L, [Elem2 | Rest]).
