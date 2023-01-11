@@ -519,3 +519,21 @@ get_final(D, V, -1):- V > D, !.
 listar_treinadores(L):-
     findall(Treinador, (treinadores(_, List), member([_-_]-Treinador, List)), L1),
     sort(L1, L).
+
+% 13
+
+%duracao_treinadores(?L)
+duracao_treinadores(L):-
+    setof(N-T, (listar_treinadores(List), member(T, List), get_years(T, N)), L1),
+    reverse(L1, L).
+
+get_years(Treinador, Diff):-
+    treinadores(_, List),
+    member([A-B]-Treinador, List),
+    diff(A,B,Diff).
+
+diff(X, X, 1):- !.
+diff(X, Y, D):-
+    Y > X, !, 
+    D is Y - X + 1.
+diff(X, Y, D):- !, diff(Y, X, D).
