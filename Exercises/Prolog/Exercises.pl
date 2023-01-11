@@ -578,3 +578,26 @@ madeItTrough(Participant):-
     performence(Participant, Times),
     member(120, Times).
 
+%2
+
+%juriTimes(+Participants, +JuriMember, -Times, -Total)
+juriTimes(Participants, JuriMember, Times, Total):-
+    get_times(Participants, JuriMember, [], Times),
+    sum(Times, 0, Total).
+
+get_times([], _, Times, Times).
+get_times([Participant|Resto], Index, Acc, Times):-
+    performence(Participant, AllTimes),
+    my_index(AllTimes, Index, Time),
+    append(Acc, [Time], NewAcc),
+    get_times(Resto, Index, NewAcc, Times).
+
+sum([], Sum, Sum).
+sum([N|R], Acc, Sum):-
+    NewAcc is Acc + N,
+    sum(R, NewAcc, Sum).
+
+my_index([Element|_], 1, Element).
+my_index([_|R], Index, Element):-
+    Search is Index - 1,
+    my_index(R, Search, Element).
