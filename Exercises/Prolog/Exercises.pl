@@ -624,3 +624,13 @@ bestParticipant(P1, P2, P2):-
     performence(P2, List2), sum(List2, 0, Sum2),
     Sum2 > Sum1, !.
 bestParticipant(_, _, _):- !, fail.
+
+% 5
+
+%allPerfs/0
+allPerfs:-
+    performence(ID, Times),
+    participant(ID, _, Description),
+    format('~d:~a:', [ID, Description]), write(Times), nl,
+    fail.
+allPerfs.
