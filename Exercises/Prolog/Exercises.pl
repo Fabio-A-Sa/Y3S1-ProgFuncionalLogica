@@ -459,3 +459,15 @@ ganhou(Jornada, EquipaVencedora, EquipaDerrotada):-
 o Equipa1 venceu o Equipa2 :-
     jogo(_, Equipa1, Equipa2, V-D), V > D, !.
 
+% 7
+
+predX(N, N, _).
+predX(N, A, B):-
+    !, 
+    A \= B,
+    A1 is A + sign(B - A),
+    predX(N, A1, B).
+
+% Imprime todos os números de A até B se N não estiver instanciado. Se N estiver instanciado apenas verifica se está dentro do intervalo A e B
+% O Cut é verde uma vez que não altera os resultados da pesquisa, apenas evita backtracking desnecessário e assim aumenta a eficiência desta (poda do algoritmo)
+
