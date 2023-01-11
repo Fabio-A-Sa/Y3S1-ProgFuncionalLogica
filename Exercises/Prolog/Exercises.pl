@@ -660,3 +660,17 @@ get_juri([120|Resto], Index, Acc, List):- !,
 get_juri([_|Resto], Index, Acc, List):-
     NewIndex is Index + 1,
     get_juri(Resto, NewIndex, Acc, List).
+
+% 8
+
+eligible(Id, Performence, TT):-
+    performence(Id, Times),
+    madeItTrough(Id),
+    participant(Id, _, Performence),
+    sumlist(Times, TT).
+
+%nextPhase(+N, -Participants)
+nextPhase(N, Participants):-
+    findall(Time-Id-Performence, (participant(Id, _, Performence), eligible(Id, Performence, Time)), All),
+    sort(All, S), reverse(S, List),
+    append(Participants, _, List), length(Participants, N).
