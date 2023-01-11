@@ -674,3 +674,13 @@ nextPhase(N, Participants):-
     findall(Time-Id-Performence, (participant(Id, _, Performence), eligible(Id, Performence, Time)), All),
     sort(All, S), reverse(S, List),
     append(Participants, _, List), length(Participants, N).
+
+% 9
+
+predX(Q, [R|Rs], [P|Ps]):-
+    participant(R, I, P), I =< Q, !,
+    predX(Q, Rs, Ps).
+predX(Q, [R|Rs], Ps):-
+    participant(R, I, _), I > Q,
+    predX(Q, Rs, Ps).
+predX(_, [], []).
