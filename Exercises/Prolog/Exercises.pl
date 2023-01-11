@@ -485,3 +485,13 @@ verify_win(N, Max, Equipa):-
     NextN is N + 1,
     verify_win(NextN, Max, Equipa).
 verify_win(_, _, _):- !, fail.
+
+% 9
+
+imprime_totobola(1,'1').
+imprime_totobola(0,'X').
+imprime_totobola(-1,'2').
+
+imprime_texto(1, 'vitoria da casa').
+imprime_texto(0, 'empate').
+imprime_texto(-1, 'derrota da casa').
