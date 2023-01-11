@@ -511,5 +511,7 @@ get_final(D, V, -1):- V > D, !.
 
 % 10 Alínea E - Pelo functor e o primeiro argumento
 
-% 11
+% 11 Alínea E - O univ é o único que não é extralógico
+
+
 
