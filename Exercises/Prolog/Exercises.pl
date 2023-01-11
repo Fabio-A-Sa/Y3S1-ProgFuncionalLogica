@@ -578,7 +578,7 @@ madeItTrough(Participant):-
     performence(Participant, Times),
     member(120, Times).
 
-%2
+% 2 
 
 %juriTimes(+Participants, +JuriMember, -Times, -Total)
 juriTimes(Participants, JuriMember, Times, Total):-
@@ -601,3 +601,13 @@ my_index([Element|_], 1, Element).
 my_index([_|R], Index, Element):-
     Search is Index - 1,
     my_index(R, Search, Element).
+
+% 3
+
+%patientJuri(+JuriMember)
+patientJuri(JuriMember):-
+    performence(P1, List1),
+    performence(P2, List2),
+    P1 \= P2,
+    my_index(List1, JuriMember, 120),
+    my_index(List2, JuriMember, 120).
