@@ -513,5 +513,9 @@ get_final(D, V, -1):- V > D, !.
 
 % 11 Alínea E - O univ é o único que não é extralógico
 
+% 12
 
-
+%listar_treinadores(?L)
+listar_treinadores(L):-
+    findall(Treinador, (treinadores(_, List), member([_-_]-Treinador, List)), L1),
+    sort(L1, L).
