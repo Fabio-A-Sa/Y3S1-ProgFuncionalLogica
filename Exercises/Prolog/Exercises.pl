@@ -696,3 +696,19 @@ impoe(X, L):-
     append(L1, [X|_], L), append(_, [X|Mid], L1).
 
 % Para um número X, o predicado impõe que X esteja entre X elementos
+
+% 11
+
+%langford(+N, -L)
+langford(N, L):-
+    N2 is N * 2,
+    length(L, N2),
+    impoe(1, N, L).
+
+impoe(N, N, L):-
+    impoe(N, L).
+impoe(X, N, L):-
+    impoe(X, L),
+    XX is X + 1,
+    impoe(XX, N, L).
+
