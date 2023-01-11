@@ -634,3 +634,14 @@ allPerfs:-
     format('~d:~a:', [ID, Description]), write(Times), nl,
     fail.
 allPerfs.
+
+% 6
+
+%nSuccess(-T)
+nSuccess(T):-
+    findall(Participant, (performence(Participant, Times), win(Times)), List),
+    length(List, T).
+
+win([]):- !.
+win([120|Rest]):- !, win(Rest).
+win(_):- !, fail.
