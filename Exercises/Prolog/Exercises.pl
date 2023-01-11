@@ -495,3 +495,16 @@ imprime_totobola(-1,'2').
 imprime_texto(1, 'vitoria da casa').
 imprime_texto(0, 'empate').
 imprime_texto(-1, 'derrota da casa').
+
+%imprime_jogos(+F)
+imprime_jogos(F):-
+    jogo(Jornada, Equipa1, Equipa2, E1-E2),
+    get_final(E1,E2,Sinal),
+    Goal =.. [F, Sinal, Result], Goal,
+    format('Jornada ~d: ~a x ~a - ~a\n', [Jornada, Equipa1, Equipa2, Result]),
+    fail.
+imprime_jogos(_).
+
+get_final(V, D, 1):- V > D, !.
+get_final(V, V, 0):- !.
+get_final(D, V, -1):- V > D, !.
