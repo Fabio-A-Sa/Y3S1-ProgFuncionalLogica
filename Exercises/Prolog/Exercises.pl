@@ -677,6 +677,7 @@ nextPhase(N, Participants):-
 
 % 9
 
+%pred(Idade, Participantes, Performences)
 predX(Q, [R|Rs], [P|Ps]):-
     participant(R, I, P), I =< Q, !,
     predX(Q, Rs, Ps).
@@ -684,3 +685,7 @@ predX(Q, [R|Rs], Ps):-
     participant(R, I, _), I > Q,
     predX(Q, Rs, Ps).
 predX(_, [], []).
+
+% Verifica se todos os participantes das performences têm idade inferior ou igual a Q.
+% O Cut presente é vermelho e ajuda a parar o backtracking na zona onde o predicado-chave (I =< Q) fica satisfeito.
+
