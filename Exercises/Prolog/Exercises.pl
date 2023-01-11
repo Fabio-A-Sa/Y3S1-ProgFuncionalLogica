@@ -635,7 +635,7 @@ allPerfs:-
     fail.
 allPerfs.
 
-% 6
+% 6 
 
 %nSuccess(-T)
 nSuccess(T):-
