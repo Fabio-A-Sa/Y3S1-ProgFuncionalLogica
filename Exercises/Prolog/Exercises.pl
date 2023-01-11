@@ -553,3 +553,20 @@ aux_pascal(Acc, L, [Elem1, Elem2 | Rest]) :-
     NewElem is Elem1 + Elem2,
     append(Acc, [NewElem], NewAcc),
     aux_pascal(NewAcc, L, [Elem2 | Rest]).
+
+% Teste 1 Modelo
+
+%participant(ID, Age, Performence)
+participant(1234,17,'Pé coxinho').
+participant(3423,21,'Programar com os pés').
+participant(3788,20,'Sing a Bit').
+participant(4865,22,'Pontes de esparguete').
+participant(8937,19,'Pontes de pen-drives').
+participant(2564,20,'Moodle hack').
+
+%performence(ID, Times)
+performence(1234, [120, 120, 120, 120]).
+performence(3423, [32, 120, 45, 120]).
+performence(3788, [110, 2, 6, 43]).
+performence(4865, [120, 120, 110, 120]).
+performence(8937, [97, 101, 105, 110]).
