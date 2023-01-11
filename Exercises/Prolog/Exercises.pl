@@ -689,3 +689,10 @@ predX(_, [], []).
 % Verifica se todos os participantes das performences têm idade inferior ou igual a Q.
 % O Cut presente é vermelho e ajuda a parar o backtracking na zona onde o predicado-chave (I =< Q) fica satisfeito.
 
+% 10
+
+impoe(X, L):-
+    length(Mid, X),
+    append(L1, [X|_], L), append(_, [X|Mid], L1).
+
+% Para um número X, o predicado impõe que X esteja entre X elementos
