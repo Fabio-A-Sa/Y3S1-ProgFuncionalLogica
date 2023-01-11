@@ -645,3 +645,18 @@ nSuccess(T):-
 win([]):- !.
 win([120|Rest]):- !, win(Rest).
 win(_):- !, fail.
+
+% 7
+
+%juriFans(-List)
+juriFans(List):-
+    findall(Participant-Juri, (performence(Participant, Times), get_juri(Times, 1, [], Juri)), List).
+
+get_juri([], _, List, List):- !.
+get_juri([120|Resto], Index, Acc, List):- !,
+    append(Acc, [Index], NewAcc),
+    NewIndex is Index + 1,
+    get_juri(Resto, NewIndex, NewAcc, List).
+get_juri([_|Resto], Index, Acc, List):-
+    NewIndex is Index + 1,
+    get_juri(Resto, NewIndex, Acc, List).
