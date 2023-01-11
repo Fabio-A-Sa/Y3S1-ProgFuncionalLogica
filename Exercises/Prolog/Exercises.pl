@@ -570,3 +570,11 @@ performence(3423, [32, 120, 45, 120]).
 performence(3788, [110, 2, 6, 43]).
 performence(4865, [120, 120, 110, 120]).
 performence(8937, [97, 101, 105, 110]).
+
+% 1
+
+%madeItTrough(+Participant)
+madeItTrough(Participant):-
+    performence(Participant, Times),
+    member(120, Times).
+
