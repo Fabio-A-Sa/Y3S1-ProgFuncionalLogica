@@ -585,17 +585,17 @@ juriTimes(Participants, JuriMember, Times, Total):-
     get_times(Participants, JuriMember, [], Times),
     sum(Times, 0, Total).
 
+sum([], Sum, Sum).
+sum([N|R], Acc, Sum):-
+    NewAcc is Acc + N,
+    sum(R, NewAcc, Sum).
+
 get_times([], _, Times, Times).
 get_times([Participant|Resto], Index, Acc, Times):-
     performence(Participant, AllTimes),
     my_index(AllTimes, Index, Time),
     append(Acc, [Time], NewAcc),
     get_times(Resto, Index, NewAcc, Times).
-
-sum([], Sum, Sum).
-sum([N|R], Acc, Sum):-
-    NewAcc is Acc + N,
-    sum(R, NewAcc, Sum).
 
 my_index([Element|_], 1, Element).
 my_index([_|R], Index, Element):-
@@ -611,3 +611,16 @@ patientJuri(JuriMember):-
     P1 \= P2,
     my_index(List1, JuriMember, 120),
     my_index(List2, JuriMember, 120).
+
+% 4
+
+%bestParticipant(+P1, +P2, -P)
+bestParticipant(P1, P2, P1):-
+    performence(P1, List1), sum(List1, 0, Sum1),
+    performence(P2, List2), sum(List2, 0, Sum2),
+    Sum1 > Sum2, !.
+bestParticipant(P1, P2, P2):-
+    performence(P1, List1), sum(List1, 0, Sum1),
+    performence(P2, List2), sum(List2, 0, Sum2),
+    Sum2 > Sum1, !.
+bestParticipant(_, _, _):- !, fail.
