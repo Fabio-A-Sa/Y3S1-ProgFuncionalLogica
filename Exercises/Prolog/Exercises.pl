@@ -417,7 +417,7 @@ jogo(3, benfica, porto, 0-2).
 %treinadores(Equipa, [[Época-Treinador]])
 treinadores(porto, [[1-3]-sergio_conceicao]).
 treinadores(sporting, [[1-2]-silas, [3-3]-ruben_amorim]).
-treinadores(benfica, [[1-3]-bruno-lage]).
+treinadores(benfica, [[1-3]-bruno_lage]).
 treinadores(maritimo, [[1-3]-jose_gomes]).
 
 % 1
@@ -471,3 +471,17 @@ predX(N, A, B):-
 % Imprime todos os números de A até B se N não estiver instanciado. Se N estiver instanciado apenas verifica se está dentro do intervalo A e B
 % O Cut é verde uma vez que não altera os resultados da pesquisa, apenas evita backtracking desnecessário e assim aumenta a eficiência desta (poda do algoritmo)
 
+% 8
+
+%treinador_bom(?Treinador)
+treinador_bom(Treinador):-
+    treinadores(Equipa, List),
+    member([Min-Max]-Treinador, List),
+    verify_win(Min, Max, Equipa).
+
+verify_win(N, Max, _):- N > Max, !.
+verify_win(N, Max, Equipa):-
+    ganhou(N, Equipa, _), !,
+    NextN is N + 1,
+    verify_win(NextN, Max, Equipa).
+verify_win(_, _, _):- !, fail.
