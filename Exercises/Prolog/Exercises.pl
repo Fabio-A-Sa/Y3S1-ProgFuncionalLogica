@@ -508,3 +508,8 @@ imprime_jogos(_).
 get_final(V, D, 1):- V > D, !.
 get_final(V, V, 0):- !.
 get_final(D, V, -1):- V > D, !.
+
+% 10 Alínea E - Pelo functor e o primeiro argumento
+
+% 11
+
