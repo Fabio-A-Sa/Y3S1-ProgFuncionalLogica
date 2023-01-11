@@ -712,3 +712,37 @@ impoe(X, N, L):-
     XX is X + 1,
     impoe(XX, N, L).
 
+% 12
+
+%substring(+String, ?Substring)
+substring(String, String).
+substring(String, Substring):-
+    append(_, Substring, String).
+substring(String, Substring):-
+    append(Substring, _, String).
+substring(String, Substring):-
+    length(String, X),
+    length(Substring, A), X >= A,
+    append(_, Substring, After),
+    append(After, _, String).
+
+% 13
+
+%permutations(+Elements, -ElementsPermutation)
+permutations([Element], [Element]):- !.
+permutations(List, Permutations):-
+    findall(Perm, (
+                    member(Element, List), 
+                    my_delete(Element, List, NewList), 
+                    permutations(NewList, SubPermutations), 
+                    member(SubResult, SubPermutations),
+                    append([Element], SubResult, Perm)
+            ), 
+            Permutations).
+
+my_delete(_, [], []):- !.
+my_delete(Element, [Element|Resto], Resto):- !.
+my_delete(Element, [AnotherElement|Resto], Result):-
+    AnotherElement \= Element,
+    my_delete(Element, Resto, SubResult),
+    append([AnotherElement], SubResult, Result).
