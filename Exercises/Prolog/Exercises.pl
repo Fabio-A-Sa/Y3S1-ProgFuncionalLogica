@@ -766,3 +766,8 @@ tempo(quickstep, fast).
 tempo(foxtrot, slow).
 tempo(samba, fast).
 tempo(rhumba, slow).
+
+%style_round_number(?DanceStyle, ?RoundNumber)
+style_round_number(DanceStyle, RoundNumber):-
+    round(RoundNumber, DanceStyle, _, _).
+    
