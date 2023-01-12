@@ -781,3 +781,6 @@ n_dancers(RoundNumber, NDancers):-
 danced_in_round(RoundNumber, Dancer):-
     round(RoundNumber, _, _, Dancers),
     exists_in(Dancers, Dancer).
+
+exists_in(List, Element):- member(_-Element, List).
+exists_in(List, Element):- member(Element-_, List).
