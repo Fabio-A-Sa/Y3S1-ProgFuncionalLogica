@@ -746,3 +746,6 @@ my_delete(Element, [AnotherElement|Resto], Result):-
     AnotherElement \= Element,
     my_delete(Element, Resto, SubResult),
     append([AnotherElement], SubResult, Result).
+
+% Teste de Modelo - Mesmo teste de 21/22
+
