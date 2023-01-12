@@ -776,3 +776,8 @@ n_dancers(RoundNumber, NDancers):-
     round(RoundNumber, _, _, List),
     length(List, N),
     NDancers is N * 2.
+
+%danced_in_round(?RoundNumber, ?Dancer) 
+danced_in_round(RoundNumber, Dancer):-
+    round(RoundNumber, _, _, Dancers),
+    exists_in(Dancers, Dancer).
