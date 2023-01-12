@@ -770,4 +770,9 @@ tempo(rhumba, slow).
 %style_round_number(?DanceStyle, ?RoundNumber)
 style_round_number(DanceStyle, RoundNumber):-
     round(RoundNumber, DanceStyle, _, _).
-    
+
+%n_dancers(?RoundNumber, -NDancers)
+n_dancers(RoundNumber, NDancers):-
+    round(RoundNumber, _, _, List),
+    length(List, N),
+    NDancers is N * 2.
