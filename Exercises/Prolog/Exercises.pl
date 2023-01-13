@@ -826,3 +826,10 @@ print_program:-
     format('~a (~d) - ~d\n', [Style, Time, Pairs]),
     fail.
 print_program.
+
+%dancer_n_dances(?Dancer, ?NDances)
+dancer_n_dances(Dancer, NDances):-
+    round(_, _, _, Something),
+    exists_in(Something, Dancer),
+    findall(Round-Dancer, (round(Round, _, _, Dancers), exists_in(Dancers, Dancer)), List),
+    length(List, NDances).
