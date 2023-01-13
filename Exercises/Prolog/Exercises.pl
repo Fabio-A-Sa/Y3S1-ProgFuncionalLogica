@@ -796,3 +796,13 @@ n_rounds_aux(Acc, Result):-
     append(Acc, [N], NewAcc),
     n_rounds_aux(NewAcc, Result).
 n_rounds_aux(Result, Result).
+
+% add_dancer_pair(+RoundNumber, +Dancer1, +Dancer2) 
+ add_dancer_pair(RoundNumber, Dancer1, Dancer2):-
+    round(RoundNumber, X, Y, Dancers),
+    \+danced_in_round(RoundNumber, Dancer1),
+    \+danced_in_round(RoundNumber, Dancer2),
+    retract(round(RoundNumber, X, Y, Dancers)),
+    append(Dancers, [Dancer1-Dancer2], NewDancers),
+    asserta(round(RoundNumber, X, Y, NewDancers)).
+
