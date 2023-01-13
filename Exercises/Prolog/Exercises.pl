@@ -806,3 +806,15 @@ n_rounds_aux(Result, Result).
     append(Dancers, [Dancer1-Dancer2], NewDancers),
     asserta(round(RoundNumber, X, Y, NewDancers)).
 
+%total_dance_time(+Dancer, -Time)
+total_dance_time(Dancer, Time):-
+    total_dance_aux(Dancer, 0, Time, [], _).
+
+total_dance_aux(Dancer, Acc, Time, AccRounds, Rounds):-
+    round(Index, _, Tempo, _),
+    danced_in_round(Index, Dancer),
+    \+member(Index, AccRounds), !,
+    append(AccRounds, [Index], NewAccRounds),
+    Acc2 is Acc + Tempo,
+    total_dance_aux(Dancer, Acc2, Time, NewAccRounds, Rounds).
+total_dance_aux(_, Time, Time, Rounds, Rounds).
