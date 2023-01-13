@@ -818,3 +818,11 @@ total_dance_aux(Dancer, Acc, Time, AccRounds, Rounds):-
     Acc2 is Acc + Tempo,
     total_dance_aux(Dancer, Acc2, Time, NewAccRounds, Rounds).
 total_dance_aux(_, Time, Time, Rounds, Rounds).
+
+%print_program/0
+print_program:-
+    round(_, Style, Time, Dancers),
+    length(Dancers, Pairs),
+    format('~a (~d) - ~d\n', [Style, Time, Pairs]),
+    fail.
+print_program.
