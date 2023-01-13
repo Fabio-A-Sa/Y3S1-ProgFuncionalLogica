@@ -784,3 +784,15 @@ danced_in_round(RoundNumber, Dancer):-
 
 exists_in(List, Element):- member(_-Element, List).
 exists_in(List, Element):- member(Element-_, List).
+
+%n_rounds(-NRounds)
+n_rounds(NRounds):-
+    n_rounds_aux([], List),
+    length(List, NRounds).
+
+n_rounds_aux(Acc, Result):-
+    round(N, _, _, _),
+    \+member(N, Acc), !,
+    append(Acc, [N], NewAcc),
+    n_rounds_aux(NewAcc, Result).
+n_rounds_aux(Result, Result).
