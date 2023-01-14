@@ -882,6 +882,11 @@ get_all_dancers(Result):-
 
 % Exercício 14
 
+:- op(580, xfy, and).
+
+% Exercício 15
+
+:- op(600, xfx, dances).
 
 edge(a,b).
 edge(a,c).
