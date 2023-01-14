@@ -901,6 +901,8 @@ edge(d,e).
 edge(d,f).
 edge(e,f).
 
+% Exercício 16
+
 %shortest_safe_path(+Origin, +Destination, +ProhibitedNodes, -Path) 
 shortest_safe_path(Origin, Destination, ProhibitedNodes, Path):-
     \+member(Origin, ProhibitedNodes),
@@ -922,6 +924,8 @@ get_one_path(Origin, Destination, ProhibitedNodes, Acc, Path):-
     \+member(NextNode, Acc),
     append(Acc, [NextNode], NewAcc),
     get_one_path(NextNode, Destination, ProhibitedNodes, NewAcc, Path).
+
+% Exercício 17
 
 %all_shortest_safe_paths(+Origin, +Destination, +ProhibitedNodes, -ListOfPaths)
 all_shortest_safe_paths(Origin, Destination, ProhibitedNodes, ListOfPaths):-
