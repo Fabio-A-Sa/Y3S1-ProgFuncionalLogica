@@ -840,3 +840,7 @@ most_tireless_dancer(Result):-
     setof(Time-Dancer, (member(Dancer, Dancers), total_dance_time(Dancer, Time)), Values),
     append(_, [Max-_], Values),
     findall(Dancer, member(Max-Dancer, Values), Result).
+
+get_all_dancers(Result):-
+    findall(Dancer, (round(_, _, _, Dancers), exists_in(Dancers, Dancer)), List),
+    sort(List, Result).
