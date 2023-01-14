@@ -880,6 +880,9 @@ get_all_dancers(Result):-
 
 % Alínea E -> O uso de listas de diferença permite reimplementar certos predicados de complexidade temporal quadrática em tempo linear.
 
+% Exercício 14
+
+
 edge(a,b).
 edge(a,c).
 edge(a,d).
