@@ -833,3 +833,10 @@ dancer_n_dances(Dancer, NDances):-
     exists_in(Something, Dancer),
     findall(Round-Dancer, (round(Round, _, _, Dancers), exists_in(Dancers, Dancer)), List),
     length(List, NDances).
+
+%most_tireless_dancer(-Dancer)
+most_tireless_dancer(Result):-
+    get_all_dancers(Dancers),
+    setof(Time-Dancer, (member(Dancer, Dancers), total_dance_time(Dancer, Time)), Values),
+    append(_, [Max-_], Values),
+    findall(Dancer, member(Max-Dancer, Values), Result).
