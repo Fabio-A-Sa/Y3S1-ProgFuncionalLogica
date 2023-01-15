@@ -879,3 +879,8 @@ get_one_path(Origin, Destination, ProhibitedNodes, Acc, Path):-
     \+member(NextNode, Acc),
     append(Acc, [NextNode], NewAcc),
     get_one_path(NextNode, Destination, ProhibitedNodes, NewAcc, Path).
+
+%all_shortest_safe_paths(+Origin, +Destination, +ProhibitedNodes, -ListOfPaths)
+all_shortest_safe_paths(Origin, Destination, ProhibitedNodes, ListOfPaths):-
+    findall(Path, (shortest_safe_path(Origin, Destination, ProhibitedNodes, Path), \+length(Path, 0)), ListOfPaths),
+    \+length(ListOfPaths, 0).
