@@ -857,3 +857,12 @@ edge(d,a).
 edge(d,e).
 edge(d,f).
 edge(e,f).
+
+%shortest_safe_path(+Origin, +Destination, +ProhibitedNodes, -Path) 
+shortest_safe_path(Origin, Destination, ProhibitedNodes, Path):-
+    \+member(Origin, ProhibitedNodes),
+    \+member(Destination, ProhibitedNodes),
+    get_all_paths(Origin, Destination, ProhibitedNodes, Paths),
+    Paths = [Min-_|_],
+    findall(P, member(Min-P, Paths), AllMenores),
+    member(Path, AllMenores).
