@@ -867,7 +867,10 @@ get_all_dancers(Result):-
 
 % Sendo +Arg1 uma lista com predicados, predX/2 indica o número de predicados dessa lista que levam exatamente 2 argumentos.
 
-%
+% Exercício 11
+
+% O cut presente é vermelho, uma vez que influencia nos resultados obtidos. Por exemplo, sem ele o mecanismo de backtracking característico do prolog ainda iria encontrar o predicado "predX([_|Xs],N)". 
+% Assim, da maneira que está, apenas quando o predicado X não comportar 2 argumentos é que irá para "predX([_|Xs],N)", avançando na pesquisa e avaliando o próximo predicado da lista.
 
 edge(a,b).
 edge(a,c).
