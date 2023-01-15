@@ -844,3 +844,16 @@ most_tireless_dancer(Result):-
 get_all_dancers(Result):-
     findall(Dancer, (round(_, _, _, Dancers), exists_in(Dancers, Dancer)), List),
     sort(List, Result).
+
+edge(a,b).
+edge(a,c).
+edge(a,d).
+edge(b,e).
+edge(b,f).
+edge(c,b).
+edge(c,d).
+edge(c,e).
+edge(d,a).
+edge(d,e).
+edge(d,f).
+edge(e,f).
