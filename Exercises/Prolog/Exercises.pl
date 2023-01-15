@@ -863,6 +863,12 @@ get_all_dancers(Result):-
     findall(Dancer, (round(_, _, _, Dancers), exists_in(Dancers, Dancer)), List),
     sort(List, Result).
 
+% Exercício 10
+
+% Sendo +Arg1 uma lista com predicados, predX/2 indica o número de predicados dessa lista que levam exatamente 2 argumentos.
+
+%
+
 edge(a,b).
 edge(a,c).
 edge(a,d).
