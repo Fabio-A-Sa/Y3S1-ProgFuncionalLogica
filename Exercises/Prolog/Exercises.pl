@@ -872,6 +872,10 @@ get_all_dancers(Result):-
 % O cut presente é vermelho, uma vez que influencia nos resultados obtidos. Por exemplo, sem ele o mecanismo de backtracking característico do prolog ainda iria encontrar o predicado "predX([_|Xs],N)". 
 % Assim, da maneira que está, apenas quando o predicado X não comportar 2 argumentos é que irá para "predX([_|Xs],N)", avançando na pesquisa e avaliando o próximo predicado da lista.
 
+% Exercício 12
+
+% Alínea D -> a unificação produz um número mínimo de substituições para que as condições sejam provadas
+
 edge(a,b).
 edge(a,c).
 edge(a,d).
