@@ -876,6 +876,10 @@ get_all_dancers(Result):-
 
 % Alínea D -> a unificação produz um número mínimo de substituições para que as condições sejam provadas
 
+% Exercício 13
+
+% Alínea E -> O uso de listas de diferença permite reimplementar certos predicados de complexidade temporal quadrática em tempo linear.
+
 edge(a,b).
 edge(a,c).
 edge(a,d).
