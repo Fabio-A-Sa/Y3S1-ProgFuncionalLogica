@@ -866,3 +866,16 @@ shortest_safe_path(Origin, Destination, ProhibitedNodes, Path):-
     Paths = [Min-_|_],
     findall(P, member(Min-P, Paths), AllMenores),
     member(Path, AllMenores).
+
+get_all_paths(Origin, Destination, ProhibitedNodes, Paths):-
+    setof(Length-Path, (get_one_path(Origin, Destination, ProhibitedNodes, [Origin], Path), length(Path, Length)), Paths).
+
+get_one_path(Origin, Destination, _, Acc, Path):-
+    edge(Origin, Destination), !,
+    append(Acc, [Destination], Path).
+get_one_path(Origin, Destination, ProhibitedNodes, Acc, Path):-
+    edge(Origin, NextNode),
+    \+member(NextNode, ProhibitedNodes),
+    \+member(NextNode, Acc),
+    append(Acc, [NextNode], NewAcc),
+    get_one_path(NextNode, Destination, ProhibitedNodes, NewAcc, Path).
