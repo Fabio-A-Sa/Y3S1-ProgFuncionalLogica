@@ -805,6 +805,8 @@ n_rounds_aux(Acc, Result):-
     n_rounds_aux(NewAcc, Result).
 n_rounds_aux(Result, Result).
 
+% Exercício 5
+
 % add_dancer_pair(+RoundNumber, +Dancer1, +Dancer2) 
  add_dancer_pair(RoundNumber, Dancer1, Dancer2):-
     round(RoundNumber, X, Y, Dancers),
@@ -813,6 +815,8 @@ n_rounds_aux(Result, Result).
     retract(round(RoundNumber, X, Y, Dancers)),
     append(Dancers, [Dancer1-Dancer2], NewDancers),
     asserta(round(RoundNumber, X, Y, NewDancers)).
+
+% Exercício 6
 
 %total_dance_time(+Dancer, -Time)
 total_dance_time(Dancer, Time):-
@@ -827,6 +831,8 @@ total_dance_aux(Dancer, Acc, Time, AccRounds, Rounds):-
     total_dance_aux(Dancer, Acc2, Time, NewAccRounds, Rounds).
 total_dance_aux(_, Time, Time, Rounds, Rounds).
 
+% Exercício 7
+
 %print_program/0
 print_program:-
     round(_, Style, Time, Dancers),
@@ -835,12 +841,16 @@ print_program:-
     fail.
 print_program.
 
+% Exercício 8
+
 %dancer_n_dances(?Dancer, ?NDances)
 dancer_n_dances(Dancer, NDances):-
     round(_, _, _, Something),
     exists_in(Something, Dancer),
     findall(Round-Dancer, (round(Round, _, _, Dancers), exists_in(Dancers, Dancer)), List),
     length(List, NDances).
+
+% Exercício 9
 
 %most_tireless_dancer(-Dancer)
 most_tireless_dancer(Result):-
