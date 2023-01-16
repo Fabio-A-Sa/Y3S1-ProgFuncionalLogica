@@ -767,15 +767,21 @@ tempo(foxtrot, slow).
 tempo(samba, fast).
 tempo(rhumba, slow).
 
+% Exercício 1
+
 %style_round_number(?DanceStyle, ?RoundNumber)
 style_round_number(DanceStyle, RoundNumber):-
     round(RoundNumber, DanceStyle, _, _).
+
+% Exercício 2
 
 %n_dancers(?RoundNumber, -NDancers)
 n_dancers(RoundNumber, NDancers):-
     round(RoundNumber, _, _, List),
     length(List, N),
     NDancers is N * 2.
+
+% Exercício 3
 
 %danced_in_round(?RoundNumber, ?Dancer) 
 danced_in_round(RoundNumber, Dancer):-
@@ -784,6 +790,8 @@ danced_in_round(RoundNumber, Dancer):-
 
 exists_in(List, Element):- member(_-Element, List).
 exists_in(List, Element):- member(Element-_, List).
+
+% Exercício 4
 
 %n_rounds(-NRounds)
 n_rounds(NRounds):-
