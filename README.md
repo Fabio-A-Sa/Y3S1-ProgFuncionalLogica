@@ -19,6 +19,10 @@ Notes that I take during theoretical lectures in Markdown <br>
 ### Exercises
 Varied exercises of easy, medium and difficult level, about the subject taught in the present week. They complement the weekly work developed during the practical classes.
 
+### Workshop
+
+On December 10th, at the invitation of NIAEFEUP, I conducted a Prolog Workshop. The slides used are available in the [/Workshop](./Workshop/) directory and also online at: [https://slides.niaefeup.pt/prolog-workshop](https://slides.niaefeup.pt/prolog-workshop/#1)
+
 ### Project 1 - Algebric Manipulation of Polynoms with Haskell (Grade 18.7/20)
 
 - Polynoms normalize;
